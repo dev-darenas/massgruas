@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Clientes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Dir</th>
+      <th>Telefono</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.name %></td>
+        <td><%= client.address %></td>
+        <td><%= client.phone %></td>
+        <td><%= client.email %></td>
+        <td><%= link_to 'Edit', edit_client_path(client), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Estas Seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Cliente', new_client_path, class: 'btn btn-primary' %>

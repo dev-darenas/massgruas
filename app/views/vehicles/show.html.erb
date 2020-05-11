@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Placa:</strong>
+  <%= @vehicle.placa %>
+</p>
+
+<p>
+  <strong>Licencia:</strong>
+  <%= @vehicle.licencia %>
+</p>
+
+<p>
+  <strong>Marca:</strong>
+  <%= @vehicle.marca %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @vehicle.color %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>
