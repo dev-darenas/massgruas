@@ -13,30 +13,46 @@
 
   <div class="field">
     <%= form.label "Nombre" %>
-    <%= form.text_field :name, class: 'form-control' %>
+    <%= form.text_field :nombre, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label "Direccion" %>
-    <%= form.text_field :address, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Telefono" %>
-    <%= form.text_field :phone, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Email" %>
-    <%= form.text_field :email, class: 'form-control' %>
+    <%= form.label "Razón social" %>
+    <%= form.text_field :razon_social, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label "Regimen" %>
-    <%= form.select :regimen, Client.regimen.map {|key, value| [value, key]}, {}, { class: 'form-control' } %>
+    <%= form.select :regimen, Client.regimen.keys, {}, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Actividad comercial" %>
+    <%= form.text_field :actividad_comercial, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Direccion" %>
+    <%= form.text_field :direccion, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Ciudad" %>
+    <%= form.text_field :ciudad, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Telefono" %>
+    <%= form.telephone_field :telefono, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Email" %>
+    <%= form.email_field :email, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Actualizar', class: 'btn btn-primary' %>
+    <%= form.submit 'Actualizar', class: 'btn btn-primary' %> |
+    <%= link_to 'Atras', clients_path, class: 'btn btn-warning' %>
   </div>
 <% end %>

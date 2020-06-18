@@ -16,11 +16,14 @@ ActiveRecord::Schema.define(version: 2020_05_11_222004) do
   enable_extension "plpgsql"
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "phone"
-    t.string "email"
+    t.string "razon_social"
     t.string "regimen"
+    t.string "actividad_comercial"
+    t.string "nombre"
+    t.string "direccion"
+    t.string "ciudad"
+    t.string "telefono"
+    t.string "email"
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
