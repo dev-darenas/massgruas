@@ -11,13 +11,103 @@
 </p>
 
 <p>
+  <strong>Clase:</strong>
+  <%= @vehicle.clase %>
+</p>
+
+<p>
   <strong>Marca:</strong>
   <%= @vehicle.marca %>
 </p>
 
 <p>
+  <strong>Tipo:</strong>
+  <%= @vehicle.tipo %>
+</p>
+
+<p>
+  <strong>Linea:</strong>
+  <%= @vehicle.linea %>
+</p>
+
+<p>
+  <strong>Servicio:</strong>
+  <%= @vehicle.servicio %>
+</p>
+
+<p>
+  <strong>Combustible</strong>
+  <%= @vehicle.combustible %>
+</p>
+
+<p>
   <strong>Color:</strong>
   <%= @vehicle.color %>
+</p>
+
+<p>
+  <strong>Modelo:</strong>
+  <%= @vehicle.modelo %>
+</p>
+
+<p>
+  <strong>Motor:</strong>
+  <%= @vehicle.motor %>
+</p>
+
+<p>
+  <strong>Chasis:</strong>
+  <%= @vehicle.chasis %>
+</p>
+
+<p>
+  <strong>Serie:</strong>
+  <%= @vehicle.serie %>
+</p>
+
+<p>
+  <strong>Fecha de compra:</strong>
+  <%= @vehicle.fecha_de_compra %>
+</p>
+
+<p>
+  <strong>Contrato:</strong>
+  <%= @vehicle.contrato %>
+</p>
+
+<p>
+  <strong>Numero de SOAT:</strong>
+  <%= @vehicle.n_soat %>
+</p>
+
+<p>
+  <strong>Vencimiento de soat:</strong>
+  <%= @vehicle.vencimiento_soat %>
+</p>
+
+<p>
+  <strong>Número de RTM</strong>
+  <%= @vehicle.n_rtm %>
+</p>
+
+<p>
+  <strong>Vencimiento de RTM:</strong>
+  <%= @vehicle.vencimiento_rtm %>
+</p>
+
+<p>
+  <strong>Km de cambio de aceite:</strong>
+  <%= @vehicle.km_cambio_aceite %>
+</p>
+
+<p>
+  <strong>Km de proximo cambio:</strong>
+  <%= @vehicle.km_proximocambio %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag(@vehicle.picture.image.url, alt: 'Image') if @vehicle.picture.image? %>
 </p>
 
 <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |

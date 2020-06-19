@@ -22,8 +22,38 @@
   </div>
 
   <div class="field">
+    <%= form.label :clase %>
+    <%= form.text_field :clase, class: 'form-control' %>
+  </div>
+
+  <div class="field">
     <%= form.label :marca %>
     <%= form.text_field :marca, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo %>
+    <%= form.text_field :tipo, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :linea %>
+    <%= form.text_field :linea, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :marca %>
+    <%= form.text_field :marca, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :servicio %>
+    <%= form.text_field :servicio, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :combustible %>
+    <%= form.text_field :combustible, class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -31,7 +61,79 @@
     <%= form.text_field :color, class: 'form-control' %>
   </div>
 
+  <div class="field">
+    <%= form.label :modelo %>
+    <%= form.text_field :modelo, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :motor %>
+    <%= form.text_field :motor, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chasis %>
+    <%= form.text_field :chasis, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :serie %>
+    <%= form.text_field :serie, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_de_compra %>
+    <%= form.date_field :fecha_de_compra, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= form.label :contrato %>
+    <%= form.text_field :contrato, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :n_soat %>
+    <%= form.text_field :n_soat, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vencimiento_soat %>
+    <%= form.date_field :vencimiento_soat, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :n_rtm %>
+    <%= form.text_field :n_rtm, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vencimiento_rtm %>
+    <%= form.date_field :vencimiento_rtm, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :km_cambio_aceite %>
+    <%= form.text_field :km_cambio_aceite, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :km_proximocambio %>
+    <%= form.text_field :km_proximocambio, class: 'form-control' %>
+  </div>
+  <%= form.fields_for :pictures do |p| %>
+    <div class="field">
+      <%= p.label :image %>
+      <%= p.hidden_field :image_cache, class: 'form-control' %>
+      <% @vehicle.pictures.each do |img| %>
+        <%= p.file_field :image, class: 'form-control' %>
+
+        <% if img.image? %>
+          <%= image_tag img.image.thumb.url %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= form.submit 'Actualizar', class: 'btn btn-primary'%>
+    <%= form.submit 'Actualizar', class: 'btn btn-primary' %>
   </div>
 <% end %>

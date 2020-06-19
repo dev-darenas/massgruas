@@ -15,6 +15,7 @@ class VehiclesController < EnterpriseController
   # GET /vehicles/new
   def new
     @vehicle = @enterprise.vehicles.new
+    @vehicle.pictures.build
   end
 
   # GET /vehicles/1/edit
@@ -69,6 +70,9 @@ class VehiclesController < EnterpriseController
 
     # Only allow a list of trusted parameters through.
     def vehicle_params
-      params.require(:vehicle).permit(:placa, :licencia, :marca, :color)
+      params.require(:vehicle).permit( :placa, :licencia, :clase, :marca, :tipo, :linea, :servicio, :combustible,
+                                       :color, :modelo, :motor, :chasis, :serie, :fecha_de_compra, :contrato, :n_soat,
+                                       :vencimiento_soat, :n_rtm, :vencimiento_rtm, :km_cambio_aceite,
+                                       :km_proximocambio, pictures_attributes: [ :id, :image, :image_cache])
     end
 end

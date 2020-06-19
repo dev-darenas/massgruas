@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_222004) do
+ActiveRecord::Schema.define(version: 2020_06_19_143256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_05_11_222004) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string "image"
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.bigint "enterprise_id"
     t.string "email", default: "", null: false
@@ -53,8 +62,25 @@ ActiveRecord::Schema.define(version: 2020_05_11_222004) do
   create_table "vehicles", force: :cascade do |t|
     t.string "placa"
     t.string "licencia"
+    t.string "clase"
     t.string "marca"
+    t.string "tipo"
+    t.string "linea"
+    t.string "servicio"
+    t.string "combustible"
     t.string "color"
+    t.string "modelo"
+    t.string "motor"
+    t.string "chasis"
+    t.string "serie"
+    t.date "fecha_de_compra"
+    t.string "contrato"
+    t.string "n_soat"
+    t.date "vencimiento_soat"
+    t.string "n_rtm"
+    t.date "vencimiento_rtm"
+    t.string "km_cambio_aceite"
+    t.string "km_proximocambio"
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
