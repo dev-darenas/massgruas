@@ -121,14 +121,20 @@
   </div>
   <%= form.fields_for :pictures do |p| %>
     <div class="field">
-      <%= p.label :image %>
       <%= p.hidden_field :image_cache, class: 'form-control' %>
-      <% @vehicle.pictures.each do |img| %>
+      <% if p.object.image? %>
+        <%= p.label :image, "Imagen guardada" %>
         <%= p.file_field :image, class: 'form-control' %>
-
-        <% if img.image? %>
-          <%= image_tag img.image.thumb.url %>
-        <% end %>
+        <%= image_tag p.object.image.thumb.url, alt: 'Image' %>
+        <div>
+          <%= label_tag :_destroy do %>
+            Remover imagen
+            <%= p.check_box :_destroy %>
+          <% end %>
+        </div>
+      <% else %>
+        <%= p.label :image, "Nueva imagen" %>
+        <%= p.file_field :image, class: 'form-control' %>
       <% end %>
     </div>
   <% end %>

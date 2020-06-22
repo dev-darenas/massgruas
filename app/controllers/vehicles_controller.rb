@@ -20,6 +20,7 @@ class VehiclesController < EnterpriseController
 
   # GET /vehicles/1/edit
   def edit
+    @vehicle.pictures.build
   end
 
   # POST /vehicles
@@ -73,6 +74,6 @@ class VehiclesController < EnterpriseController
       params.require(:vehicle).permit( :placa, :licencia, :clase, :marca, :tipo, :linea, :servicio, :combustible,
                                        :color, :modelo, :motor, :chasis, :serie, :fecha_de_compra, :contrato, :n_soat,
                                        :vencimiento_soat, :n_rtm, :vencimiento_rtm, :km_cambio_aceite,
-                                       :km_proximocambio, pictures_attributes: [ :id, :image, :image_cache])
+                                       :km_proximocambio, pictures_attributes: [ :id, :image, :image_cache, :_destroy])
     end
 end
