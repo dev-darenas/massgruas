@@ -5,6 +5,7 @@ class CreateClients < ActiveRecord::Migration[6.0]
       t.string :regimen
       t.string :actividad_comercial
       t.string :nombre
+      t.string :identificacion
       t.string :direccion
       t.string :ciudad
       t.string :telefono

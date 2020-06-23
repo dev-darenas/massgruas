@@ -6,6 +6,7 @@ table.table
   thead
     tr
       th Nombre
+      th Identificación
       th Razon social
       th Reginmen
       th Actividad comercial
@@ -19,6 +20,7 @@ table.table
   -@clients.each do |client|
     tr
       td = client.nombre
+      td = client.identificacion
       td = client.razon_social
       td = client.regimen
       td = client.actividad_comercial

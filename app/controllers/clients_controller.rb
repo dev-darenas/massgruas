@@ -69,6 +69,6 @@ class ClientsController < EnterpriseController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:nombre, :razon_social, :regimen, :actividad_comercial, :direccion, :ciudad, :telefono, :email)
+      params.require(:client).permit(:nombre, :identificacion, :razon_social, :regimen, :actividad_comercial, :direccion, :ciudad, :telefono, :email)
     end
 end
