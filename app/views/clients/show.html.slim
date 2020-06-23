@@ -1,0 +1,38 @@
+p#notice = notice
+
+p
+  strong Nombre:
+  = @client.nombre
+
+p
+  strong Razón social:
+  = @client.razon_social
+
+p
+  strong Regimen:
+  = @client.regimen
+
+p
+  strong Actividad comercial:
+  = @client.actividad_comercial
+
+p
+  strong Dirección:
+  = @client.direccion
+
+p
+  strong Ciudad:
+  = @client.ciudad
+
+
+p
+  strong Telefono:
+  = @client.telefono
+
+p
+  strong Email:
+  = @client.email
+
+= link_to 'Editar', edit_client_path(@client), class: 'btn btn-primary'
+| |
+= link_to 'Atras', clients_path, class: 'btn btn-warning'

@@ -1,0 +1,136 @@
+= form_with(model: vehicle, local: true) do |form|
+
+  nav
+    .nav.nav-tabs#nav-tab role="tablist"
+      a.nav-item.nav-link.active#nav-General-tab data-toggle="tab" href="#nav-General" role="tab" aria-controls="nav-General" aria-selected="true" General
+      - unless @vehicle.id.blank?
+        a.nav-item.nav-link#nav-detalle-tab data-toggle="tab" href="#nav-detalle" role="tab" aria-controls="nav-detalle" aria-selected="false" Detalle
+        a.nav-item.nav-link#nav-fechas-tab data-toggle="tab" href="#nav-fechas" role="tab" aria-controls="nav-fechas" aria-selected="false" Fechas
+        a.nav-item.nav-link#nav-imagenes-tab data-toggle="tab" href="#nav-imagenes" role="tab" aria-controls="nav-imagenes" aria-selected="false" Imagenes
+
+  - if form.object.errors.any?
+    #error_explanation
+      h2 = pluralize(vehicle.errors.count, "error")
+      | prohibited this vehicle from being saved:
+
+      ul
+        - form.object.errors.full_messages.each do |message|
+          li = message
+
+  .tab-content#nav-tabContent
+
+    .tab-pane.fade.show.active#nav-General role="tabpanel" aria-labelledby="nav-General-tab"
+
+      .field
+        = form.label :placa
+        = form.text_field :placa, class: 'form-control'
+
+      .field
+        = form.label :licencia
+        = form.text_field :licencia, class: 'form-control'
+
+      .field
+        = form.label :clase
+        = form.text_field :clase, class: 'form-control'
+
+      .field
+        = form.label :marca
+        = form.text_field :marca, class: 'form-control'
+
+      .field
+        = form.label :tipo
+        = form.text_field :tipo, class: 'form-control'
+
+      .field
+        = form.label :linea
+        = form.text_field :linea, class: 'form-control'
+
+    - unless @vehicle.id.blank?
+      .tab-pane.fade#nav-detalle role="tabpanel" aria-labelledby="nav-detalle-tab"
+        .field
+          = form.label :servicio
+          = form.text_field :servicio, class: 'form-control'
+
+        .field
+          = form.label :combustible
+          = form.text_field :combustible, class: 'form-control'
+
+        .field
+          = form.label :color
+          = form.text_field :color, class: 'form-control'
+
+        .field
+          = form.label :modelo
+          = form.text_field :modelo, class: 'form-control'
+
+        .field
+          = form.label :motor
+          = form.text_field :motor, class: 'form-control'
+
+        .field
+          = form.label :chasis
+          = form.text_field :chasis, class: 'form-control'
+
+        .field
+          = form.label :serie
+          = form.text_field :serie, class: 'form-control'
+
+        .field
+          = form.label :fecha_de_compra
+          = form.date_field :fecha_de_compra, class: 'form-control'
+
+        .field
+          = form.label :contrato
+          = form.text_field :contrato, class: 'form-control'
+
+      .tab-pane.fade#nav-fechas role="tabpanel" aria-labelledby="nav-fechas-tab"
+
+        .field
+          = form.label :n_soat
+          = form.text_field :n_soat, class: 'form-control'
+
+        .field
+          = form.label :vencimiento_soat
+          = form.date_field :vencimiento_soat, class: 'form-control'
+
+        .field
+          = form.label :n_rtm
+          = form.text_field :n_rtm, class: 'form-control'
+
+        .field
+          = form.label :vencimiento_rtm
+          = form.date_field :vencimiento_rtm, class: 'form-control'
+
+
+        .field
+          = form.label :km_cambio_aceite
+          = form.text_field :km_cambio_aceite, class: 'form-control'
+
+
+        .field
+          = form.label :km_proximocambio
+          = form.text_field :km_proximocambio, class: 'form-control'
+
+
+      .tab-pane.fade#nav-imagenes role="tabpanel" aria-labelledby="nav-imagenes-tab"
+
+        = form.fields_for :pictures do |p|
+          .field
+            = p.hidden_field :image_cache, class: 'form-control'
+
+            - if p.object.image?
+              = p.label :image, "Imagen guardada"
+              = p.file_field :image, class: 'form-control'
+              = image_tag p.object.image.thumb.url, alt: 'Image'
+
+              div
+                = label_tag :_destroy do
+                  | Remover imagen
+                  = p.check_box :_destroy
+
+            - else
+              = p.label :image, "Nueva imagen"
+              = p.file_field :image, class: 'form-control'
+
+  .actions
+    = form.submit 'Actualizar', class: 'btn btn-primary'

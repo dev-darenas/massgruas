@@ -1,0 +1,37 @@
+p#notice = notice
+
+h1 Vehicles
+
+table.table
+  thead
+    tr
+      th Placa
+      th Marca
+      th Número de SOAT
+      th Vencimiento de SOAT
+      th Número de RTM
+      th Vencimiento RTM
+      th Km de cambio de aceite
+      th Km de proximo cambio
+      th colspan="2"
+
+  tbody
+    - @vehicles.each do |vehicle|
+
+      tr class= tr_warning_o_danger(vehicle)
+
+        td = vehicle.placa
+        td = vehicle.marca
+        td = vehicle.n_soat
+        td class= text_warning_soat(vehicle)
+          = vehicle.vencimiento_soat
+        td = vehicle.n_rtm
+        td class= text_warning_rtm(vehicle)
+          = vehicle.vencimiento_rtm
+        td = vehicle.km_cambio_aceite
+        td = vehicle.km_proximocambio
+        td = link_to 'Edit', edit_vehicle_path(vehicle), class: 'btn btn-primary'
+        td = link_to 'Destroy', vehicle, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+
+br
+= link_to 'Nuevo Vehiculo', new_vehicle_path, class: 'btn btn-primary'

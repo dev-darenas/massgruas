@@ -1,0 +1,34 @@
+h1 Editing Vehicle
+
+- if days_soat_zero(@vehicle) && days_rtm_zero(@vehicle)
+
+  .alert.alert-danger role="alert"
+    | Las fechas de SOAT y RTM están vencidas
+
+- elsif days_soat_zero(@vehicle)
+
+  .alert.alert-danger role="alert"
+    | La fecha de SOAT está vencida
+
+- elsif days_rtm_zero(@vehicle)
+
+  .alert.alert-danger role="alert"
+    | La fecha de RTM está vencida
+
+
+- if days_soat_five(@vehicle) && days_rtm_five(@vehicle)
+
+  .alert.alert-warning role="alert"
+    | Las fechas de SOAT y RTM están proximas a vencer
+
+- elsif days_soat_five(@vehicle)
+
+  .alert.alert-warning role="alert"
+    | La fecha de SOAT está proxima a vencer
+
+- elsif days_rtm_five(@vehicle)
+
+  .alert.alert-warning role="alert"
+    | La fecha de RTM está proxima a vencer
+
+= render 'form', vehicle: @vehicle

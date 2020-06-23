@@ -1,0 +1,90 @@
+p#notice = notice
+
+p
+  strong Placa:
+  = @vehicle.placa
+
+p
+  strong Licencia:
+  = @vehicle.licencia
+
+p
+  strong Clase:
+  = @vehicle.clase
+
+p
+  strong Marca:
+  = @vehicle.marca
+
+p
+  strong Tipo:
+  = @vehicle.tipo
+
+p
+  strong Linea:
+  = @vehicle.linea
+
+p
+  strong Servicio:
+  = @vehicle.servicio
+
+p
+  strong Combustible
+  = @vehicle.combustible
+
+p
+  strong Color:
+  = @vehicle.color
+
+p
+  strong Modelo:
+  = @vehicle.modelo
+
+<p>
+  strong Motor:
+  = @vehicle.motor
+
+p
+  strong Chasis:
+  = @vehicle.chasis
+
+p
+  strong Serie:
+  = @vehicle.serie
+
+p
+  strong Fecha de compra:
+  = @vehicle.fecha_de_compra
+
+
+p
+  strong Contrato:
+  = @vehicle.contrato
+
+p
+  strong Numero de SOAT:
+  = @vehicle.n_soat
+
+p
+  strong Vencimiento de soat:
+  = @vehicle.vencimiento_soat
+
+p
+  strong Número de RTM
+  = @vehicle.n_rtm
+
+p
+  strong Vencimiento de RTM:
+  = @vehicle.vencimiento_rtm
+
+p
+  strong Km de cambio de aceite:
+  = @vehicle.km_cambio_aceite
+
+p
+  strong Km de proximo cambio:
+  = @vehicle.km_proximocambio
+
+= link_to 'Edit', edit_vehicle_path(@vehicle)
+||
+= link_to 'Back', vehicles_path
