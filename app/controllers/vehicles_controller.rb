@@ -31,7 +31,7 @@ class VehiclesController < EnterpriseController
     respond_to do |format|
       if @vehicle.save
         format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'Vehicle was successfully created.' }
-        format.json { render :show, status: :created, location: @vehicle }
+        format.json { render :edit, status: :created, location: @vehicle }
       else
         format.html { render :new }
         format.json { render json: @vehicle.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class VehiclesController < EnterpriseController
     respond_to do |format|
       if @vehicle.update(vehicle_params)
         format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'Vehicle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vehicle }
+        format.json { render :edit, status: :ok, location: @vehicle }
       else
         format.html { render :edit }
         format.json { render json: @vehicle.errors, status: :unprocessable_entity }
