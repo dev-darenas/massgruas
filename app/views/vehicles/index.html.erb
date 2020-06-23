@@ -20,8 +20,13 @@
   <tbody>
   <% @vehicles.each do |vehicle| %>
     <%
-      calcular_dias_soat = ( (Date.parse vehicle.vencimiento_soat.to_s) - (Date.parse Time.now.to_s) ).to_i
-      calcular_dias_rtm = ( (Date.parse vehicle.vencimiento_rtm.to_s) - (Date.parse Time.now.to_s) ).to_i
+      calcular_dias_soat = 6
+      calcular_dias_rtm= 6
+
+      unless vehicle.vencimiento_soat.blank? || vehicle.vencimiento_rtm.blank?
+        calcular_dias_soat = ( (Date.parse vehicle.vencimiento_soat.to_s) - (Date.parse Time.now.to_s) ).to_i
+        calcular_dias_rtm = ( (Date.parse vehicle.vencimiento_rtm.to_s) - (Date.parse Time.now.to_s) ).to_i
+      end
     %>
     <% if calcular_dias_soat <= 0 || calcular_dias_rtm <= 0 %>
 
