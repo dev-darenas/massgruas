@@ -1,0 +1,24 @@
+p#notice = notice
+
+h1 Usuarios
+
+table.table
+  thead
+    tr
+      th Fullname
+      th Email
+      th Rol
+      th colspan="2"
+
+  tbody
+  - @users.each do |user|
+    tr
+      td = user.fullname
+      td = user.email
+      td = user.rol
+      td = link_to 'Edit', edit_manage_user_path(user), class: 'btn btn-primary'
+      td = link_to 'Destroy',manage_users_path(user), method: :delete, data: {confirm: 'Estas Seguro?'}, class: 'btn btn-danger'
+
+br
+
+= link_to 'Nuevo User', new_manage_user_path, class: 'btn btn-primary'

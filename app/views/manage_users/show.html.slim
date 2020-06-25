@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Full name:
+  = @user.fullname
+
+p
+  strong Email:
+  = @user.email
+
+p
+  strong Rol:
+  = @user.rol
+
+
+= link_to 'Edit', edit_manage_user_path(@user), class: 'btn btn-primary'
+| |
+= link_to 'Atras', manage_users_path, class: 'btn btn-warning'

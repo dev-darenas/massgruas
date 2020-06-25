@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   belongs_to :enterprise, autosave: true
+
+  enum rol: { admin: 'Admin', mananger: 'Admin', activated: 'Activated'}
 end

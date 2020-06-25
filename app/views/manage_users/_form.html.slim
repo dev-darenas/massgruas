@@ -1,0 +1,26 @@
+= form_with(model: user, url: manage_users_path(user) ,local: true) do |form|
+  - if @user.errors.any?
+    #error_explanation
+      h2 = pluralize(@user.errors.count, "error")
+        | prohibited this client from being saved:
+
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = form.label "Full name"
+    = form.text_field :fullname, class: 'form-control'
+
+  .field
+    = form.label "Email"
+    = form.email_field :email, class: 'form-control'
+
+  .field
+    = form.label "Rol"
+    = form.select :rol, User.rols.keys,{}, class: 'form-control'
+
+  .actions
+    = form.submit 'Actualizar', class: 'btn btn-primary'
+    | |
+    = link_to 'Atras', manage_users_path, class: 'btn btn-warning'
