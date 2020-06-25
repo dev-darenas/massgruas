@@ -6,5 +6,5 @@ class User < ApplicationRecord
   
   belongs_to :enterprise, autosave: true
 
-  enum rol: { admin: 'Admin', mananger: 'Admin', activated: 'Activated'}
+  enum rol: { admin: 'Admin', mananger: 'Mananger', activated: 'Activated'}
 end

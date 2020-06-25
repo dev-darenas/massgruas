@@ -2,4 +2,6 @@ p#notice = notice
 
 h1 Editing User
 
-= render 'form', user: @user
+= form_with(model: @user, url: "/manage_users/#{@user.id}", local: true) do |form|
+
+  = render 'manage_users/common_field', f: form
