@@ -1,5 +1,5 @@
 = form_with(model: vehicle, local: true) do |form|
-
+  = link_to 'Create PDF', vehicle_path(form.object, :format => :pdf), class: 'btn btn-primary'
   nav
     .nav.nav-tabs#nav-tab role="tablist"
       a.nav-item.nav-link.active#nav-General-tab data-toggle="tab" href="#nav-General" role="tab" aria-controls="nav-General" aria-selected="true" General

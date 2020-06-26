@@ -10,6 +10,14 @@ class VehiclesController < EnterpriseController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "vehicle",
+               template: "vehicles/show.html.slim",
+               layout: 'pdf'
+      end
+    end
   end
 
   # GET /vehicles/new

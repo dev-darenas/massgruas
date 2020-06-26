@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
