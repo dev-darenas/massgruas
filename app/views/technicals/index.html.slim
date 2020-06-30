@@ -32,6 +32,7 @@ table.table
         td = technical.retiro
         td = link_to 'Edit', edit_technical_path(technical), class: 'btn btn-primary'
         td = link_to 'Destroy', technical, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+        td = link_to 'Create PDF', technical_path(technical, :format => :pdf), class: 'btn btn-primary'
 
 br
 = link_to 'Nuevo Técnico', new_technical_path, class: 'btn btn-primary'

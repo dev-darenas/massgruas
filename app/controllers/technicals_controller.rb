@@ -6,7 +6,16 @@ class TechnicalsController < EnterpriseController
   end
 
   def show
-
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render pdf: "technical",
+               template: "technicals/show.html.slim",
+               title: 'PDF  technical',
+               layout: 'pdf'
+      end
+    end
   end
 
   def new

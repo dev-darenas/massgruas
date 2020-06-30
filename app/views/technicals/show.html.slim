@@ -1,12 +1,20 @@
-p#notice = notice
+h1 Técnicos
+
+h3 Información general
+br
 
 p
-  | Nombre:
+  | Id técnico:
+  strong<> = @technical.cedula
+
+p
   strong<> = @technical.nombre
 
 p
-  | Cedula:
-  strong<> = @technical.cedula
+  - @technical.pictures.each do |t|
+    = image_tag embed_remote_image("#{Rails.root}/public#{t.image.thumb.url}", 'image/')
+
+hr
 
 p
   | Cargo:
