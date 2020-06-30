@@ -30,5 +30,5 @@ h1 Editing Vehicle
 
   .alert.alert-warning role="alert"
     | La fecha de RTM está proxima a vencer
-
+= link_to 'Create PDF', vehicle_path(@vehicle, :format => :pdf), class: 'btn btn-primary'
 = render 'form', vehicle: @vehicle
