@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_143256) do
+ActiveRecord::Schema.define(version: 2020_06_30_161829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,29 @@ ActiveRecord::Schema.define(version: 2020_06_19_143256) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "technicals", force: :cascade do |t|
+    t.string "nombre"
+    t.string "cedula"
+    t.string "cargo"
+    t.string "direccion"
+    t.string "telefono1"
+    t.string "telefono2"
+    t.date "fecha_nacimiento"
+    t.string "estado_civil"
+    t.string "conyuge"
+    t.string "hijos"
+    t.string "n_licencia"
+    t.string "categoria"
+    t.string "eps"
+    t.string "arl"
+    t.date "vinculacion"
+    t.date "retiro"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_technicals_on_enterprise_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,5 +114,6 @@ ActiveRecord::Schema.define(version: 2020_06_19_143256) do
   end
 
   add_foreign_key "clients", "enterprises"
+  add_foreign_key "technicals", "enterprises"
   add_foreign_key "vehicles", "enterprises"
 end

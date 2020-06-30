@@ -1,0 +1,37 @@
+p#notice = notice
+
+h1 Technicals
+
+table.table
+  thead
+    tr
+      th Nombre
+      th Cedula
+      th Cargo
+      th Edad
+      th Licencia
+      th Categoría
+      th EPS
+      th ARL
+      th Vinculación
+      th Retiro
+      th colspan="3"
+  tbody
+    - @technicals.each do |technical|
+
+      tr
+        td = technical.nombre
+        td = technical.cedula
+        td = technical.cargo
+        td = technical.age
+        td = technical.n_licencia
+        td = technical.categoria
+        td = technical.eps
+        td = technical.arl
+        td = technical.vinculacion
+        td = technical.retiro
+        td = link_to 'Edit', edit_technical_path(technical), class: 'btn btn-primary'
+        td = link_to 'Destroy', technical, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+
+br
+= link_to 'Nuevo Técnico', new_technical_path, class: 'btn btn-primary'

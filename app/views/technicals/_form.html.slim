@@ -1,0 +1,92 @@
+= form_with(model: technical, local: true) do |form|
+
+  - if form.object.errors.any?
+    #error_explanation
+      h2 = pluralize(vehicle.errors.count, "error")
+      | prohibited this vehicle from being saved:
+
+      ul
+        - form.object.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = form.label :nombre
+    = form.text_field :nombre, class: 'form-control'
+
+  .field
+    = form.label :cedula
+    = form.number_field :cedula, class: 'form-control'
+
+  .field
+    = form.label :cargo
+    = form.text_field :cargo, class: 'form-control'
+
+  .field
+    = form.label :direccion
+    = form.text_field :direccion, class: 'form-control'
+
+  .field
+    = form.label :telefono1
+    = form.number_field :telefono1, class: 'form-control'
+
+  .field
+    = form.label :telefono2
+    = form.number_field :telefono2, class: 'form-control'
+
+  .field
+    = form.label :fecha_nacimiento
+    = form.date_field :fecha_nacimiento, class: 'form-control'
+
+  .field
+    = form.label :estado_civil
+    = form.text_field :estado_civil, class: 'form-control'
+
+  .field
+    = form.label :conyuge
+    = form.text_field :conyuge, class: 'form-control'
+
+  .field
+    = form.label :hijos
+    = form.text_field :hijos, class: 'form-control'
+
+  .field
+    = form.label :n_licencia
+    = form.number_field :n_licencia, class: 'form-control'
+
+  .field
+    = form.label :categoria
+    = form.text_field :categoria, class: 'form-control'
+
+  .field
+    = form.label :eps
+    = form.text_field :eps, class: 'form-control'
+
+  .field
+    = form.label :arl
+    = form.text_field :arl, class: 'form-control'
+
+  .field
+    = form.label :vinculacion
+    = form.date_field :vinculacion, class: 'form-control'
+
+  .field
+    = form.label :retiro
+    = form.date_field :retiro, class: 'form-control'
+
+  = form.fields_for :pictures do |p|
+    .field
+      = p.hidden_field :image_cache, class: 'form-control'
+
+      = p.label :image, "Imagen "
+      = p.file_field :image, class: 'form-control'
+      - if p.object.image?
+        = image_tag p.object.image.thumb.url, alt: 'Image'
+
+        div
+          = label_tag :_destroy do
+            | Remover imagen
+            = p.check_box :_destroy, class: 'form-control'
+
+
+  .actions
+    = form.submit 'Actualizar', class: 'btn btn-primary'
