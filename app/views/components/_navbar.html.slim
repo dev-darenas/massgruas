@@ -16,6 +16,15 @@
           = link_to 'Usuarios', manage_users_path, class: 'nav-link'
         li.nav-item
           = link_to 'Tecnicos', technicals_path, class: 'nav-link'
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle#navbarDropdown href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            | Transacciones
+
+          .dropdown-menu aria-labelledby="navbarDropdown"
+            = link_to 'Open', transactions_path({status: 'open'}), class: 'dropdown-item'
+            = link_to 'Delivered', transactions_path({status: 'delivered'}), class: 'dropdown-item'
+            = link_to 'Closed', transactions_path({status: 'closed'}), class: 'dropdown-item'
+
 
       span.navbar-text
         ul.navbar-nav.mr-auto

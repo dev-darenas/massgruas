@@ -1,0 +1,20 @@
+
+
+h1 Transactions
+
+table.table
+  thead
+    tr
+      th Status
+
+      th colspan="2"
+  tbody
+    - @transactions.each do |transaction|
+
+      tr
+        td = transaction.status
+        td = link_to 'Edit', edit_transaction_path(technical), class: 'btn btn-primary'
+        td = link_to 'Destroy', transaction, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+
+br
+= link_to 'Nueva Transacción', new_transaction_path, class: 'btn btn-primary'

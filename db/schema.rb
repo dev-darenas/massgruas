@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_161829) do
+ActiveRecord::Schema.define(version: 2020_07_01_175351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2020_06_30_161829) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "observations", force: :cascade do |t|
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.string "observable_type", null: false
+    t.bigint "observable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["observable_type", "observable_id"], name: "index_observations_on_observable_type_and_observable_id"
+    t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -67,6 +78,57 @@ ActiveRecord::Schema.define(version: 2020_06_30_161829) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["enterprise_id"], name: "index_technicals_on_enterprise_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "enterprise_id", null: false
+    t.string "status"
+    t.datetime "fecha"
+    t.string "orden_Trabajo"
+    t.string "remision"
+    t.string "factura"
+    t.time "hora_llegada"
+    t.time "hora_final"
+    t.bigint "client_id", null: false
+    t.string "cuenta"
+    t.string "expediente"
+    t.string "placa"
+    t.string "tarea"
+    t.string "origen"
+    t.string "destino"
+    t.string "asegurado"
+    t.string "direccion"
+    t.string "telefono"
+    t.bigint "technical_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.float "total_km"
+    t.float "km_zona_normal"
+    t.float "km_zona_roja"
+    t.float "banderazo"
+    t.float "valor_km_zona_n"
+    t.float "valor_km_zona_r"
+    t.float "horas_de_espera"
+    t.float "rango_nocturno"
+    t.float "recargo_festivo"
+    t.float "valor_servicio"
+    t.string "operador"
+    t.float "celula_costo"
+    t.datetime "fecha_de_cierre"
+    t.float "descuento"
+    t.float "pago_total"
+    t.float "porcentaje_tecnico"
+    t.float "pago_tecnico"
+    t.float "combustible"
+    t.float "peajes"
+    t.float "gasto_viaje"
+    t.float "gastos"
+    t.float "ganancias"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_transactions_on_client_id"
+    t.index ["enterprise_id"], name: "index_transactions_on_enterprise_id"
+    t.index ["technical_id"], name: "index_transactions_on_technical_id"
+    t.index ["vehicle_id"], name: "index_transactions_on_vehicle_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,6 +176,11 @@ ActiveRecord::Schema.define(version: 2020_06_30_161829) do
   end
 
   add_foreign_key "clients", "enterprises"
+  add_foreign_key "observations", "users"
   add_foreign_key "technicals", "enterprises"
+  add_foreign_key "transactions", "clients"
+  add_foreign_key "transactions", "enterprises"
+  add_foreign_key "transactions", "technicals"
+  add_foreign_key "transactions", "vehicles"
   add_foreign_key "vehicles", "enterprises"
 end

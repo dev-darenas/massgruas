@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :technicals
   resources :manage_users
+  resources :transactions
 
   devise_for :users
   authenticated :user do
