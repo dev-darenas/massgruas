@@ -1,42 +1,235 @@
 = form_with(model: transaction, local: true) do |form|
-
-  - if form.object.errors.any?
-    #error_explanation
-      h2 = pluralize(form.object.errors.count, "error")
-      | prohibited this vehicle from being saved:
-
-      ul
-        - form.object.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = form.label :status, 'Estado'
-    = form.select :status, Transaction.statuses.keys, {} , class: 'form-control'
-
-  .field
-    = form.label :fecha, "fecha y hora"
-    = form.datetime_field :fecha, class: 'form-control'
-
-  .field
-    = form.label :orden_Trabajo
-    = form.text_field :orden_Trabajo, class: 'form-control'
-
-  .field
-    = form.label :remision
-    = form.text_field :remision, class: 'form-control'
-
-  .field
-    = form.label :factura
-    = form.text_field :factura, class: 'form-control'
-
-  .field
-    = form.label :hora_llegada
-    = form.time_field :hora_llegada, class: 'form-control'
-
-  .field
-    = form.label :hora_final
-    = form.time_field :hora_final, class: 'form-control'
-
-
-  .actions
-    = form.submit 'Actualizar', class: 'btn btn-primary'
+  .container
+    - if form.object.errors.any?
+      #error_explanation
+        h2 = pluralize(form.object.errors.count, "error")
+        | prohibited this transaction from being saved:
+          
+        ul
+          - form.object.errors.full_messages.each do |message|
+            li = message
+    .row
+      .field.col-md-3
+        = form.label :status, 'Estado'
+        = form.select :status, Transaction.statuses.keys, {} , class: 'form-control'
+        
+    .row    
+      .field.col-md
+        = form.label :fecha, "fecha y hora"
+        = form.datetime_field :fecha, class: 'form-control'
+    
+      .field.col-md
+        = form.label :orden_Trabajo
+        = form.text_field :orden_Trabajo, class: 'form-control'
+    
+      .field.col-md
+        = form.label :remision
+        = form.text_field :remision, class: 'form-control'
+    
+      .field.col-md
+        = form.label :factura
+        = form.text_field :factura, class: 'form-control'
+    
+    .row
+      .field.col-md
+        = form.label :hora_llegada
+        = form.time_field :hora_llegada, class: 'form-control'
+    
+      .field.col-md
+        = form.label :hora_final
+        = form.time_field :hora_final, class: 'form-control'
+    
+      .field.col-md
+        = form.label :client_id, "Cliente"
+        = form.collection_select :client_id, @enterprise.clients,
+                                             :id, :nombre,
+                                             {include_blank: true},
+                                             {class: 'form-control'}
+    
+      .field.col-md
+        = form.label :cuenta
+        = form.text_field :cuenta, class: 'form-control'
+        
+    .row  
+      .field.col-md-3
+        = form.label :expediente
+        = form.text_field :expediente, class: 'form-control'
+    
+      .field.col-md-3
+        = form.label :placa
+        = form.text_field :placa, class: 'form-control'
+    
+      .field.col-md
+        = form.label :tarea
+        = form.text_field :tarea, class: 'form-control'
+        
+    .row  
+      .field.col-md
+        = form.label :origen
+        = form.text_field :origen, class: 'form-control'
+    
+      .field.col-md
+        = form.label :destino
+        = form.text_field :destino, class: 'form-control'
+        
+    .row  
+      .field.col-md-3
+        = form.label :asegurado
+        = form.text_field :asegurado, class: 'form-control'
+    
+      .field.col-md-6
+        = form.label :direccion
+        = form.text_field :direccion, class: 'form-control'
+    
+      .field.col-md-3
+        = form.label :telefono
+        = form.number_field :telefono, class: 'form-control'
+        
+    .row  
+      .field.col-md
+        = form.label :technical_id, "Tecnico"
+        = form.collection_select :technical_id, @enterprise.technicals,
+                :id, :name_and_tel,
+                {include_blank: true},
+                {class: 'form-control'}
+    
+      .field.col-md
+        = form.label :vehicle_id, "Placa"
+        = form.collection_select :vehicle_id, @enterprise.vehicles,
+                :id, :placa_and_services,
+                {include_blank: true},
+                {class: 'form-control'}
+        
+    .row  
+      .field.col-md
+        = form.label :total_km
+        = form.number_field :total_km, class: 'form-control'
+    
+      .field.col-md
+        = form.label :km_zona_normal
+        = form.number_field :km_zona_normal, class: 'form-control'
+        
+      .field.col-md
+        = form.label :km_zona_roja
+        = form.number_field :km_zona_roja, class: 'form-control'
+      
+    .row
+      .field.col-md
+        = form.label :banderazo
+        = form.number_field :banderazo, class: 'form-control'
+        
+      .field.col-md
+        = form.label :valor_km_zona_n, "Valor km zona normal"
+        = form.number_field :valor_km_zona_n, class: 'form-control'    
+    
+      .field.col-md
+        = form.label :valor_km_zona_r, "Valor km zona roja"
+        = form.number_field :valor_km_zona_r, class: 'form-control'
+        
+    .row  
+      .field.col-md
+        = form.label :horas_de_espera
+        = form.number_field :horas_de_espera, class: 'form-control'
+    
+      .field.col-md
+        = form.label :rango_nocturno
+        = form.number_field :rango_nocturno, class: 'form-control'
+    
+      .field.col-md
+        = form.label :recargo_festivo
+        = form.number_field :recargo_festivo, class: 'form-control'
+        
+    .row
+      .field.col-md-3
+        = form.label :valor_servicio
+        = form.number_field :valor_servicio, class: 'form-control'
+    
+      .field.col-md
+        = form.label :operador
+        = form.number_field :operador, class: 'form-control'
+    
+    = form.fields_for :observations do |o|
+      
+      .field.row
+        
+        = o.hidden_field :user_id
+        - unless o.object.description.blank?
+          = o.label :description, "Observaciónes"
+          = o.text_field :description, class: 'form-control'          
+          = label_tag :_destroy do
+            | Remover observación
+            = o.check_box :_destroy
+              
+        - else
+          = o.label :description, "Observaciónes"
+          = o.text_field :description, class: 'form-control'        
+    
+    .row
+      .field.col-md
+        = form.label :celula_costo
+        = form.text_field :celula_costo, class: 'form-control'
+        
+      .field.col-md
+        = form.label :fecha_de_cierre, "fecha y hora de cierre"
+        = form.datetime_field :fecha_de_cierre, class: 'form-control'
+        
+    .row
+      .col-md-3
+        .field.col-md-7
+          = form.label :descuento
+          = form.number_field :descuento, class: 'form-control'
+          
+        .field.col-md-7
+          = form.label :pago_total
+          = form.number_field :pago_total, class: 'form-control'
+          
+      .col
+        .row 
+          .field.col-md
+            = form.label :porcentaje_tecnico
+            = form.number_field :porcentaje_tecnico, class: 'form-control'
+            
+          .field.col-md
+            = form.label :pago_tecnico
+            = form.number_field :pago_tecnico, class: 'form-control'
+            
+          .field.col-md
+            = form.label :combustible
+            = form.number_field :combustible, class: 'form-control'
+            
+        .row
+          .field.col-md
+            = form.label :peajes
+            = form.number_field :peajes, class: 'form-control'
+          
+          .field.col-md
+            = form.label :gasto_viaje
+            = form.number_field :gasto_viaje, class: 'form-control'  
+            
+          .field.col-md
+            = form.label :gastos
+            = form.number_field :gastos, class: 'form-control'
+            
+          .field
+            = form.label :ganancias
+            = form.number_field :ganancias, class: 'form-control'
+            
+    
+    = form.fields_for :pictures do |p|
+      .field.row
+        = p.hidden_field :image_cache, class: 'form-control'
+        
+        - if p.object.image?
+          = p.label :image, "Imagen guardada"
+          = p.file_field :image, class: 'form-control'
+          = image_tag p.object.image.thumb.url, alt: 'Image'           
+          = label_tag :_destroy do
+            | Remover imagen
+            = p.check_box :_destroy
+              
+        - else
+          = p.label :image, "Nueva imagen"
+          = p.file_field :image, class: 'form-control'
+  
+    .actions
+      = form.submit 'Actualizar', class: 'btn btn-primary'

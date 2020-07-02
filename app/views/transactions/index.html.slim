@@ -1,4 +1,4 @@
-
+p#notice = notice
 
 h1 Transactions
 
@@ -13,7 +13,7 @@ table.table
 
       tr
         td = transaction.status
-        td = link_to 'Edit', edit_transaction_path(technical), class: 'btn btn-primary'
+        td = link_to 'Edit', edit_transaction_path(transaction), class: 'btn btn-primary'
         td = link_to 'Destroy', transaction, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
 
 br

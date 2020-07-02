@@ -63,7 +63,7 @@ class TechnicalsController < EnterpriseController
   private
 
   def set_technical
-    @technical = Technical.find(params[:id])
+    @technical = @enterprise.technicals.find(params[:id])
   end
 
   def technical_params

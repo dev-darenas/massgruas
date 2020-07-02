@@ -13,4 +13,8 @@ class Technical < ApplicationRecord
     now.year - self.fecha_nacimiento.year - (self.fecha_nacimiento.to_date.change(:year => now.year) > now ? 1 : 0)
   end
 
+  def name_and_tel
+    "#{self.nombre} telefonos: #{self.telefono1}, #{self.telefono2} "
+  end
+
 end
