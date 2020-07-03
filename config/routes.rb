@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :manage_users
   resources :transactions
 
+  namespace :transactions do
+    resources :clients, only: :new
+  end
+
   devise_for :users
   authenticated :user do
     root 'dashboard#index', as: :authenticated_root

@@ -6,6 +6,12 @@ table.table
   thead
     tr
       th Status
+      th Fecha y hora
+      th Orden_Trabajo
+      th Remision
+      th factura
+      th Asegurado
+      th Cliente
 
       th colspan="2"
   tbody
@@ -13,6 +19,12 @@ table.table
 
       tr
         td = transaction.status
+        td = transaction.fecha
+        td = transaction.orden_Trabajo
+        td = transaction.remision
+        td = transaction.factura
+        td = transaction.asegurado
+        td = @enterprise.clients.find(transaction.client_id).nombre
         td = link_to 'Edit', edit_transaction_path(transaction), class: 'btn btn-primary'
         td = link_to 'Destroy', transaction, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
 

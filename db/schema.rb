@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_175351) do
 
   create_table "transactions", force: :cascade do |t|
     t.bigint "enterprise_id", null: false
-    t.string "status"
+    t.string "status", default: "Open", null: false
     t.datetime "fecha"
     t.string "orden_Trabajo"
     t.string "remision"

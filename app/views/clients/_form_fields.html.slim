@@ -1,0 +1,34 @@
+= f.label "Nombre"
+= f.text_field :nombre, class: 'form-control'
+
+
+= f.label "Identificación"
+= f.number_field :identificacion, class: 'form-control'
+
+
+= f.label "Razón social"
+= f.text_field :razon_social, class: 'form-control'
+
+
+= f.label "Regimen"
+= f.select :regimen, Client.regimen.keys, {}, class: 'form-control'
+
+
+= f.label "Actividad comercial"
+= f.text_field :actividad_comercial, class: 'form-control'
+
+
+= f.label "Direccion"
+= f.text_field :direccion, class: 'form-control'
+
+
+= f.label "Ciudad"
+= f.text_field :ciudad, class: 'form-control'
+
+
+= f.label "Telefono"
+= f.telephone_field :telefono, class: 'form-control'
+
+
+= f.label "Email"
+= f.email_field :email, class: 'form-control'

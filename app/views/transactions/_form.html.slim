@@ -9,11 +9,6 @@
           - form.object.errors.full_messages.each do |message|
             li = message
     .row
-      .field.col-md-3
-        = form.label :status, 'Estado'
-        = form.select :status, Transaction.statuses.keys, {} , class: 'form-control'
-        
-    .row    
       .field.col-md
         = form.label :fecha, "fecha y hora"
         = form.datetime_field :fecha, class: 'form-control'
@@ -38,17 +33,23 @@
       .field.col-md
         = form.label :hora_final
         = form.time_field :hora_final, class: 'form-control'
-    
-      .field.col-md
-        = form.label :client_id, "Cliente"
-        = form.collection_select :client_id, @enterprise.clients,
-                                             :id, :nombre,
-                                             {include_blank: true},
-                                             {class: 'form-control'}
-    
+
       .field.col-md
         = form.label :cuenta
         = form.text_field :cuenta, class: 'form-control'
+
+    .row
+      .col-md
+        #client
+          .field.col-md
+            = form.label :client_id, "Cliente"
+            = form.collection_select :client_id, @enterprise.clients,
+                                                 :id, :nombre,
+                                                 {include_blank: true},
+                                                 {class: 'form-control'}
+            - if @transaction.id.nil?
+              .input-group-append
+                = link_to 'Nuevo', new_transactions_client_path, class: 'btn btn-outline-primary', remote: true
         
     .row  
       .field.col-md-3
@@ -146,23 +147,23 @@
     
       .field.col-md
         = form.label :operador
-        = form.number_field :operador, class: 'form-control'
+        = form.text_field :operador, class: 'form-control'
     
     = form.fields_for :observations do |o|
-      
-      .field.row
-        
-        = o.hidden_field :user_id
-        - unless o.object.description.blank?
-          = o.label :description, "Observaciónes"
-          = o.text_field :description, class: 'form-control'          
-          = label_tag :_destroy do
-            | Remover observación
-            = o.check_box :_destroy
-              
-        - else
-          = o.label :description, "Observaciónes"
-          = o.text_field :description, class: 'form-control'        
+      .row
+        .field.col-md
+
+          = o.hidden_field :user_id
+          - unless o.object.description.blank?
+            = o.label :description, "Observaciónes"
+            = o.text_field :description, class: 'form-control'
+            = label_tag :_destroy do
+              | Remover observación
+              = o.check_box :_destroy
+
+          - else
+            = o.label :description, "Observaciónes"
+            = o.text_field :description, class: 'form-control'
     
     .row
       .field.col-md
@@ -171,8 +172,8 @@
         
       .field.col-md
         = form.label :fecha_de_cierre, "fecha y hora de cierre"
-        = form.datetime_field :fecha_de_cierre, class: 'form-control'
-        
+        = form.datetime_field :fecha_de_cierre, class: 'form-control', disabled: 'disabled'
+
     .row
       .col-md-3
         .field.col-md-7
@@ -210,26 +211,27 @@
             = form.label :gastos
             = form.number_field :gastos, class: 'form-control'
             
-          .field
+          .field.col-md
             = form.label :ganancias
             = form.number_field :ganancias, class: 'form-control'
             
     
     = form.fields_for :pictures do |p|
-      .field.row
-        = p.hidden_field :image_cache, class: 'form-control'
-        
-        - if p.object.image?
-          = p.label :image, "Imagen guardada"
-          = p.file_field :image, class: 'form-control'
-          = image_tag p.object.image.thumb.url, alt: 'Image'           
-          = label_tag :_destroy do
-            | Remover imagen
-            = p.check_box :_destroy
-              
-        - else
-          = p.label :image, "Nueva imagen"
-          = p.file_field :image, class: 'form-control'
+      .row
+        .field.col-md
+          = p.hidden_field :image_cache, class: 'form-control'
+
+          - if p.object.image?
+            = p.label :image, "Imagen guardada"
+            = p.file_field :image, class: 'form-control'
+            = image_tag p.object.image.thumb.url, alt: 'Image'
+            = label_tag :_destroy do
+              | Remover imagen
+              = p.check_box :_destroy
+
+          - else
+            = p.label :image, "Nueva imagen"
+            = p.file_field :image, class: 'form-control'
   
     .actions
       = form.submit 'Actualizar', class: 'btn btn-primary'

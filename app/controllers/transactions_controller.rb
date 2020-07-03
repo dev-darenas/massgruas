@@ -76,7 +76,10 @@ class TransactionsController < EnterpriseController
                                         :celula_costo, :fecha_de_cierre, :descuento, :pago_total, :porcentaje_tecnico,
                                         :pago_tecnico, :combustible, :peajes, :gasto_viaje, :gastos, :ganancias,
                                         observations_attributes: [:id, :user_id, :description, :_destroy],
-                                        pictures_attributes: [:id, :image, :image_cache, :_destroy])
+                                        pictures_attributes: [:id, :image, :image_cache, :_destroy],
+                                        client_attributes: [:nombre, :identificacion, :razon_social, :regimen,
+                                                            :actividad_comercial, :direccion, :ciudad, :telefono,
+                                                            :email, :enterprise_id])
 
 
   end

@@ -2,7 +2,7 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
   def change
     create_table :transactions do |t|
       t.references :enterprise, null: false, foreign_key: true
-      t.string :status
+      t.string :status,                         null: false, default: "Open"
       t.datetime :fecha
       t.string :orden_Trabajo
       t.string :remision
