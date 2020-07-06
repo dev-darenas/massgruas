@@ -6,7 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
+    <%= javascript_pack_tag 'application'%>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
 
@@ -18,7 +19,7 @@
     </body>
     <footer class="py-4 bg-light text-white-50">
       <div class="container text-secondary text-center">
-        Proyecto Demo creado por 
+        Proyecto Demo creado por
         © 2020 Copyright:
         <a href="http://softdreams.co"> softdreams.co </a>
       </div>
