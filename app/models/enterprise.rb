@@ -1,7 +1,7 @@
 class Enterprise < ApplicationRecord
-  has_many :users
-  has_many :clients
-  has_many :vehicles
-  has_many :technicals
-  has_many :transactions
+  has_many :users, dependent: :destroy
+  has_many :clients, dependent: :destroy
+  has_many :vehicles, dependent: :destroy
+  has_many :technicals, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 end

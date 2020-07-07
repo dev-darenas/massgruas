@@ -18,7 +18,7 @@ class TransactionsController < EnterpriseController
   end
 
   def new
-    @transaction = @enterprise.transactions.new(status: 'open')
+    @transaction = @enterprise.transactions.new(status: 'open', remision: @enterprise.remision)
     @transaction.observations.build(user_id: current_user.id)
     @transaction.pictures.build
   end
@@ -55,10 +55,7 @@ class TransactionsController < EnterpriseController
 
   def destroy
     @transaction.destroy
-    respond_to do |format|
-      format.html { redirect_to transaction_url, notice: 'Transactions was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to transaction_path, notice: 'Transactions was successfully destroyed.'
   end
 
   private

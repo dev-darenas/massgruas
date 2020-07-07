@@ -2,7 +2,7 @@ class ManageUsersController < EnterpriseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users=User.all
+    @users = @enterprise.users.all
   end
 
   def show
@@ -52,7 +52,7 @@ class ManageUsersController < EnterpriseController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = @enterprise.users.find(params[:id])
   end
 
   def user_params

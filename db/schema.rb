@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_175351) do
 
   create_table "enterprises", force: :cascade do |t|
     t.string "name"
+    t.integer "remision", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

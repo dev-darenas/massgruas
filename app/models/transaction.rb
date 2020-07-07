@@ -24,9 +24,14 @@ class Transaction < ApplicationRecord
   scope :s_opened, -> { where(status: 'open') }
   scope :s_delivered, -> { where(status: 'delivered') }
   scope :s_closed, -> { where(status: 'closed') }
+  after_create :add_one_to_remision
 
   def changed_date_closed
     self.fecha_de_cierre=Time.now
+  end
+
+  def add_one_to_remision
+    self.enterprise.update(remision: self.enterprise.remision + 1)
   end
 
 end
