@@ -25,6 +25,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'geocoder'
+gem 'figaro'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

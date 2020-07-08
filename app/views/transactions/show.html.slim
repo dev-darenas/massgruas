@@ -1,2 +1,24 @@
-<h1>Transactions#show</h1>
-<p>Find me in app/views/transactions/show.html.erb</p>
+p
+  strong Estado:
+  = @transaction.status
+p
+  strong Fecha y hora:
+  = @transaction.fecha
+p
+  strong Orden de trabajo:
+  = @transaction.orden_Trabajo
+p
+  strong Remisióm:
+  = @transaction.remision
+p
+  strong Factura:
+  = @transaction.factura
+p
+  strong Asegurado:
+  = @transaction.asegurado
+p
+  strong Cliente:
+  = @enterprise.clients.find(@transaction.client_id).nombre
+
+= link_to 'Edit', edit_transaction_path(@transaction), class: 'btn btn-primary'
+= link_to 'Destroy', @transaction, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
