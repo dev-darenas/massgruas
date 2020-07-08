@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :technicals
   resources :manage_users
   resources :transactions
+  get '/transactions/close/:id', to: 'transactions#close', as: 'transaction_close'
 
   namespace :transactions do
     resources :clients, only: :new

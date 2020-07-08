@@ -245,6 +245,6 @@
         | |
         = link_to "Deliver", transaction_path(@transaction, transaction: {status: 'delivered'}),
                            :method => :put, :confirm => "Are you sure?", class: 'btn btn-warning'
-        | |
-        = link_to "Close", transaction_path(@transaction, transaction: {status: 'closed'}),
-                :method => :put, :confirm => "Are you sure?", class: 'btn btn-danger'
+        - unless @transaction.closed?
+          | |
+          = link_to "Close", transaction_close_path(@transaction), :confirm => "Are you sure?", class: 'btn btn-danger'

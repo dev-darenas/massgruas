@@ -21,10 +21,11 @@ class Transaction < ApplicationRecord
 
   enum status: {open: 'Open', delivered: 'Delivered', closed: 'Closed'} do
     event :close do
-      after do
+      before do
         self.fecha_de_cierre = DateTime.now
         self.save
       end
+      transition all - [:closed] => :closed
     end
   end
 

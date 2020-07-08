@@ -1,5 +1,5 @@
 class TransactionsController < EnterpriseController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :close]
 
   def index
     case params[:status]
@@ -44,9 +44,6 @@ class TransactionsController < EnterpriseController
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
-        if @transaction.closed?
-          @transaction.close
-        end
         format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully updated.' }
         format.json { render :edit, status: :ok, location: @transaction }
       else
@@ -59,6 +56,18 @@ class TransactionsController < EnterpriseController
   def destroy
     @transaction.destroy
     redirect_to transaction_path, notice: 'Transactions was successfully destroyed.'
+  end
+
+  def close
+    respond_to do |format|
+      if @transaction.close
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully closed.' }
+        format.json { render :edit, status: :ok, location: @transaction }
+      else
+        format.html { render :edit }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
