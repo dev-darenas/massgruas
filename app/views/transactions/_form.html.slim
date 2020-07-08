@@ -149,22 +149,6 @@
         = form.label :operador
         = form.text_field :operador, class: 'form-control'
     
-    = form.fields_for :observations do |o|
-      .row
-        .field.col-md
-
-          = o.hidden_field :user_id
-          - unless o.object.description.blank?
-            = o.label :description, "Observaciónes"
-            = o.text_field :description, class: 'form-control'
-            = label_tag :_destroy do
-              | Remover observación
-              = o.check_box :_destroy
-
-          - else
-            = o.label :description, "Observaciónes"
-            = o.text_field :description, class: 'form-control'
-    
     .row
       .field.col-md
         = form.label :celula_costo
@@ -232,6 +216,27 @@
           - else
             = p.label :image, "Nueva imagen"
             = p.file_field :image, class: 'form-control'
+
+    = form.fields_for :observations do |o|
+      .row
+        .field.col-md
+
+          = o.hidden_field :user_id
+          - if o.object.description.blank?
+            = o.label :description, "Nueva observación"
+            = o.text_field :description, class: 'form-control'
+
+          - else
+            = o.label :description, "Observaciónes"
+            = o.text_field :description, class: 'form-control'
+            p
+              |Creado por:
+              strong = o.object.user.fullname+ " "
+              | en la fecha:
+              strong = " #{o.object.created_at.strftime("%d-%m-%Y")}"
+            = label_tag :_destroy do
+              | Remover observación
+              = o.check_box :_destroy
   
     .actions
       = form.submit 'Actualizar', class: 'btn btn-primary'
