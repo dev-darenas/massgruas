@@ -19,16 +19,19 @@ class Transaction < ApplicationRecord
                                     |a| a[:image].blank?
                                 }, allow_destroy: true
 
-  enum status: { open: 'Open', delivered: 'Delivered', closed: 'Closed'}
+  enum status: {open: 'Open', delivered: 'Delivered', closed: 'Closed'} do
+    event :close do
+      after do
+        self.fecha_de_cierre = DateTime.now
+        self.save
+      end
+    end
+  end
 
   scope :s_opened, -> { where(status: 'open') }
   scope :s_delivered, -> { where(status: 'delivered') }
   scope :s_closed, -> { where(status: 'closed') }
   after_create :add_one_to_remision
-
-  def changed_date_closed
-    self.fecha_de_cierre=Time.now
-  end
 
   def add_one_to_remision
     self.enterprise.update(remision: self.enterprise.remision + 1)

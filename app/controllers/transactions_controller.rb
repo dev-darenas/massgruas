@@ -44,6 +44,9 @@ class TransactionsController < EnterpriseController
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
+        if @transaction.closed?
+          @transaction.close
+        end
         format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully updated.' }
         format.json { render :edit, status: :ok, location: @transaction }
       else

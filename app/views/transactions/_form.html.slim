@@ -235,3 +235,11 @@
   
     .actions
       = form.submit 'Actualizar', class: 'btn btn-primary'
+
+      - unless @transaction.id.blank?
+        | |
+        = link_to "Deliver", transaction_path(@transaction, transaction: {status: 'delivered'}),
+                           :method => :put, :confirm => "Are you sure?", class: 'btn btn-warning'
+        | |
+        = link_to "Close", transaction_path(@transaction, transaction: {status: 'closed'}),
+                :method => :put, :confirm => "Are you sure?", class: 'btn btn-danger'
