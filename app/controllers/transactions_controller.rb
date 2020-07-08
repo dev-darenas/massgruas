@@ -15,6 +15,16 @@ class TransactionsController < EnterpriseController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render pdf: "Transaction",
+               template: "transactions/show.html.slim",
+               title: 'PDF  Transaction',
+               layout: 'pdf'
+      end
+    end
   end
 
   def new
