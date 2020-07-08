@@ -3,11 +3,20 @@ class Transaction < ApplicationRecord
   has_many :observations, as: :observable, dependent: :destroy
   has_many :pictures, as: :imageable, dependent: :destroy
   belongs_to :client
+  belongs_to :vehicle
+  belongs_to :technical
 
   accepts_nested_attributes_for :client
+  accepts_nested_attributes_for :vehicle
+  accepts_nested_attributes_for :technical
 
   delegate :nombre, :identificacion, :razon_social, :regimen, :actividad_comercial, :direccion, :ciudad,
            :telefono, :email, to: :client, prefix: true
+
+  delegate :placa, :licencia, :clase, :marca, :tipo, :linea, :servicio, to: :vehicle, prefix: true
+
+  delegate :nombre, :cedula, :cargo, :direccion, :telefono1, :telefono2, :fecha_nacimiento, :n_licencia,
+           :categoria, :eps, :arl, to: :technical, prefix: true
 
   accepts_nested_attributes_for :observations,
                                 reject_if: lambda {

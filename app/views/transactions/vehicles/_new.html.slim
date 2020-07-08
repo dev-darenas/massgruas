@@ -1,0 +1,15 @@
+= form_with model: @transaction do |form|
+  = form.fields_for :vehicle do |vehicle_form|
+    = vehicle_form.hidden_field :enterprise_id, value: @transaction.enterprise_id
+    h4 Nuevo Vehiculo
+    hr
+
+    =render 'vehicles/form_fields', f: vehicle_form
+
+    = vehicle_form.label :servicio
+    = vehicle_form.text_field :servicio, class: 'form-control'
+
+    = link_to 'Cancelar', new_transaction_path, class: 'btn btn-outline-primary'
+    
+hr
+    

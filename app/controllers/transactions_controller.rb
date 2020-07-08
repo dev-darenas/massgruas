@@ -98,7 +98,11 @@ class TransactionsController < EnterpriseController
                                         pictures_attributes: [:id, :image, :image_cache, :_destroy],
                                         client_attributes: [:nombre, :identificacion, :razon_social, :regimen,
                                                             :actividad_comercial, :direccion, :ciudad, :telefono,
-                                                            :email, :enterprise_id])
+                                                            :email, :enterprise_id],
+                                        vehicle_attributes: [:enterprise_id,:placa, :licencia, :clase, :marca, :tipo, :linea, :servicio],
+                                        technical_attributes: [:enterprise_id,:nombre, :cedula, :cargo, :direccion, :telefono1,
+                                                               :telefono2, :fecha_nacimiento, :n_licencia,
+                                                               :categoria, :eps, :arl])
 
 
   end

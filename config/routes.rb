@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   namespace :transactions do
     resources :clients, only: :new
+    resources :vehicles, only: :new
+    resources :technicals, only: :new
   end
 
   devise_for :users

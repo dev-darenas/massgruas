@@ -9,33 +9,7 @@
         - form.object.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = form.label :nombre
-    = form.text_field :nombre, class: 'form-control'
-
-  .field
-    = form.label :cedula
-    = form.number_field :cedula, class: 'form-control'
-
-  .field
-    = form.label :cargo
-    = form.text_field :cargo, class: 'form-control'
-
-  .field
-    = form.label :direccion
-    = form.text_field :direccion, class: 'form-control'
-
-  .field
-    = form.label :telefono1
-    = form.number_field :telefono1, class: 'form-control'
-
-  .field
-    = form.label :telefono2
-    = form.number_field :telefono2, class: 'form-control'
-
-  .field
-    = form.label :fecha_nacimiento
-    = form.date_field :fecha_nacimiento, class: 'form-control'
+  =render 'technicals/form_fields', f: form
 
   .field
     = form.label :estado_civil
@@ -48,22 +22,6 @@
   .field
     = form.label :hijos
     = form.text_field :hijos, class: 'form-control'
-
-  .field
-    = form.label :n_licencia
-    = form.number_field :n_licencia, class: 'form-control'
-
-  .field
-    = form.label :categoria
-    = form.text_field :categoria, class: 'form-control'
-
-  .field
-    = form.label :eps
-    = form.text_field :eps, class: 'form-control'
-
-  .field
-    = form.label :arl
-    = form.text_field :arl, class: 'form-control'
 
   .field
     = form.label :vinculacion

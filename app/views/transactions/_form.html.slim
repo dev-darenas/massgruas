@@ -39,18 +39,17 @@
         = form.text_field :cuenta, class: 'form-control'
 
     .row
-      .col-md
-        #client
-          .field.col-md
-            = form.label :client_id, "Cliente"
-            = form.collection_select :client_id, @enterprise.clients,
-                                                 :id, :nombre,
-                                                 {include_blank: true},
-                                                 {class: 'form-control'}
-            - if @transaction.id.nil?
-              .input-group-append
-                = link_to 'Nuevo', new_transactions_client_path, class: 'btn btn-outline-primary', remote: true
-        
+      .col-md#client
+        .field
+          = form.label :client_id, "Cliente"
+          = form.collection_select :client_id, @enterprise.clients,
+                                               :id, :nombre,
+                                               {include_blank: true},
+                                               {class: 'form-control'}
+          - if @transaction.id.nil?
+            .input-group-append
+              = link_to 'Nuevo', new_transactions_client_path, class: 'btn btn-outline-primary', remote: true
+
     .row  
       .field.col-md-3
         = form.label :expediente
@@ -85,21 +84,30 @@
       .field.col-md-3
         = form.label :telefono
         = form.number_field :telefono, class: 'form-control'
-        
-    .row  
-      .field.col-md
-        = form.label :technical_id, "Tecnico"
-        = form.collection_select :technical_id, @enterprise.technicals,
-                :id, :name_and_tel,
-                {include_blank: true},
-                {class: 'form-control'}
-    
-      .field.col-md
-        = form.label :vehicle_id, "Placa"
-        = form.collection_select :vehicle_id, @enterprise.vehicles,
-                :id, :placa_and_services,
-                {include_blank: true},
-                {class: 'form-control'}
+
+    .row
+      .col-md#technical
+        .field
+          = form.label :technical_id, "Tecnico"
+          = form.collection_select :technical_id, @enterprise.technicals,
+                  :id, :name_and_tel,
+                  {include_blank: true},
+                  {class: 'form-control'}
+          - if @transaction.id.nil?
+            .input-group-append
+              = link_to 'Nuevo', new_transactions_technical_path, class: 'btn btn-outline-primary', remote: true
+
+    .row
+      .col-md#vehicle
+        .field
+          = form.label :vehicle_id, "Placa Grúa"
+          = form.collection_select :vehicle_id, @enterprise.vehicles,
+                  :id, :placa_and_services,
+                  {include_blank: true},
+                  {class: 'form-control'}
+          - if @transaction.id.nil?
+            .input-group-append
+              = link_to 'Nuevo', new_transactions_vehicle_path, class: 'btn btn-outline-primary', remote: true
         
     .row  
       .field.col-md

@@ -21,29 +21,7 @@
 
     .tab-pane.fade.show.active#nav-General role="tabpanel" aria-labelledby="nav-General-tab"
 
-      .field
-        = form.label :placa
-        = form.text_field :placa, class: 'form-control'
-
-      .field
-        = form.label :licencia
-        = form.text_field :licencia, class: 'form-control'
-
-      .field
-        = form.label :clase
-        = form.text_field :clase, class: 'form-control'
-
-      .field
-        = form.label :marca
-        = form.text_field :marca, class: 'form-control'
-
-      .field
-        = form.label :tipo
-        = form.text_field :tipo, class: 'form-control'
-
-      .field
-        = form.label :linea
-        = form.text_field :linea, class: 'form-control'
+      =render 'vehicles/form_fields', f: form
 
     - unless @vehicle.id.blank?
       .tab-pane.fade#nav-detalle role="tabpanel" aria-labelledby="nav-detalle-tab"

@@ -1,0 +1,12 @@
+= form_with model: @transaction do |form|
+  = form.fields_for :technical do |technical_form|
+    = technical_form.hidden_field :enterprise_id, value: @transaction.enterprise_id
+    h4 Nuevo Tecnico
+    hr
+      
+    =render 'technicals/form_fields', f: technical_form
+    
+    = link_to 'Cancelar', new_transaction_path, class: 'btn btn-outline-primary'
+    
+hr
+    
