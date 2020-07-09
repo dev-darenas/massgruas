@@ -157,56 +157,57 @@
       .field.col-md
         = form.label :operador
         = form.text_field :operador, class: 'form-control'
+    - if @transaction.id.present? && @transaction.open? || @transaction.id.present? && @transaction.delivered?
+      .row
+        .field.col-md
+          = form.label :celula_costo
+          = form.text_field :celula_costo, class: 'form-control'
 
-    .row
-      .field.col-md
-        = form.label :celula_costo
-        = form.text_field :celula_costo, class: 'form-control'
+        .field.col-md
+          = form.label :fecha_de_cierre, "fecha y hora de cierre"
+          = form.datetime_field :fecha_de_cierre, class: 'form-control', disabled: 'disabled'
 
-      .field.col-md
-        = form.label :fecha_de_cierre, "fecha y hora de cierre"
-        = form.datetime_field :fecha_de_cierre, class: 'form-control', disabled: 'disabled'
+    - if @transaction.delivered?
+      .row
+        .col-md-3
+          .field.col-md-7
+            = form.label :descuento
+            = form.number_field :descuento, class: 'form-control'
 
-    .row
-      .col-md-3
-        .field.col-md-7
-          = form.label :descuento
-          = form.number_field :descuento, class: 'form-control'
+          .field.col-md-7
+            = form.label :pago_total
+            = form.number_field :pago_total, class: 'form-control'
 
-        .field.col-md-7
-          = form.label :pago_total
-          = form.number_field :pago_total, class: 'form-control'
+        .col
+          .row
+            .field.col-md
+              = form.label :porcentaje_tecnico
+              = form.number_field :porcentaje_tecnico, class: 'form-control'
 
-      .col
-        .row
-          .field.col-md
-            = form.label :porcentaje_tecnico
-            = form.number_field :porcentaje_tecnico, class: 'form-control'
+            .field.col-md
+              = form.label :pago_tecnico
+              = form.number_field :pago_tecnico, class: 'form-control'
 
-          .field.col-md
-            = form.label :pago_tecnico
-            = form.number_field :pago_tecnico, class: 'form-control'
+            .field.col-md
+              = form.label :combustible
+              = form.number_field :combustible, class: 'form-control'
 
-          .field.col-md
-            = form.label :combustible
-            = form.number_field :combustible, class: 'form-control'
+          .row
+            .field.col-md
+              = form.label :peajes
+              = form.number_field :peajes, class: 'form-control'
 
-        .row
-          .field.col-md
-            = form.label :peajes
-            = form.number_field :peajes, class: 'form-control'
+            .field.col-md
+              = form.label :gasto_viaje
+              = form.number_field :gasto_viaje, class: 'form-control'
 
-          .field.col-md
-            = form.label :gasto_viaje
-            = form.number_field :gasto_viaje, class: 'form-control'
+            .field.col-md
+              = form.label :gastos
+              = form.number_field :gastos, class: 'form-control'
 
-          .field.col-md
-            = form.label :gastos
-            = form.number_field :gastos, class: 'form-control'
-
-          .field.col-md
-            = form.label :ganancias
-            = form.number_field :ganancias, class: 'form-control'
+            .field.col-md
+              = form.label :ganancias
+              = form.number_field :ganancias, class: 'form-control'
 
 
     = form.fields_for :pictures do |p|
@@ -241,12 +242,14 @@
       = form.submit 'Actualizar', class: 'btn btn-primary'
 
       - unless @transaction.id.blank?
-        | |
-        = link_to "Deliver", transaction_path(@transaction, transaction: {status: 'delivered'}),
+        - if @transaction.id.present? && @transaction.open?
+          | |
+          = link_to "Deliver", transaction_path(@transaction, transaction: {status: 'delivered'}),
                 :method => :put, :confirm => "Are you sure?", class: 'btn btn-warning'
         - unless @transaction.closed?
-          | |
-          = link_to "Close", transaction_close_path(@transaction), :confirm => "Are you sure?", class: 'btn btn-danger'
+          - if @transaction.id.present? && @transaction.delivered?
+            | |
+            = link_to "Close", transaction_close_path(@transaction), :confirm => "Are you sure?", class: 'btn btn-danger'
 
     br
 

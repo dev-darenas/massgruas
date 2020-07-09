@@ -28,7 +28,7 @@ class TransactionsController < EnterpriseController
   end
 
   def new
-    @transaction = @enterprise.transactions.new(status: 'open', remision: @enterprise.remision)
+    @transaction = @enterprise.transactions.new(remision: @enterprise.remision)
     @transaction.observations.build(user_id: current_user.id)
     @transaction.pictures.build
   end
