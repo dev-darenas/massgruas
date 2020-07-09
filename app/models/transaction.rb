@@ -28,7 +28,7 @@ class Transaction < ApplicationRecord
                                     |a| a[:image].blank?
                                 }, allow_destroy: true
 
-  enum status: {open: 'Open', delivered: 'Delivered', closed: 'Closed'} do
+  enum status: { open: 'Open', delivered: 'Delivered', closed: 'Closed' } do
     event :close do
       before do
         self.fecha_de_cierre = DateTime.now
@@ -46,5 +46,4 @@ class Transaction < ApplicationRecord
   def add_one_to_remision
     self.enterprise.update(remision: self.enterprise.remision + 1)
   end
-
 end

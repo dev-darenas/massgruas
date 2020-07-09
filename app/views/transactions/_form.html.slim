@@ -251,7 +251,7 @@
 
       - unless @transaction.id.blank?
         | |
-        = link_to "Deliver", transaction_path(@transaction, transaction: {status: 'delivered'}),
+        = link_to "Deliver", transaction_path(@transaction, transaction: { status: 'delivered' }),
                            :method => :put, :confirm => "Are you sure?", class: 'btn btn-warning'
         - unless @transaction.closed?
           | |
