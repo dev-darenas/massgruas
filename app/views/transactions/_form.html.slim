@@ -87,27 +87,28 @@
 
     .row
       .col-md#technical
-        .field
-          = form.label :technical_id, "Tecnico"
-          = form.collection_select :technical_id, @enterprise.technicals,
-                  :id, :name_and_tel,
-                  {include_blank: true},
-                  {class: 'form-control'}
-          - if @transaction.id.nil?
-            .input-group-append
-              = link_to 'Nuevo', new_transactions_technical_path, class: 'btn btn-outline-primary', remote: true
+        = form.label :technical_id, "Tecnico"
+        .form-row.align-items-center
+          .col
+            = form.collection_select :technical_id, @enterprise.technicals,
+                    :id, :name_and_tel,
+                    {include_blank: true},
+                    {class: 'form-control mb-2'}
+          .col-2
+            - if @transaction.id.nil?
+              = link_to 'Nuevo', new_transactions_technical_path, class: 'btn btn-outline-primary mb-2', remote: true
 
-    .row
       .col-md#vehicle
-        .field
-          = form.label :vehicle_id, "Placa Grúa"
-          = form.collection_select :vehicle_id, @enterprise.vehicles,
-                  :id, :placa_and_services,
-                  {include_blank: true},
-                  {class: 'form-control'}
-          - if @transaction.id.nil?
-            .input-group-append
-              = link_to 'Nuevo', new_transactions_vehicle_path, class: 'btn btn-outline-primary', remote: true
+        = form.label :vehicle_id, "Placa Grúa"
+        .form-row.align-items-center
+          .col
+            = form.collection_select :vehicle_id, @enterprise.vehicles,
+                    :id, :placa_and_services,
+                    {include_blank: true},
+                    {class: 'form-control mb-2'}
+          .col-2
+            - if @transaction.id.nil?
+              = link_to 'Nuevo', new_transactions_vehicle_path, class: 'btn btn-outline-primary mb-2', remote: true
         
     .row  
       .field.col-md
