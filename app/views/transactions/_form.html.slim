@@ -12,24 +12,24 @@
       .field.col-md
         = form.label :fecha, "fecha y hora"
         = form.datetime_field :fecha, class: 'form-control'
-    
+
       .field.col-md
         = form.label :orden_Trabajo
         = form.text_field :orden_Trabajo, class: 'form-control'
-    
+
       .field.col-md
         = form.label :remision
-        = form.text_field :remision, readonly:'readonly' ,class: 'form-control'
-    
+        = form.text_field :remision, readonly: 'readonly', class: 'form-control'
+
       .field.col-md
         = form.label :factura
         = form.text_field :factura, class: 'form-control'
-    
+
     .row
       .field.col-md
         = form.label :hora_llegada
         = form.time_field :hora_llegada, class: 'form-control'
-    
+
       .field.col-md
         = form.label :hora_final
         = form.time_field :hora_final, class: 'form-control'
@@ -43,9 +43,9 @@
         .field
           = form.label :client_id, "Cliente"
           = form.collection_select :client_id, @enterprise.clients,
-                                               :id, :nombre,
-                                               {include_blank: true},
-                                               {class: 'form-control'}
+                                   :id, :nombre,
+                                    {include_blank: true},
+                                    {class: 'form-control'}
           - if @transaction.id.nil?
             .input-group-append
               = link_to 'Nuevo', new_transactions_client_path, class: 'btn btn-outline-primary', remote: true
@@ -54,33 +54,33 @@
       .field.col-md-3
         = form.label :expediente
         = form.text_field :expediente, class: 'form-control'
-    
+
       .field.col-md-3
         = form.label :placa
         = form.text_field :placa, class: 'form-control'
-    
+
       .field.col-md
         = form.label :tarea
         = form.text_field :tarea, class: 'form-control'
-        
+
     .row  
       .field.col-md
         = form.label :origen
         = form.text_field :origen, class: 'form-control', id: 'autocomplete_address'
-    
+
       .field.col-md
         = form.label :destino
         = form.text_field :destino, class: 'form-control'
-        
+
     .row  
       .field.col-md-3
         = form.label :asegurado
         = form.text_field :asegurado, class: 'form-control'
-    
+
       .field.col-md-6
         = form.label :direccion
         = form.text_field :direccion, class: 'form-control'
-    
+
       .field.col-md-3
         = form.label :telefono
         = form.number_field :telefono, class: 'form-control'
@@ -109,60 +109,60 @@
           .col-2
             - if @transaction.id.nil?
               = link_to 'Nuevo', new_transactions_vehicle_path, class: 'btn btn-outline-primary mb-2', remote: true
-        
+
     .row  
       .field.col-md
         = form.label :total_km
         = form.number_field :total_km, class: 'form-control'
-    
+
       .field.col-md
         = form.label :km_zona_normal
         = form.number_field :km_zona_normal, class: 'form-control'
-        
+
       .field.col-md
         = form.label :km_zona_roja
         = form.number_field :km_zona_roja, class: 'form-control'
-      
+
     .row
       .field.col-md
         = form.label :banderazo
         = form.number_field :banderazo, class: 'form-control'
-        
+
       .field.col-md
         = form.label :valor_km_zona_n, "Valor km zona normal"
-        = form.number_field :valor_km_zona_n, class: 'form-control'    
-    
+        = form.number_field :valor_km_zona_n, class: 'form-control'
+
       .field.col-md
         = form.label :valor_km_zona_r, "Valor km zona roja"
         = form.number_field :valor_km_zona_r, class: 'form-control'
-        
+
     .row  
       .field.col-md
         = form.label :horas_de_espera
         = form.number_field :horas_de_espera, class: 'form-control'
-    
+
       .field.col-md
         = form.label :rango_nocturno
         = form.number_field :rango_nocturno, class: 'form-control'
-    
+
       .field.col-md
         = form.label :recargo_festivo
         = form.number_field :recargo_festivo, class: 'form-control'
-        
+
     .row
       .field.col-md-3
         = form.label :valor_servicio
         = form.number_field :valor_servicio, class: 'form-control'
-    
+
       .field.col-md
         = form.label :operador
         = form.text_field :operador, class: 'form-control'
-    
+
     .row
       .field.col-md
         = form.label :celula_costo
         = form.text_field :celula_costo, class: 'form-control'
-        
+
       .field.col-md
         = form.label :fecha_de_cierre, "fecha y hora de cierre"
         = form.datetime_field :fecha_de_cierre, class: 'form-control', disabled: 'disabled'
@@ -172,43 +172,43 @@
         .field.col-md-7
           = form.label :descuento
           = form.number_field :descuento, class: 'form-control'
-          
+
         .field.col-md-7
           = form.label :pago_total
           = form.number_field :pago_total, class: 'form-control'
-          
+
       .col
-        .row 
+        .row
           .field.col-md
             = form.label :porcentaje_tecnico
             = form.number_field :porcentaje_tecnico, class: 'form-control'
-            
+
           .field.col-md
             = form.label :pago_tecnico
             = form.number_field :pago_tecnico, class: 'form-control'
-            
+
           .field.col-md
             = form.label :combustible
             = form.number_field :combustible, class: 'form-control'
-            
+
         .row
           .field.col-md
             = form.label :peajes
             = form.number_field :peajes, class: 'form-control'
-          
+
           .field.col-md
             = form.label :gasto_viaje
-            = form.number_field :gasto_viaje, class: 'form-control'  
-            
+            = form.number_field :gasto_viaje, class: 'form-control'
+
           .field.col-md
             = form.label :gastos
             = form.number_field :gastos, class: 'form-control'
-            
+
           .field.col-md
             = form.label :ganancias
             = form.number_field :ganancias, class: 'form-control'
-            
-    
+
+
     = form.fields_for :pictures do |p|
       .row
         .field.col-md
@@ -216,7 +216,7 @@
 
           - if p.object.image?
             = p.label :image, "Imagen guardada"
-            = p.file_field :image, class: 'form-control'
+            = p.file_field :image, class: 'form-control-file'
             = image_tag p.object.image.thumb.url, alt: 'Image'
             = label_tag :_destroy do
               | Remover imagen
@@ -224,36 +224,46 @@
 
           - else
             = p.label :image, "Nueva imagen"
-            = p.file_field :image, class: 'form-control'
+            = p.file_field :image, class: 'form-control-file'
 
+    br
     = form.fields_for :observations do |o|
       .row
         .field.col-md
-
-          = o.hidden_field :user_id
-          - if o.object.description.blank?
+          - if o.object.id.blank?
+            = o.hidden_field :user_id
             = o.label :description, "Nueva observación"
             = o.text_field :description, class: 'form-control'
 
-          - else
-            = o.label :description, "Observaciónes"
-            = o.text_field :description, class: 'form-control'
-            p
-              |Creado por:
-              strong = o.object.user.fullname+ " "
-              | en la fecha:
-              strong = " #{o.object.created_at.strftime("%d-%m-%Y")}"
-            = label_tag :_destroy do
-              | Remover observación
-              = o.check_box :_destroy
-  
+    br
+
     .actions
       = form.submit 'Actualizar', class: 'btn btn-primary'
 
       - unless @transaction.id.blank?
         | |
-        = link_to "Deliver", transaction_path(@transaction, transaction: { status: 'delivered' }),
-                           :method => :put, :confirm => "Are you sure?", class: 'btn btn-warning'
+        = link_to "Deliver", transaction_path(@transaction, transaction: {status: 'delivered'}),
+                :method => :put, :confirm => "Are you sure?", class: 'btn btn-warning'
         - unless @transaction.closed?
           | |
           = link_to "Close", transaction_close_path(@transaction), :confirm => "Are you sure?", class: 'btn btn-danger'
+
+    br
+
+    - unless @transaction.id.blank?
+      h3 Observaciones
+      hr
+
+    - form.object.observations.each do |o|
+      - unless o.id.blank?
+        .card
+          .card-body
+            p
+              | Observación:
+              strong<> = o.description
+            p
+              |Creado por:
+              strong = o.user.fullname+ " "
+              | en la fecha:
+              strong = " #{o.created_at.strftime("%d-%m-%Y")}"
+        br
