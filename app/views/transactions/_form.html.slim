@@ -157,7 +157,7 @@
       .field.col-md
         = form.label :operador
         = form.text_field :operador, class: 'form-control'
-    - if @transaction.id.present? && @transaction.open? || @transaction.id.present? && @transaction.delivered?
+    - if @transaction.id.present? && @transaction.open? || @transaction.delivered? || @transaction.closed?
       .row
         .field.col-md
           = form.label :celula_costo
@@ -165,9 +165,9 @@
 
         .field.col-md
           = form.label :fecha_de_cierre, "fecha y hora de cierre"
-          = form.datetime_field :fecha_de_cierre, class: 'form-control', disabled: 'disabled'
+          = form.datetime_field :fecha_de_cierre, class: 'form-control'
 
-    - if @transaction.delivered?
+    - if @transaction.delivered? || @transaction.closed?
       .row
         .col-md-3
           .field.col-md-7
@@ -253,7 +253,7 @@
 
     br
 
-    - unless @transaction.id.blank?
+    - unless @transaction.id.blank? || @transaction.observations.count == 0
       h3 Observaciones
       hr
 
