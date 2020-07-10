@@ -18,4 +18,11 @@ Rails.application.routes.draw do
   end
   root to: redirect('/users/sign_in')
   resources :dashboard, only: :index
+
+  namespace :api do
+    namespace :v1 do
+      get 'calulate_distance', to: 'calculate_distance#distance'
+    end
+  end
+
 end

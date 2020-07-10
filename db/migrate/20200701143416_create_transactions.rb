@@ -15,7 +15,11 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.string :placa
       t.string :tarea
       t.string :origen
+      t.float  :lat
+      t.float  :lng
       t.string :destino
+      t.float  :latb
+      t.float  :lngb
       t.string :asegurado
       t.string :direccion
       t.string :telefono
