@@ -1,0 +1,20 @@
+= form_with(model: document_type, local: true) do |form|
+  - if document_type.errors.any?
+    #error_explanation
+      h2
+        = pluralize(document_type.errors.count, "error")
+        | prohibited this document_type from being saved:
+
+      ul
+        - document_type.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = form.label :name
+    = form.text_field :name
+
+
+  .actions
+    = form.submit 'Actualizar', class: 'btn btn-primary'
+    | |
+    = link_to 'Back', document_types_path, class: 'btn btn-warning'

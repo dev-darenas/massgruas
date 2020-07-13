@@ -1,0 +1,22 @@
+p#notice = notice
+
+h1 Document Types
+
+table.table
+  thead
+    tr
+      th Name
+      th colspan="2"
+  tbody
+
+    - @document_types.each do |document_type|
+      tr
+        td = document_type.name
+        td = link_to 'Edit', edit_document_type_path(document_type), class: 'btn btn-primary'
+        td = link_to 'Destroy', document_type,
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+
+br
+
+= link_to 'New Document Type', new_document_type_path, class: 'btn btn-primary'

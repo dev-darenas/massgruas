@@ -4,4 +4,5 @@ class Enterprise < ApplicationRecord
   has_many :vehicles, dependent: :destroy
   has_many :technicals, dependent: :destroy
   has_many :transactions, dependent: :destroy
+  has_many :document_types, dependent: :destroy
 end
