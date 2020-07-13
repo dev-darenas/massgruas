@@ -1,0 +1,18 @@
+= form_with(model: service, local: true) do |form|
+  - if service.errors.any?
+    #error_explanation
+      h2 = pluralize(service.errors.count, "error")
+      | prohibited this service from being saved:
+
+      ul
+        - service.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = form.label :name
+    = form.text_field :name
+
+  .actions
+    = form.submit 'Actualizar', class: 'btn btn-primary'
+    | |
+    = link_to 'Back', services_path, class: 'btn btn-warning'

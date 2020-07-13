@@ -1,0 +1,23 @@
+p#notice = notice
+
+h1 Servicios
+
+table.table
+  thead
+    tr
+      th Name
+      th colspan="2"
+
+  tbody
+    - @services.each do |service|
+      tr
+        td = service.name
+        td = link_to 'Edit', edit_service_path(service),  class: 'btn btn-primary'
+        td = link_to 'Destroy', service,
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' },
+                                class: 'btn btn-danger'
+
+br
+
+= link_to 'New Service', new_service_path,  class: 'btn btn-primary'

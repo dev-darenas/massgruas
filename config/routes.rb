@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :services
   resources :document_types
   resources :vehicles
   resources :clients
