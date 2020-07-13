@@ -56,6 +56,10 @@ class ManageUsersController < EnterpriseController
   end
 
   def user_params
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
     params.require(:user).permit(:fullname, :email, :rol, :password, :password_confirmation)
   end
 end
