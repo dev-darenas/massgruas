@@ -1,15 +1,27 @@
+= render 'clients/tabs', page: 'document'
+
 = form_with model: [@client, @document], local: true do |form|
+  - if @document.errors.any?
+    #error_explanation
+      h2 = pluralize(@document.errors.count, "error")
+      | prohibited this list Price from being saved:
 
-  = form.label :document_type
-  = form.select :document_type_id,
-                @enterprise.document_types.collect { |p| [ p.name, p.id ] },
-                include_blank: true
+      ul
+        - @document.errors.full_messages.each do |message|
+          li = message
 
-  = form.label :due_date
-  = form.date_field :due_date
+  .field
+    = form.label :document_type
+    = form.select :document_type_id,
+                  @enterprise.document_types.collect { |p| [ p.name, p.id ] },
+                  { include_blank: true },{ class: 'form-control'}
 
-  = form.label :renewable
-  = form.check_box :renewable
+  .field
+    = form.label :due_date
+    = form.date_field :due_date , class: 'form-control'
+  .field
+    = form.label :renewable
+    = form.check_box :renewable, class: 'form-check'
 
   = form.fields_for :pictures do |p|
     .field

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_012546) do
+ActiveRecord::Schema.define(version: 2020_07_14_154251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,21 @@ ActiveRecord::Schema.define(version: 2020_07_14_012546) do
     t.integer "remision", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "list_prices", force: :cascade do |t|
+    t.integer "flag"
+    t.integer "waiting_hours_value"
+    t.integer "kilometer_value"
+    t.integer "night_surcharge"
+    t.integer "red_zone_value"
+    t.integer "holiday_surcharge"
+    t.bigint "client_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_list_prices_on_client_id"
+    t.index ["service_id"], name: "index_list_prices_on_service_id"
   end
 
   create_table "observations", force: :cascade do |t|
@@ -211,6 +226,8 @@ ActiveRecord::Schema.define(version: 2020_07_14_012546) do
   add_foreign_key "clients", "enterprises"
   add_foreign_key "document_types", "enterprises"
   add_foreign_key "documents", "document_types"
+  add_foreign_key "list_prices", "clients"
+  add_foreign_key "list_prices", "services"
   add_foreign_key "observations", "users"
   add_foreign_key "services", "enterprises"
   add_foreign_key "technicals", "enterprises"

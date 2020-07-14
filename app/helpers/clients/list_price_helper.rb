@@ -1,0 +1,2 @@
+module Clients::ListPriceHelper
+end

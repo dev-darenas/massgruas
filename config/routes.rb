@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :clients do
     scope module: :clients do
       resources :documents
+      resources :list_prices
     end
   end
 

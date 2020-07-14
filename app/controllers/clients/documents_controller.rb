@@ -14,14 +14,23 @@ module Clients
     def create
       @document = @client.documents.new(document_params)
       if @document.save
-        redirect_to edit_client_document_path(@client, @document)
+        redirect_to edit_client_document_path(@client, @document), notice: 'Document was successfully created.'
       else
         render :new
       end
     end
 
     def update
-      @document.update(document_params)
+      if @document.update(document_params)
+        redirect_to edit_client_document_path(@client, @document), notice: 'Document was successfully updated.'
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      @document.destroy
+      redirect_to client_documents_path, notice: 'Document was deleted'
     end
 
     private

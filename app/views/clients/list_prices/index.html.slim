@@ -1,0 +1,32 @@
+p#notice = notice
+
+h1 List Prices
+
+= render 'clients/tabs', page: 'tprecios'
+
+table.table
+  thead
+    tr
+      th Servicio
+      th Banderazo
+      th Valor Horas de espera
+      th Valor de kilometro
+      th Recargo Nocturno
+      th Valor Zona Roja
+      th Recargo Festivo
+      th colspan='1'
+  tbody
+    - @list_prices.each do |listPrice|
+      tr
+        td = listPrice.service.name
+        td = listPrice.flag
+        td = listPrice.waiting_hours_value
+        td = listPrice.kilometer_value
+        td = listPrice.night_surcharge
+        td = listPrice.red_zone_value
+        td = listPrice.holiday_surcharge
+        td = link_to 'Editar', edit_client_list_price_path(@client, listPrice), class: 'btn btn-primary'
+        td = link_to 'Destroy', client_list_price_path(@client, listPrice), method: :delete, data: {confirm: 'Estas Seguro?'}, class: 'btn btn-danger'
+br
+
+= link_to 'Nuevo lista de precios', new_client_list_price_path(@client), class: 'btn btn-primary'

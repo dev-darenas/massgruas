@@ -1,0 +1,49 @@
+= render 'clients/tabs', page: 'tprecios'
+
+= form_with model: [@client, @list_price], local: true do |form|
+
+  - if @list_price.errors.any?
+    #error_explanation
+      h2 = pluralize(@list_price.errors.count, "error")
+      | prohibited this list Price from being saved:
+
+      ul
+        - @list_price.errors.full_messages.each do |message|
+          li = message
+  .container
+    .row
+      .field.col-md-4
+        = form.label :service_id, 'Servicio'
+        = form.select :service_id,
+                      @enterprise.services.collect { |p| [ p.name, p.id ] },
+                      { include_blank: true },{ class: 'form-control'}
+
+      .field.col-md-4
+        = form.label :kilometer_value
+        = form.number_field :kilometer_value, class: 'form-control'
+
+      .field.col-md-4
+        = form.label :red_zone_value
+        = form.number_field :red_zone_value, class: 'form-control'
+
+    .row
+      .field.col-md-4
+        = form.label :flag
+        = form.number_field :flag , class: 'form-control'
+
+      .field.col-md-4
+        = form.label :night_surcharge
+        = form.number_field :night_surcharge, class: 'form-control'
+
+      .field.col-md-4
+        = form.label :holiday_surcharge
+        = form.number_field :holiday_surcharge, class: 'form-control'
+
+    .row
+      .field.col-md-4
+        = form.label :waiting_hours_value
+        = form.number_field :waiting_hours_value, class: 'form-control'
+
+
+    .actions
+      = form.submit 'Actualizar', class: 'btn btn-primary'

@@ -7,8 +7,10 @@
       ul
         - client.errors.full_messages.each do |message|
           li = message
+  - unless @client.id.nil?
+    = render 'clients/tabs', page: 'general'
 
-  =render 'clients/form_fields', f: form
+  = render 'clients/form_fields', f: form
 
   .actions
     = form.submit 'Actualizar', class: 'btn btn-primary'

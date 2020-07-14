@@ -1,0 +1,7 @@
+nav
+  .nav.nav-tabs#nav-tab role="tablist"
+    a class="nav-item nav-link #{page=='general' ? 'active': ''}" href="#{edit_client_path(@client)}" role="tab" aria-controls="nav-General" aria-selected="true"
+      | General
+    a class="nav-item nav-link #{page=='tprecios' ? 'active': ''}" href="#{client_list_prices_path(@client)}" role="tab" aria-controls="nav-Tabla_precios" aria-selected="true" Tabla de Precios
+    a class="nav-item nav-link #{page=='document' ? 'active': ''}" role="tab" aria-controls="nav-documentos" aria-selected="true" href = "#{client_documents_path(@client)}"
+      | Documentos
