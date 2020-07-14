@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_165008) do
+ActiveRecord::Schema.define(version: 2020_07_14_012546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 2020_07_13_165008) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["enterprise_id"], name: "index_document_types_on_enterprise_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "document_type_id", null: false
+    t.boolean "renewable"
+    t.string "documentable_type", null: false
+    t.bigint "documentable_id", null: false
+    t.date "due_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["document_type_id"], name: "index_documents_on_document_type_id"
+    t.index ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id"
   end
 
   create_table "enterprises", force: :cascade do |t|
@@ -198,6 +210,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_165008) do
 
   add_foreign_key "clients", "enterprises"
   add_foreign_key "document_types", "enterprises"
+  add_foreign_key "documents", "document_types"
   add_foreign_key "observations", "users"
   add_foreign_key "services", "enterprises"
   add_foreign_key "technicals", "enterprises"

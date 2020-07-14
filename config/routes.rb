@@ -2,10 +2,15 @@ Rails.application.routes.draw do
   resources :services
   resources :document_types
   resources :vehicles
-  resources :clients
   resources :technicals
   resources :manage_users
   resources :transactions
+  resources :clients do
+    scope module: :clients do
+      resources :documents
+    end
+  end
+
   get '/transactions/close/:id', to: 'transactions#close', as: 'transaction_close'
 
   namespace :transactions do

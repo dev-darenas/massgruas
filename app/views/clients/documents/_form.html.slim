@@ -1,0 +1,20 @@
+= form_with model: [@client, @document], local: true do |form|
+
+  = form.label :document_type
+  = form.select :document_type_id,
+                @enterprise.document_types.collect { |p| [ p.name, p.id ] },
+                include_blank: true
+
+  = form.label :due_date
+  = form.date_field :due_date
+
+  = form.label :renewable
+  = form.check_box :renewable
+
+  = form.fields_for :pictures do |p|
+    .field
+      = p.file_field :image, class: 'form-control'
+
+  .actions
+    = form.submit 'Actualizar', class: 'btn btn-primary'
+

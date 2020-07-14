@@ -1,0 +1,17 @@
+h1 Documents
+
+table.table
+  thead
+    tr
+      th Documento
+      th Fecha de Vencimiento
+      th
+  tbody
+    - @documents.each do |document|
+      tr
+        td = document.document_type.name
+        td = document.due_date
+        td = link_to 'Editar', edit_client_document_path(@client, document)
+br/
+
+= link_to 'Nuevo Documento', new_client_document_path(@client), class: 'btn btn-primary'

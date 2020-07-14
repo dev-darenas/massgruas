@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
   belongs_to :enterprise
   has_many :transactions
+  has_many :documents, as: :documentable
 
   validates :nombre, presence: true
   validates :identificacion, presence: true
