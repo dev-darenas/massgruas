@@ -1,6 +1,6 @@
 = render 'technicals/tabs', page: 'document'
 
-= form_with model: [@technical, @bonding_date], local: true do |form|
+= form_with model: [@technical, @document], local: true do |form|
   - if @document.errors.any?
     #error_explanation
       h2 = pluralize(@document.errors.count, "error")
