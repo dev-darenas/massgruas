@@ -1,0 +1,28 @@
+p#notice = notice
+
+h1 Fecha de vinculación
+
+= render 'technicals/tabs', page: 'fecha_vinculación'
+
+table.table
+  thead
+    tr
+      th Entry date
+      th Departure date
+      th Observation
+      th colspan="2"
+
+  tbody
+    - @bonding_dates.each do |bonding_date|
+      tr
+        td = bonding_date.entry_date
+        td = bonding_date.departure_date
+        td = bonding_date.observation
+        td = link_to 'Edit', edit_technical_bonding_date_path(@technical,bonding_date), class: 'btn btn-primary'
+        td = link_to 'Destroy', technical_bonding_date_path(@technical, bonding_date),
+                                  method: :delete,
+                                  data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+
+
+br
+= link_to 'Nueva fecha de vinculación', new_technical_bonding_date_path(@technical), class: 'btn btn-primary'

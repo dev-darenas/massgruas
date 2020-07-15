@@ -24,6 +24,7 @@ class TechnicalsController < EnterpriseController
   end
 
   def edit
+    @technical.pictures.build
   end
 
   def create

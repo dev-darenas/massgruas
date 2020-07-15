@@ -1,0 +1,28 @@
+
+= render 'technicals/tabs', page: 'fecha_vinculación'
+
+= form_with(model: [@technical, @bonding_date], local: true) do |form|
+  - if @bonding_date.errors.any?
+    #error_explanation
+      h2 = pluralize(@bonding_date.errors.count, "error")
+        | prohibited this bonding_date from being saved:
+
+      ul
+        - @bonding_date.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = form.label :entry_date
+    = form.date_field :entry_date, class: 'form-control'
+
+  .field
+    = form.label :departure_date
+    = form.date_field :departure_date, class: 'form-control'
+
+  .field
+    = form.label :observation
+    = form.text_field :observation, class: 'form-control'
+
+  .actions
+    = form.submit 'Actualizar', class: 'btn btn-primary'
+

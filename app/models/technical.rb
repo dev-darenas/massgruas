@@ -1,6 +1,8 @@
 class Technical < ApplicationRecord
   belongs_to :enterprise
   has_many :transactions
+  has_many :bonding_dates
+  has_many :documents, as: :documentable, dependent: :destroy
 
   has_many :pictures, as: :imageable, dependent: :destroy
 

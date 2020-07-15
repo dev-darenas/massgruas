@@ -2,9 +2,14 @@ Rails.application.routes.draw do
   resources :services
   resources :document_types
   resources :vehicles
-  resources :technicals
   resources :manage_users
   resources :transactions
+  resources :technicals do
+    scope module: :technicals do
+      resources :documents
+      resources :bonding_dates
+    end
+  end
   resources :clients do
     scope module: :clients do
       resources :documents

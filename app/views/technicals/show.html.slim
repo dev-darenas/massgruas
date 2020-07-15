@@ -11,10 +11,7 @@ p
   strong<> = @technical.nombre
 
 p
-  - @technical.pictures.each do |t|
-    = image_tag embed_remote_image("#{Rails.root}/public#{t.image.thumb.url}", 'image/')
-
-hr
+  = image_tag embed_remote_image("#{Rails.root}/public#{@technical.pictures.first.image.thumb.url}", 'image/')
 
 p
   | Cargo:
@@ -71,3 +68,9 @@ p
 p
   | Retiro:
   strong<> = @technical.retiro
+
+p
+  - @technical.pictures.each do |t|
+    - next if t == @technical.pictures.first
+
+    = image_tag embed_remote_image("#{Rails.root}/public#{t.image.thumb.url}", 'image/')

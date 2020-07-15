@@ -8,42 +8,47 @@
       ul
         - form.object.errors.full_messages.each do |message|
           li = message
+  - unless @technical.id.nil?
+    = render 'technicals/tabs', page: 'general'
 
-  =render 'technicals/form_fields', f: form
+  .tab-content#myTabContent
+    .tab-pane.fade.show.active#nav-General role="tabpanel" aria-labelledby="nav-General-tab"
+      = render 'technicals/form_fields', f: form
 
-  .field
-    = form.label :estado_civil
-    = form.text_field :estado_civil, class: 'form-control'
+      .field
+        = form.label :estado_civil
+        = form.text_field :estado_civil, class: 'form-control'
 
-  .field
-    = form.label :conyuge
-    = form.text_field :conyuge, class: 'form-control'
+      .field
+        = form.label :conyuge
+        = form.text_field :conyuge, class: 'form-control'
 
-  .field
-    = form.label :hijos
-    = form.text_field :hijos, class: 'form-control'
+      .field
+        = form.label :hijos
+        = form.text_field :hijos, class: 'form-control'
 
-  .field
-    = form.label :vinculacion
-    = form.date_field :vinculacion, class: 'form-control'
+      .field
+        = form.label :vinculacion
+        = form.date_field :vinculacion, class: 'form-control'
 
-  .field
-    = form.label :retiro
-    = form.date_field :retiro, class: 'form-control'
+      .field
+        = form.label :retiro
+        = form.date_field :retiro, class: 'form-control'
 
-  = form.fields_for :pictures do |p|
-    .field
-      = p.hidden_field :image_cache, class: 'form-control'
 
-      = p.label :image, "Imagen "
-      = p.file_field :image, class: 'form-control'
-      - if p.object.image?
-        = image_tag p.object.image.thumb.url, alt: 'Image'
+    .tab-pane.fade#archivos_personales role="tabpanel" aria-labelledby="archivos_personales-tab"
+      = form.fields_for :pictures do |p|
+        .field
+          = p.hidden_field :image_cache, class: 'form-control'
 
-        div
-          = label_tag :_destroy do
-            | Remover imagen
-            = p.check_box :_destroy, class: 'form-control'
+          = p.label :image, "Imagen "
+          = p.file_field :image, class: 'form-control'
+          - if p.object.image?
+            = image_tag p.object.image.thumb.url, alt: 'Image'
+            div
+              = label_tag :_destroy do
+                | Remover imagen
+                = p.check_box :_destroy, class: 'form-control'
 
 
   .actions

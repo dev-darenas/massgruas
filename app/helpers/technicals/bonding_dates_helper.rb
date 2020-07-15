@@ -1,0 +1,2 @@
+module Technicals::BondingDatesHelper
+end
