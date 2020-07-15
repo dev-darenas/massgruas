@@ -35,8 +35,6 @@
         = form.label :retiro
         = form.date_field :retiro, class: 'form-control'
 
-
-    .tab-pane.fade#archivos_personales role="tabpanel" aria-labelledby="archivos_personales-tab"
       = form.fields_for :pictures do |p|
         .field
           = p.hidden_field :image_cache, class: 'form-control'

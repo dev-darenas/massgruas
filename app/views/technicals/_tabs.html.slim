@@ -2,8 +2,6 @@ nav
   .nav.nav-tabs#nav-tab role="tablist"
     a class="nav-item nav-link #{page=='general' ? 'active': ''}" href="#{edit_technical_path(@technical)}" role="tab" aria-controls="nav-General" aria-selected="true"
       | General
-    a class="nav-item nav-link #{page=='archivos_personales' ? 'active': ''}" id='archivos_personales-tab' data-toggle="tab" href="#archivos_personales" role="tab" aria-controls="archivos_personales" aria-selected="true"
-      | Archivos Personales
     a class="nav-item nav-link #{page=='fecha_vinculación' ? 'active': ''}" href="#{technical_bonding_dates_path(@technical)}" role="tab" aria-controls="nav-fecha_vinculación" aria-selected="true" Fechas de vinculacion
     a class="nav-item nav-link #{page=='document' ? 'active': ''}" role="tab" aria-controls="nav-documentos" aria-selected="true" href = "#{technical_documents_path(@technical)}"
       | Documentos
