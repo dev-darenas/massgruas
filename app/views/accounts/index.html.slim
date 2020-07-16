@@ -1,0 +1,20 @@
+p#notice = notice
+
+h1 Cuentas
+
+table.table
+  thead
+    tr
+      th Nombre
+      th colspan="3"
+
+  tbody
+    - @accounts.each do |account|
+      tr
+        td = account.name
+        td = link_to 'Edit', edit_account_path(account), class: 'btn btn-primary'
+        td = link_to 'Destroy', account, method: :delete,
+                                data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+br
+
+= link_to 'New Account', new_account_path, class: 'btn btn-primary'

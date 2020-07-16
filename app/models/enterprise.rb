@@ -6,4 +6,5 @@ class Enterprise < ApplicationRecord
   has_many :transactions, dependent: :destroy
   has_many :document_types, dependent: :destroy
   has_many :services, dependent:  :destroy
+  has_many :accounts, dependent: :destroy
 end

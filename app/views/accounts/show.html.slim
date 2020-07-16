@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @account.name
+
+= link_to 'Edit', edit_account_path(@account), class:'btn btn-primary'
+| |
+= link_to 'Back', accounts_path, class:'btn btn-danger'

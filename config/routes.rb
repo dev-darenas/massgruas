@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :accounts
   resources :services
   resources :document_types
   resources :manage_users
   resources :transactions
+
   resources :vehicles do
     scope module: :vehicles do
       resources :documents

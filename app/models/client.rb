@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   has_many :transactions
   has_many :documents, as: :documentable
   has_many :list_prices
+  has_and_belongs_to_many :accounts
 
   validates :nombre, presence: true
   validates :identificacion, presence: true
