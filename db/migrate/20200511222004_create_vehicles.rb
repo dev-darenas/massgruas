@@ -22,6 +22,7 @@ class CreateVehicles < ActiveRecord::Migration[6.0]
       t.date :vencimiento_rtm
       t.string :km_cambio_aceite
       t.string :km_proximocambio
+      t.date :next_oil_change_date
       t.references :enterprise, null: false, foreign_key: true
 
       t.timestamps

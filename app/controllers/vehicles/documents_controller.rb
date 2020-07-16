@@ -1,20 +1,20 @@
-module Technicals
+module Vehicles
   class DocumentsController < BaseController
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
     def index
-      @documents = @technical.documents
+      @documents = @vehicle.documents
     end
 
     def new
-      @document = @technical.documents.new
+      @document = @vehicle.documents.new
       @document.pictures.build
     end
 
     def create
-      @document = @technical.documents.new(document_params)
+      @document = @vehicle.documents.new(document_params)
       if @document.save
-        redirect_to edit_technical_document_path(@technical, @document), notice: 'Document was successfully created.'
+        redirect_to edit_vehicle_document_path(@vehicle, @document), notice: 'Document was successfully created.'
       else
         render :new
       end
@@ -22,7 +22,7 @@ module Technicals
 
     def update
       if @document.update(document_params)
-        redirect_to edit_technical_document_path(@client, @document), notice: 'Document was successfully updated.'
+        redirect_to edit_vehicle_document_path(@vehicle, @document), notice: 'Document was successfully updated.'
       else
         render :edit
       end
@@ -30,13 +30,13 @@ module Technicals
 
     def destroy
       @document.destroy
-      redirect_to technical_documents_path, notice: 'Document was deleted'
+      redirect_to vehicle_documents_path, notice: 'Document was deleted'
     end
 
     private
 
     def set_document
-      @document = @technical.documents.find(params[:id])
+      @document = @vehicle.documents.find(params[:id])
     end
 
     def document_params

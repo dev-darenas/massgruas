@@ -1,12 +1,6 @@
 = form_with(model: vehicle, local: true) do |form|
 
-  nav
-    .nav.nav-tabs#nav-tab role="tablist"
-      a.nav-item.nav-link.active#nav-General-tab data-toggle="tab" href="#nav-General" role="tab" aria-controls="nav-General" aria-selected="true" General
-      - unless @vehicle.id.blank?
-        a.nav-item.nav-link#nav-detalle-tab data-toggle="tab" href="#nav-detalle" role="tab" aria-controls="nav-detalle" aria-selected="false" Detalle
-        a.nav-item.nav-link#nav-fechas-tab data-toggle="tab" href="#nav-fechas" role="tab" aria-controls="nav-fechas" aria-selected="false" Fechas
-        a.nav-item.nav-link#nav-imagenes-tab data-toggle="tab" href="#nav-imagenes" role="tab" aria-controls="nav-imagenes" aria-selected="false" Imagenes
+  = render 'vehicles/tabs', page: 'general'
 
   - if form.object.errors.any?
     #error_explanation
@@ -79,16 +73,17 @@
           = form.label :vencimiento_rtm
           = form.date_field :vencimiento_rtm, class: 'form-control'
 
-
         .field
           = form.label :km_cambio_aceite
           = form.text_field :km_cambio_aceite, class: 'form-control'
-
 
         .field
           = form.label :km_proximocambio
           = form.text_field :km_proximocambio, class: 'form-control'
 
+        .field
+          = form.label :next_oil_change_date
+          = form.date_field :next_oil_change_date, class: 'form-control'
 
       .tab-pane.fade#nav-imagenes role="tabpanel" aria-labelledby="nav-imagenes-tab"
 

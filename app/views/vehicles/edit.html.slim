@@ -30,5 +30,14 @@ h1 Editing Vehicle
 
   .alert.alert-warning role="alert"
     | La fecha de RTM está proxima a vencer
+
+-if days_next_oil_change_date_zero(@vehicle)
+  .alert.alert-danger role="alert"
+    | La fecha de próximo cambio de aceite está vencida
+
+- elsif days_next_oil_change_date_five(@vehicle)
+  .alert.alert-warning role="alert"
+    | La fecha de próximo cambio de aceite está proxima a vencer
+
 = link_to 'Create PDF', vehicle_path(@vehicle, :format => :pdf), class: 'btn btn-primary'
 = render 'form', vehicle: @vehicle

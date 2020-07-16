@@ -1,6 +1,7 @@
 class Vehicle < ApplicationRecord
   belongs_to :enterprise
   has_many :transactions
+  has_many :documents, as: :documentable, dependent: :destroy
 
   validates :placa, presence: true
   validates :licencia, presence: true

@@ -1,0 +1,28 @@
+p#notice = notice
+
+h1 Documents
+
+= render 'vehicles/tabs', page: 'document'
+
+table.table
+  thead
+    tr
+      th Documento
+      th Fecha de Vencimiento
+      th colspan='2'
+  tbody
+    - @documents.each do |document|
+      - expired_date(document)
+
+      tr
+        td = document.document_type.name
+        td = document.due_date
+        td = link_to 'Editar', edit_vehicle_document_path(@vehicle, document), class: 'btn btn-primary'
+        td = link_to 'Destroy', vehicle_document_path(@vehicle, document),
+                                method: :delete, data: {confirm: 'Estas Seguro?'},
+                                class: 'btn btn-danger'
+    - unless expired.nil?
+      = expired.html_safe
+br
+
+= link_to 'Nuevo Documento', new_vehicle_document_path(@vehicle), class: 'btn btn-primary'
