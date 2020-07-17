@@ -3,12 +3,14 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
     create_table :transactions do |t|
       t.references :enterprise, null: false, foreign_key: true
       t.string :status,                         null: false, default: "Open"
+      t.integer :service_number
       t.datetime :fecha
       t.string :orden_Trabajo
       t.string :remision
       t.string :factura
       t.time :hora_llegada
       t.time :hora_final
+      t.string :response_time
       t.references :client, null: false, foreign_key: true
       t.string :cuenta
       t.string :expediente

@@ -28,7 +28,7 @@ class TransactionsController < EnterpriseController
   end
 
   def new
-    @transaction = @enterprise.transactions.new(remision: @enterprise.remision)
+    @transaction = @enterprise.transactions.new(service_number: @enterprise.service_number)
     @transaction.observations.build(user_id: current_user.id)
     @transaction.pictures.build
   end
@@ -87,8 +87,8 @@ class TransactionsController < EnterpriseController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:status, :fecha, :orden_Trabajo, :remision, :factura, :hora_llegada,
-                                        :hora_final, :client_id, :cuenta, :expediente, :placa, :tarea, :origen,
+    params.require(:transaction).permit(:status, :fecha, :orden_Trabajo, :service_number, :remision, :factura, :hora_llegada,
+                                        :response_time, :hora_final, :client_id, :cuenta, :expediente, :placa, :tarea, :origen,
                                         :lat, :lng, :destino, :latb, :lngb, :asegurado, :direccion, :telefono,
                                         :technical_id, :vehicle_id, :total_km, :km_zona_normal, :km_zona_roja, :banderazo,
                                         :valor_km_zona_n, :valor_km_zona_r, :horas_de_espera, :rango_nocturno,

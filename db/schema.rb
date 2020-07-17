@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_07_16_171234) do
 
   create_table "enterprises", force: :cascade do |t|
     t.string "name"
-    t.integer "remision", default: 1, null: false
+    t.integer "service_number", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -150,12 +150,14 @@ ActiveRecord::Schema.define(version: 2020_07_16_171234) do
   create_table "transactions", force: :cascade do |t|
     t.bigint "enterprise_id", null: false
     t.string "status", default: "Open", null: false
+    t.integer "service_number"
     t.datetime "fecha"
     t.string "orden_Trabajo"
     t.string "remision"
     t.string "factura"
     t.time "hora_llegada"
     t.time "hora_final"
+    t.string "response_time"
     t.bigint "client_id", null: false
     t.string "cuenta"
     t.string "expediente"

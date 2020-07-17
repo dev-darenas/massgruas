@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  validates :orden_Trabajo, uniqueness: true
+
   belongs_to :enterprise
   has_many :observations, as: :observable, dependent: :destroy
   has_many :pictures, as: :imageable, dependent: :destroy
@@ -41,9 +43,9 @@ class Transaction < ApplicationRecord
   scope :s_opened, -> { where(status: 'open') }
   scope :s_delivered, -> { where(status: 'delivered') }
   scope :s_closed, -> { where(status: 'closed') }
-  after_create :add_one_to_remision
+  after_create :add_one_to_service_number
 
-  def add_one_to_remision
-    self.enterprise.update(remision: self.enterprise.remision + 1)
+  def add_one_to_service_number
+    self.enterprise.update(service_number: self.enterprise.service_number + 1)
   end
 end

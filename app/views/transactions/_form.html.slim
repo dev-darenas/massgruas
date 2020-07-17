@@ -11,15 +11,19 @@
     .row
       .field.col-md
         = form.label :fecha, "fecha y hora"
-        = form.datetime_field :fecha, class: 'form-control'
+        = form.datetime_field :fecha, value:"#{DateTime.now.strftime("%Y-%m-%dT%H:%M")}",class: 'form-control', id:'fecha_Y_hora'
 
       .field.col-md
         = form.label :orden_Trabajo
         = form.text_field :orden_Trabajo, class: 'form-control'
 
       .field.col-md
+        = form.label :service_number
+        = form.text_field :service_number, readonly:'readonly', class: 'form-control'
+
+      .field.col-md
         = form.label :remision
-        = form.text_field :remision, readonly: 'readonly', class: 'form-control'
+        = form.text_field :remision, class: 'form-control'
 
       .field.col-md
         = form.label :factura
@@ -28,7 +32,11 @@
     .row
       .field.col-md
         = form.label :hora_llegada
-        = form.time_field :hora_llegada, class: 'form-control'
+        = form.time_field :hora_llegada, class: 'form-control', id:'hora_llegada'
+
+      .field.col-md
+        = form.label :response_time
+        = form.text_field :response_time, class: 'form-control', id:'response_time'
 
       .field.col-md
         = form.label :hora_final
@@ -117,7 +125,7 @@
     .row  
       .field.col-md
         = form.label :total_km
-        = form.number_field :total_km, class: 'form-control', id: 'total_km'
+        = form.number_field :total_km, step:"any",class: 'form-control', id: 'total_km'
 
       .field.col-md
         = form.label :km_zona_normal
