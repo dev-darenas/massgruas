@@ -1,12 +1,5 @@
 = form_with(model: account, local: true) do |form|
-  - if account.errors.any?
-    #error_explanation
-      h2 = pluralize(account.errors.count, "error")
-      | prohibited this account from being saved:
-
-      ul
-        - account.errors.full_messages.each do |message|
-          li = message
+  = alert_error(account)
 
   .field
     = form.label :name

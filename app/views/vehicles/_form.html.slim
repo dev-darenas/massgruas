@@ -1,15 +1,7 @@
 = form_with(model: vehicle, local: true) do |form|
 
   = render 'vehicles/tabs', page: 'general'
-
-  - if form.object.errors.any?
-    #error_explanation
-      h2 = pluralize(vehicle.errors.count, "error")
-      | prohibited this vehicle from being saved:
-
-      ul
-        - form.object.errors.full_messages.each do |message|
-          li = message
+  = alert_error(vehicle)
 
   .tab-content#nav-tabContent
 
