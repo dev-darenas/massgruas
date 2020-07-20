@@ -11,7 +11,8 @@ p
   strong<> = @technical.nombre
 
 p
-  = image_tag embed_remote_image("#{Rails.root}/public#{@technical.pictures.first.image.thumb.url}", 'image/')
+  - unless @technical.pictures.first.nil?
+    = image_tag embed_remote_image("#{Rails.root}/public#{@technical.pictures.first.image.thumb.url}", 'image/')
 
 p
   | Cargo:

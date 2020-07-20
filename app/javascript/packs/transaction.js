@@ -116,3 +116,25 @@ $(document).on('turbolinks:load', function () {
         initializeAutocomplete('autocomplete_address2');
     });
 });
+
+$(document).on('turbolinks:load', function () {
+    $("#tecnicos").change(function () {
+        var tecnico=$("#tecnicos").val();
+        var $tel1= $("#tel1");
+        var $tel2= $("#tel2");
+        var $ltel1= $("#ltel1");
+        var $ltel2 = $("#ltel2");
+
+        $.getJSON('/technicals/'+tecnico+'.json',
+            function (resp) {
+                console.log(resp);
+                $tel1.val(resp.telefono1);
+                $tel2.val(resp.telefono2);
+
+                $tel1.show();
+                $ltel1.show();
+                $tel2.show();
+                $ltel2.show();
+            });
+    })
+});

@@ -98,22 +98,28 @@
         = form.number_field :telefono, class: 'form-control'
 
     .row
-      .col-md#technical
-        = form.label :technical_id, "Tecnico"
+      .col#technical
         .form-row.align-items-center
-          .col
+          .col-4
+            = form.label :technical_id, "Tecnico"
             = form.collection_select :technical_id, @enterprise.technicals,
-                    :id, :name_and_tel,
+                    :id, :nombre,
                     {include_blank: true},
-                    {class: 'form-control mb-2'}
-          .col-2
+                    {class: 'form-control mb-2', id:'tecnicos'}
+          .col-3.offset-md-1
+            = form.label "Telefonos1:", id:'ltel1', style:"display:none"
+            = form.number_field "", class: 'form-control mb-2', id:'tel1', style:"display:none"
+            = form.label "Telefonos2:", id:'ltel2', style:"display:none"
+            = form.number_field "", class: 'form-control mb-2', id:'tel2', style:"display:none"
+
+          .col-2.offset-md-2
             - if @transaction.id.nil?
               = link_to 'Nuevo', new_transactions_technical_path, class: 'btn btn-outline-primary mb-2', remote: true
 
       .col-md#vehicle
-        = form.label :vehicle_id, "Placa Grúa"
         .form-row.align-items-center
           .col
+            = form.label :vehicle_id, "Placa Grúa"
             = form.collection_select :vehicle_id, @enterprise.vehicles,
                     :id, :placa_and_services,
                     {include_blank: true},
