@@ -1,4 +1,4 @@
-function calcularHoras(){
+function calcularHoras() {
     var fecha_y_hora = $("#fecha_Y_hora")
     var hora_inicio = fecha_y_hora.val().split("T")[1]
     var hora_final = $("#hora_llegada").val();
@@ -8,7 +8,7 @@ function calcularHoras(){
 
     // Si algún valor no tiene formato correcto sale
     if (!(hora_inicio.match(formatohora)
-        && hora_final.match(formatohora))){
+        && hora_final.match(formatohora))) {
         return;
     }
 
@@ -103,7 +103,7 @@ $(document).on('turbolinks:load', function () {
             lat2: lat2.value,
             lng2: lng2.value
         }, function (resp) {
-            total_km.value  = resp.distance_km
+            total_km.value = resp.distance_km
         });
 
     }
@@ -119,22 +119,32 @@ $(document).on('turbolinks:load', function () {
 
 $(document).on('turbolinks:load', function () {
     $("#tecnicos").change(function () {
-        var tecnico=$("#tecnicos").val();
-        var $tel1= $("#tel1");
-        var $tel2= $("#tel2");
-        var $ltel1= $("#ltel1");
+
+        var tecnico = $("#tecnicos").val();
+        var $id_tecnico = $("#id_tecnico");
+        var $tel1 = $("#tel1");
+        var $tel2 = $("#tel2");
+        var $ltel1 = $("#ltel1");
         var $ltel2 = $("#ltel2");
 
-        $.getJSON('/technicals/'+tecnico+'.json',
-            function (resp) {
-                console.log(resp);
-                $tel1.val(resp.telefono1);
-                $tel2.val(resp.telefono2);
+        if (tecnico === "") {
 
-                $tel1.show();
-                $ltel1.show();
-                $tel2.show();
-                $ltel2.show();
-            });
+            $tel1.hide();
+            $ltel1.hide();
+            $tel2.hide();
+            $ltel2.hide();
+
+        }else{
+            $.getJSON('/technicals/' + tecnico + '.json',
+                function (resp) {
+                    $tel1.val(resp.telefono1);
+                    $tel2.val(resp.telefono2);
+                    $id_tecnico.val(tecnico)
+                    $tel1.show();
+                    $ltel1.show();
+                    $tel2.show();
+                    $ltel2.show();
+                });
+        }
     })
 });

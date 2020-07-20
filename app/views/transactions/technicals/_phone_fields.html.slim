@@ -1,0 +1,6 @@
+= f.fields_for model_technical do |t_fields|
+  = t_fields.hidden_field :id, id:'id_tecnico', value:t_fields.object.id
+  = t_fields.label :telefono1, id:'ltel1'
+  = t_fields.number_field :telefono1, class: 'form-control mb-2', id:'tel1'
+  = t_fields.label :telefono2, id:'ltel2'
+  = t_fields.number_field :telefono2, class: 'form-control mb-2', id:'tel2'

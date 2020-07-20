@@ -87,6 +87,13 @@ class TransactionsController < EnterpriseController
   end
 
   def transaction_params
+    unless params[:transaction][:technical].blank?
+
+      params[:transaction][:technical_attributes] = {id: params[:transaction][:technical][:id],
+                                                     telefono1: params[:transaction][:technical][:telefono1],
+                                                     telefono2:params[:transaction][:technical][:telefono2]}
+    end
+
     params.require(:transaction).permit(:status, :fecha, :orden_Trabajo, :service_number, :remision, :factura, :hora_llegada,
                                         :response_time, :hora_final, :client_id, :cuenta, :expediente, :placa, :tarea, :origen,
                                         :lat, :lng, :destino, :latb, :lngb, :asegurado, :direccion, :telefono,
@@ -100,8 +107,8 @@ class TransactionsController < EnterpriseController
                                         client_attributes: [:nombre, :identificacion, :razon_social, :regimen,
                                                             :actividad_comercial, :direccion, :ciudad, :telefono,
                                                             :email, :enterprise_id],
-                                        vehicle_attributes: [:enterprise_id,:placa, :licencia, :clase, :marca, :tipo, :linea, :servicio],
-                                        technical_attributes: [:enterprise_id,:nombre, :cedula, :cargo, :direccion, :telefono1,
+                                        vehicle_attributes: [:enterprise_id, :placa, :licencia, :clase, :marca, :tipo, :linea, :servicio],
+                                        technical_attributes: [:id, :enterprise_id, :nombre, :cedula, :cargo, :direccion, :telefono1,
                                                                :telefono2, :fecha_nacimiento, :n_licencia,
                                                                :categoria, :eps, :arl])
 
