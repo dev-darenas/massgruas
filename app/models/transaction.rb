@@ -4,6 +4,7 @@ class Transaction < ApplicationRecord
   belongs_to :enterprise
   has_many :observations, as: :observable, dependent: :destroy
   has_many :pictures, as: :imageable, dependent: :destroy
+  belongs_to :account
   belongs_to :client
   belongs_to :vehicle
   belongs_to :technical

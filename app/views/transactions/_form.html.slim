@@ -42,10 +42,6 @@
         = form.label :hora_final
         = form.time_field :hora_final, class: 'form-control'
 
-      .field.col-md
-        = form.label :cuenta
-        = form.text_field :cuenta, class: 'form-control'
-
     .row
       .col-md#client
         .field
@@ -53,12 +49,19 @@
           = form.collection_select :client_id, @enterprise.clients,
                                    :id, :nombre,
                                     {include_blank: true},
-                                    {class: 'form-control'}
+                                    {class: 'form-control', id:'clientes'}
           - if @transaction.id.nil?
             .input-group-append
               = link_to 'Nuevo', new_transactions_client_path, class: 'btn btn-outline-primary', remote: true
 
-    .row  
+    .row
+      .field.col-md
+        = form.label :account_id, "Cuenta"
+        = form.collection_select :account_id, @transaction.account.nil? ? [] : @transaction.client.accounts ,
+                                 :id, :name,
+                                 {include_blank: true},
+                                 {class: 'form-control', id:'cuentas'}
+
       .field.col-md-3
         = form.label :expediente
         = form.text_field :expediente, class: 'form-control'

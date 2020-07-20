@@ -134,7 +134,7 @@ $(document).on('turbolinks:load', function () {
             $tel2.hide();
             $ltel2.hide();
 
-        }else{
+        } else {
             $.getJSON('/technicals/' + tecnico + '.json',
                 function (resp) {
                     $tel1.val(resp.telefono1);
@@ -147,4 +147,41 @@ $(document).on('turbolinks:load', function () {
                 });
         }
     })
+
+    var $clientes = $("#clientes");
+    var $cuentas = $("#cuentas");
+
+    function accounts(){
+        $.getJSON('/clients/' + $clientes.val() + '.json',
+
+            function (resp) {
+                $cuentas.empty();
+                var option = document.createElement("option");
+                $cuentas.append(option);
+                for (account of resp.accounts) {
+                    option = document.createElement("option");
+                    option.setAttribute("value", account.id);
+                    option.setAttribute("label", account.name);
+                    $cuentas.append(option)
+                }
+            });
+    }
+
+    if ($clientes.val() === "") {
+        $cuentas.empty();
+        var option = document.createElement("option");
+        $cuentas.append(option);
+    }
+
+    $clientes.change(function () {
+        console.log($clientes.val());
+        if ($clientes.val() === "") {
+            $cuentas.empty();
+            var option = document.createElement("option");
+            $cuentas.append(option);
+
+        } else {
+            accounts();
+        }
+    });
 });

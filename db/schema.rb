@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_171234) do
+ActiveRecord::Schema.define(version: 2020_07_20_191138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,7 +159,6 @@ ActiveRecord::Schema.define(version: 2020_07_16_171234) do
     t.time "hora_final"
     t.string "response_time"
     t.bigint "client_id", null: false
-    t.string "cuenta"
     t.string "expediente"
     t.string "placa"
     t.string "tarea"
@@ -198,6 +197,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_171234) do
     t.float "ganancias"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["client_id"], name: "index_transactions_on_client_id"
     t.index ["enterprise_id"], name: "index_transactions_on_enterprise_id"
     t.index ["technical_id"], name: "index_transactions_on_technical_id"
@@ -259,6 +260,7 @@ ActiveRecord::Schema.define(version: 2020_07_16_171234) do
   add_foreign_key "observations", "users"
   add_foreign_key "services", "enterprises"
   add_foreign_key "technicals", "enterprises"
+  add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "clients"
   add_foreign_key "transactions", "enterprises"
   add_foreign_key "transactions", "technicals"

@@ -12,7 +12,6 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.time :hora_final
       t.string :response_time
       t.references :client, null: false, foreign_key: true
-      t.string :cuenta
       t.string :expediente
       t.string :placa
       t.string :tarea

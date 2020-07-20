@@ -11,4 +11,12 @@ class Client < ApplicationRecord
 
   enum regimen: { common: 'Comun', simplified: 'Simplificado' }
 
+  def arrays_acounts
+    @array = []
+    self.accounts.each do |ac|
+      @array.push([ac.id, ac.name])
+    end
+    @array
+  end
+
 end
