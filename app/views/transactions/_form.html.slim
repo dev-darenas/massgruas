@@ -62,11 +62,18 @@
                                  {include_blank: true},
                                  {class: 'form-control', id:'cuentas'}
 
-      .field.col-md-3
+      .field.col-md
+        = form.label :service_id, "Servicio"
+        = form.collection_select :service_id, @enterprise.services,
+                                 :id, :name,
+                                 {include_blank: true},
+                                 {class: 'form-control', id: 'servicio'}
+
+      .field.col-md
         = form.label :expediente
         = form.text_field :expediente, class: 'form-control'
 
-      .field.col-md-3
+      .field.col-md
         = form.label :placa
         = form.text_field :placa, class: 'form-control'
 
@@ -138,37 +145,37 @@
 
       .field.col-md
         = form.label :km_zona_normal
-        = form.number_field :km_zona_normal, class: 'form-control'
+        = form.number_field :km_zona_normal, step:"any", class: 'form-control'
 
       .field.col-md
         = form.label :km_zona_roja
-        = form.number_field :km_zona_roja, class: 'form-control'
+        = form.number_field :km_zona_roja, step:"any", class: 'form-control'
 
     .row
       .field.col-md
         = form.label :banderazo
-        = form.number_field :banderazo, class: 'form-control'
+        = form.number_field :banderazo, class: 'form-control', id:'banderazo'
 
       .field.col-md
         = form.label :valor_km_zona_n, "Valor km zona normal"
-        = form.number_field :valor_km_zona_n, class: 'form-control'
+        = form.number_field :valor_km_zona_n, class: 'form-control', id:'val_km'
 
       .field.col-md
         = form.label :valor_km_zona_r, "Valor km zona roja"
-        = form.number_field :valor_km_zona_r, class: 'form-control'
+        = form.number_field :valor_km_zona_r, class: 'form-control', id:'val_km_red'
 
     .row  
       .field.col-md
         = form.label :horas_de_espera
-        = form.number_field :horas_de_espera, class: 'form-control'
+        = form.number_field :horas_de_espera, class: 'form-control', id:'horas_espera'
 
       .field.col-md
         = form.label :rango_nocturno
-        = form.number_field :rango_nocturno, class: 'form-control'
+        = form.number_field :rango_nocturno, class: 'form-control', id:'r_nocturno'
 
       .field.col-md
         = form.label :recargo_festivo
-        = form.number_field :recargo_festivo, class: 'form-control'
+        = form.number_field :recargo_festivo, class: 'form-control', id:'r_festivo'
 
     .row
       .field.col-md-3

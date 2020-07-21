@@ -101,7 +101,7 @@ class TransactionsController < EnterpriseController
                                         :valor_km_zona_n, :valor_km_zona_r, :horas_de_espera, :rango_nocturno,
                                         :recargo_festivo, :valor_servicio, :operador, :celula_costo, :fecha_de_cierre,
                                         :descuento, :pago_total, :porcentaje_tecnico, :pago_tecnico, :combustible,
-                                        :peajes, :gasto_viaje, :gastos, :ganancias,
+                                        :peajes, :gasto_viaje, :gastos, :ganancias, :service_id,
                                         observations_attributes: [:id, :user_id, :description, :_destroy],
                                         pictures_attributes: [:id, :image, :image_cache, :_destroy],
                                         client_attributes: [:nombre, :identificacion, :razon_social, :regimen,

@@ -8,6 +8,7 @@ class Transaction < ApplicationRecord
   belongs_to :client
   belongs_to :vehicle
   belongs_to :technical
+  belongs_to :service
 
   accepts_nested_attributes_for :client
   accepts_nested_attributes_for :vehicle

@@ -151,7 +151,7 @@ $(document).on('turbolinks:load', function () {
     var $clientes = $("#clientes");
     var $cuentas = $("#cuentas");
 
-    function accounts(){
+    function accounts() {
         $.getJSON('/clients/' + $clientes.val() + '.json',
 
             function (resp) {
@@ -174,7 +174,6 @@ $(document).on('turbolinks:load', function () {
     }
 
     $clientes.change(function () {
-        console.log($clientes.val());
         if ($clientes.val() === "") {
             $cuentas.empty();
             var option = document.createElement("option");
@@ -182,6 +181,39 @@ $(document).on('turbolinks:load', function () {
 
         } else {
             accounts();
+        }
+    });
+
+    var $servicio = $("#servicio");
+    var $banderazo = $("#banderazo");
+    var $val_km = $("#val_km");
+    var $val_km_red = $("#val_km_red");
+    var $horas_espera = $("#horas_espera");
+    var $r_nocturno = $("#r_nocturno");
+    var $r_festivo = $("#r_festivo");
+
+    function list_prices() {
+        $.getJSON('/clients/' + $clientes.val() + '.json',
+
+            function (resp) {
+                for (lp of resp.list_prices) {
+                    if (lp.service_id === parseInt($servicio.val())) {
+                        $banderazo.val(lp.flag);
+                        $val_km.val(lp.kilometer_value);
+                        $val_km_red.val(lp.red_zone_value);
+                        $horas_espera.val(lp.waiting_hours_value);
+                        $r_nocturno.val(lp.night_surcharge);
+                        $r_festivo.val(lp.holiday_surcharge);
+                    }
+                }
+            }
+        );
+    }
+
+    $servicio.change(function () {
+        if ($servicio.val() === "") {
+        } else {
+            list_prices();
         }
     });
 });
