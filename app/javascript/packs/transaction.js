@@ -188,7 +188,7 @@ $(document).on('turbolinks:load', function () {
     var $banderazo = $("#banderazo");
     var $val_km = $("#val_km");
     var $val_km_red = $("#val_km_red");
-    var $horas_espera = $("#horas_espera");
+    var $waiting_hours_value = $("#waiting_hours_value");
     var $r_nocturno = $("#r_nocturno");
     var $r_festivo = $("#r_festivo");
 
@@ -201,7 +201,7 @@ $(document).on('turbolinks:load', function () {
                         $banderazo.val(lp.flag);
                         $val_km.val(lp.kilometer_value);
                         $val_km_red.val(lp.red_zone_value);
-                        $horas_espera.val(lp.waiting_hours_value);
+                        $waiting_hours_value.val(lp.waiting_hours_value);
                         $r_nocturno.val(lp.night_surcharge);
                         $r_festivo.val(lp.holiday_surcharge);
                     }
@@ -221,6 +221,9 @@ $(document).on('turbolinks:load', function () {
     var $total_normal_zone = $("#total_normal_zone");
     var $km_zona_roja = $("#km_zona_roja");
     var $total_red_zone = $("#total_red_zone");
+    var $horas_de_espera = $("#horas_de_espera");
+    var $total_waiting_hours = $("#total_waiting_hours");
+    var $valor_servicio = $("#valor_servicio");
 
     if ($val_km.val() !== "" && $val_km.val() !== undefined){
         $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
@@ -237,4 +240,36 @@ $(document).on('turbolinks:load', function () {
             $total_red_zone.val(parseFloat($km_zona_roja.val()) * parseFloat($val_km_red.val()));
         })
     }
+
+
+    if ($waiting_hours_value.val() !== "" && $waiting_hours_value.val() !== undefined){
+        $total_waiting_hours.val(parseFloat($waiting_hours_value.val()) * parseFloat($horas_de_espera.val()));
+        sumTotalService();
+    }else {
+        $horas_de_espera.change(function () {
+            $total_waiting_hours.val(parseFloat($horas_de_espera.val()) * parseFloat($waiting_hours_value.val()));
+            sumTotalService();
+        })
+    }
+    
+    function sumTotalService() {
+        var total_normal_zone = ($total_normal_zone.val() === null || $total_normal_zone.val() === undefined || $total_normal_zone.val() === "") ? 0 : $total_normal_zone.val();
+        var total_red_zone = ($total_red_zone.val() === null || $total_red_zone.val() === undefined || $total_red_zone.val() === "") ? 0 : $total_red_zone.val();
+        var total_waiting_hours = ($total_waiting_hours.val() === null || $total_waiting_hours.val() === undefined || $total_waiting_hours.val() === "") ? 0 : $total_waiting_hours.val();
+        var banderazo = ($banderazo.val() === null || $banderazo.val() === undefined || $banderazo.val() === "") ? 0 : $banderazo.val();
+        var r_nocturno = ($r_nocturno.val() === null || $r_nocturno.val() === undefined || $r_nocturno.val() === "") ? 0 : $r_nocturno.val();
+        var r_festivo = ($r_festivo.val() === null || $r_festivo.val() === undefined || $r_festivo.val() === "") ? 0 : $r_festivo.val();
+
+        $valor_servicio.val(parseFloat(total_normal_zone)+parseFloat(total_red_zone)+parseFloat(total_waiting_hours)+parseFloat(banderazo)+
+            parseFloat(r_nocturno)+parseFloat(r_festivo));
+    }
+
+    $total_normal_zone.change(sumTotalService());
+    $total_red_zone.change(sumTotalService());
+    $total_waiting_hours.change(sumTotalService());
+    $banderazo.change(sumTotalService());
+    $r_nocturno.change(sumTotalService());
+    $r_festivo.change(sumTotalService());
+
+
 });

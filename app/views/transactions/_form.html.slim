@@ -169,7 +169,12 @@
     .row  
       .field.col-md
         = form.label :horas_de_espera
-        = form.number_field :horas_de_espera, class: 'form-control', id:'horas_espera'
+        = form.number_field :horas_de_espera, class: 'form-control', id:'horas_de_espera'
+
+      .field.col-md
+        = form.label :waiting_hours_value
+        = form.number_field :waiting_hours_value, class: 'form-control', id:'waiting_hours_value'
+        = form.hidden_field :total_waiting_hours, id:'total_waiting_hours'
 
       .field.col-md
         = form.label :rango_nocturno
@@ -182,7 +187,7 @@
     .row
       .field.col-md-3
         = form.label :valor_servicio
-        = form.number_field :valor_servicio, class: 'form-control'
+        = form.number_field :valor_servicio, step:"any",class: 'form-control', id:'valor_servicio'
 
       .field.col-md
         = form.label :operador
