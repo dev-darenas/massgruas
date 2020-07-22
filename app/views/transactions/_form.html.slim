@@ -210,8 +210,8 @@
       .row
         .col-md-3
           .field.col-md-7
-            = form.label :descuento
-            = form.number_field :descuento, class: 'form-control'
+            = form.label :descuento, 'Descuento (%)'
+            = form.number_field :descuento, max:'100',class: 'form-control'
 
           .field.col-md-7
             = form.label :pago_total
