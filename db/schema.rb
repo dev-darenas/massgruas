@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_194913) do
+ActiveRecord::Schema.define(version: 2020_07_22_221222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_194913) do
     t.float "recargo_festivo"
     t.float "valor_servicio"
     t.string "operador"
-    t.float "celula_costo"
+    t.string "celula_costo"
     t.datetime "fecha_de_cierre"
     t.float "descuento"
     t.float "pago_total"
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_194913) do
     t.float "total_red_zone"
     t.integer "waiting_hours_value"
     t.float "total_waiting_hours"
+    t.float "priced"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["client_id"], name: "index_transactions_on_client_id"
     t.index ["enterprise_id"], name: "index_transactions_on_enterprise_id"

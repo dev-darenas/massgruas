@@ -187,7 +187,11 @@
     .row
       .field.col-md-3
         = form.label :valor_servicio
-        = form.number_field :valor_servicio, step:"any",class: 'form-control', id:'valor_servicio'
+        = form.number_field :valor_servicio, step:"any", readonly:'readonly',class: 'form-control', id:'valor_servicio'
+
+      .field.col-md-3
+        = form.label :priced
+        = form.number_field :priced, step:"any", class: 'form-control', id:'priced'
 
       .field.col-md
         = form.label :operador

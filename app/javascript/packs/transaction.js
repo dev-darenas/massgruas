@@ -224,20 +224,25 @@ $(document).on('turbolinks:load', function () {
     var $horas_de_espera = $("#horas_de_espera");
     var $total_waiting_hours = $("#total_waiting_hours");
     var $valor_servicio = $("#valor_servicio");
+    var $priced = $("#priced");
 
     if ($val_km.val() !== "" && $val_km.val() !== undefined){
         $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
+        sumTotalService();
     }else {
         $km_zona_normal.change(function () {
             $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
+            sumTotalService();
         })
     }
 
     if ($val_km_red.val() !== "" && $val_km_red.val() !== undefined){
         $total_red_zone.val(parseFloat($val_km_red.val()) * parseFloat($km_zona_roja.val()));
+        sumTotalService();
     }else {
         $km_zona_roja.change(function () {
             $total_red_zone.val(parseFloat($km_zona_roja.val()) * parseFloat($val_km_red.val()));
+            sumTotalService();
         })
     }
 
@@ -262,14 +267,7 @@ $(document).on('turbolinks:load', function () {
 
         $valor_servicio.val(parseFloat(total_normal_zone)+parseFloat(total_red_zone)+parseFloat(total_waiting_hours)+parseFloat(banderazo)+
             parseFloat(r_nocturno)+parseFloat(r_festivo));
+        $priced.val($valor_servicio.val());
     }
-
-    $total_normal_zone.change(sumTotalService());
-    $total_red_zone.change(sumTotalService());
-    $total_waiting_hours.change(sumTotalService());
-    $banderazo.change(sumTotalService());
-    $r_nocturno.change(sumTotalService());
-    $r_festivo.change(sumTotalService());
-
 
 });
