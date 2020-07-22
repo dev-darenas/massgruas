@@ -145,11 +145,11 @@
 
       .field.col-md
         = form.label :km_zona_normal
-        = form.number_field :km_zona_normal, step:"any", class: 'form-control'
+        = form.number_field :km_zona_normal, step:"any", class: 'form-control', id:'km_zona_normal'
 
       .field.col-md
         = form.label :km_zona_roja
-        = form.number_field :km_zona_roja, step:"any", class: 'form-control'
+        = form.number_field :km_zona_roja, step:"any", class: 'form-control', id:'km_zona_roja'
 
     .row
       .field.col-md
@@ -159,10 +159,12 @@
       .field.col-md
         = form.label :valor_km_zona_n, "Valor km zona normal"
         = form.number_field :valor_km_zona_n, class: 'form-control', id:'val_km'
+        = form.hidden_field :total_normal_zone, id:'total_normal_zone'
 
       .field.col-md
         = form.label :valor_km_zona_r, "Valor km zona roja"
         = form.number_field :valor_km_zona_r, class: 'form-control', id:'val_km_red'
+        = form.hidden_field :total_red_zone, id:'total_red_zone'
 
     .row  
       .field.col-md

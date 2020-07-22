@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
   validates :orden_Trabajo, uniqueness: true
+  validate :sum_of_normal_zone_and_red_zone
 
   belongs_to :enterprise
   has_many :observations, as: :observable, dependent: :destroy
@@ -49,5 +50,13 @@ class Transaction < ApplicationRecord
 
   def add_one_to_service_number
     self.enterprise.update(service_number: self.enterprise.service_number + 1)
+  end
+
+  def sum_of_normal_zone_and_red_zone
+    sum = km_zona_normal + km_zona_roja
+    if total_km != sum
+      errors.add(:km_zona_normal, "the sum with red_zone_km is not equal to total_km")
+      errors.add(:km_zona_roja, "the sum with km_zona_normal is not equal to total_km")
+    end
   end
 end

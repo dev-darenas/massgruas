@@ -216,4 +216,25 @@ $(document).on('turbolinks:load', function () {
             list_prices();
         }
     });
+
+    var $km_zona_normal = $("#km_zona_normal");
+    var $total_normal_zone = $("#total_normal_zone");
+    var $km_zona_roja = $("#km_zona_roja");
+    var $total_red_zone = $("#total_red_zone");
+
+    if ($val_km.val() !== "" && $val_km.val() !== undefined){
+        $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
+    }else {
+        $km_zona_normal.change(function () {
+            $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
+        })
+    }
+
+    if ($val_km_red.val() !== "" && $val_km_red.val() !== undefined){
+        $total_red_zone.val(parseFloat($val_km_red.val()) * parseFloat($km_zona_roja.val()));
+    }else {
+        $km_zona_roja.change(function () {
+            $total_red_zone.val(parseFloat($km_zona_roja.val()) * parseFloat($val_km_red.val()));
+        })
+    }
 });

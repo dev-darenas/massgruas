@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_133850) do
+ActiveRecord::Schema.define(version: 2020_07_22_141138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_133850) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "account_id"
     t.bigint "service_id", null: false
+    t.float "total_normal_zone"
+    t.float "total_red_zone"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["client_id"], name: "index_transactions_on_client_id"
     t.index ["enterprise_id"], name: "index_transactions_on_enterprise_id"
