@@ -246,7 +246,7 @@
 
             .field.col-md
               = form.label :ganancias
-              = form.number_field :ganancias, class: 'form-control'
+              = form.number_field :ganancias, step:"any", class: 'form-control', id:'ganancias'
 
 
     = form.fields_for :pictures do |p|
