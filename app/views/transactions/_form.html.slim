@@ -283,8 +283,7 @@
       - unless @transaction.id.blank?
         - if @transaction.id.present? && @transaction.open?
           | |
-          = link_to "Deliver", transaction_path(@transaction, transaction: {status: 'delivered'}),
-                :method => :put, :confirm => "Are you sure?", class: 'btn btn-warning'
+          = link_to "Deliver", transaction_deliver_path(@transaction), :confirm => "Are you sure?", class: 'btn btn-warning'
         - unless @transaction.closed?
           - if @transaction.id.present? && @transaction.delivered?
             | |

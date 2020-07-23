@@ -1,5 +1,5 @@
 class TransactionsController < EnterpriseController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :close]
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :close, :deliver]
 
   def index
     case params[:status]
@@ -72,6 +72,18 @@ class TransactionsController < EnterpriseController
     respond_to do |format|
       if @transaction.close
         format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully closed.' }
+        format.json { render :edit, status: :ok, location: @transaction }
+      else
+        format.html { render :edit }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+      end
+    end
+    end
+
+  def deliver
+    respond_to do |format|
+      if @transaction.deliver
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully delivered.' }
         format.json { render :edit, status: :ok, location: @transaction }
       else
         format.html { render :edit }

@@ -41,11 +41,16 @@ class Transaction < ApplicationRecord
       end
       transition all - [:closed] => :closed
     end
+
+    event :deliver do
+      transition :open => :delivered, if: -> {valid_celula_costo}
+    end
   end
 
   scope :s_opened, -> { where(status: 'open') }
   scope :s_delivered, -> { where(status: 'delivered') }
   scope :s_closed, -> { where(status: 'closed') }
+
   after_create :add_one_to_service_number
 
   def add_one_to_service_number
@@ -57,6 +62,15 @@ class Transaction < ApplicationRecord
     if total_km != sum
       errors.add(:km_zona_normal, "the sum with red_zone_km is not equal to total_km")
       errors.add(:km_zona_roja, "the sum with km_zona_normal is not equal to total_km")
+    end
+  end
+
+  def valid_celula_costo
+    if celula_costo.blank?
+      self.errors.add(:celula_costo, "It cant be empty")
+      false
+    else
+      true
     end
   end
 end
