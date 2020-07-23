@@ -211,11 +211,11 @@
         .col-md-3
           .field.col-md-7
             = form.label :descuento, 'Descuento (%)'
-            = form.number_field :descuento, max:'100',class: 'form-control'
+            = form.number_field :descuento, step:"any", min:'0', max:'100',class: 'form-control', id:'descuento'
 
           .field.col-md-7
             = form.label :pago_total
-            = form.number_field :pago_total, class: 'form-control'
+            = form.number_field :pago_total, step:"any", class: 'form-control', id:'pago_total'
 
         .col
           .row

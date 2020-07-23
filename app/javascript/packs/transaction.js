@@ -225,6 +225,8 @@ $(document).on('turbolinks:load', function () {
     var $total_waiting_hours = $("#total_waiting_hours");
     var $valor_servicio = $("#valor_servicio");
     var $priced = $("#priced");
+    var $descuento = $("#descuento");
+    var $pago_total = $("#pago_total");
 
     if ($val_km.val() !== "" && $val_km.val() !== undefined){
         $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
@@ -268,6 +270,17 @@ $(document).on('turbolinks:load', function () {
         $valor_servicio.val(parseFloat(total_normal_zone)+parseFloat(total_red_zone)+parseFloat(total_waiting_hours)+parseFloat(banderazo)+
             parseFloat(r_nocturno)+parseFloat(r_festivo));
         $priced.val($valor_servicio.val());
+    }
+
+    function calculoPagoTotal() {
+        $pago_total.val(parseFloat($priced.val()) - parseFloat($priced.val()) * (parseFloat($descuento.val())/100));
+    }
+    if ($priced.val() !== null && $priced.val() !== undefined && $priced.val() !== ""){
+        if ($descuento.val() !== null && $descuento.val() !== undefined && $descuento.val() !== ""){
+            calculoPagoTotal();
+        }
+    }else {
+        $descuento.change(calculoPagoTotal());
     }
 
 });
