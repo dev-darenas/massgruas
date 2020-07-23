@@ -283,11 +283,15 @@
       - unless @transaction.id.blank?
         - if @transaction.id.present? && @transaction.open?
           | |
-          = link_to "Deliver", transaction_deliver_path(@transaction), :confirm => "Are you sure?", class: 'btn btn-warning'
+          = link_to "Deliver", transaction_deliver_path(@transaction), confirm: "Are you sure?", class: 'btn btn-warning'
         - unless @transaction.closed?
           - if @transaction.id.present? && @transaction.delivered?
             | |
-            = link_to "Close", transaction_close_path(@transaction), :confirm => "Are you sure?", class: 'btn btn-danger'
+            = link_to "Close", transaction_close_path(@transaction), confirm: "Are you sure?", class: 'btn btn-danger'
+
+        -if @transaction.closed?
+          | |
+          = link_to "check_in", transaction_check_in_path(@transaction), confirm: "Are you sure?", class: 'btn btn-danger'
 
     br
 

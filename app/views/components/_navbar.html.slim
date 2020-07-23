@@ -23,6 +23,7 @@
             = link_to 'Open', transactions_path({status: 'open'}), class: 'dropdown-item'
             = link_to 'Delivered', transactions_path({status: 'delivered'}), class: 'dropdown-item'
             = link_to 'Closed', transactions_path({status: 'closed'}), class: 'dropdown-item'
+            = link_to 'Invoiced', transactions_path({status: 'invoiced'}), class: 'dropdown-item'
         li.nav-item
           = link_to 'Tipos de documentos', document_types_path, class: 'nav-link'
         li.nav-item

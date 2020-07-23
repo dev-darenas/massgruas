@@ -33,7 +33,7 @@ class Transaction < ApplicationRecord
                                     |a| a[:image].blank?
                                 }, allow_destroy: true
 
-  enum status: { open: 'Open', delivered: 'Delivered', closed: 'Closed' } do
+  enum status: { open: 'Open', delivered: 'Delivered', closed: 'Closed', invoiced: 'Invoiced'} do
     event :close do
       before do
         self.fecha_de_cierre = DateTime.now
@@ -45,11 +45,16 @@ class Transaction < ApplicationRecord
     event :deliver do
       transition :open => :delivered, if: -> {valid_celula_costo}
     end
+
+    event :check_in do
+      transition :closed => :invoiced
+    end
   end
 
   scope :s_opened, -> { where(status: 'open') }
   scope :s_delivered, -> { where(status: 'delivered') }
   scope :s_closed, -> { where(status: 'closed') }
+  scope :s_invoiced, -> {where(status: 'invoiced')}
 
   after_create :add_one_to_service_number
 

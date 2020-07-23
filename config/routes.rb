@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   get '/transactions/close/:id', to: 'transactions#close', as: 'transaction_close'
   get '/transactions/deliver/:id', to: 'transactions#deliver', as: 'transaction_deliver'
+  get '/transactions/check_in/:id', to: 'transactions#check_in', as: 'transaction_check_in'
 
   namespace :transactions do
     resources :clients, only: :new
