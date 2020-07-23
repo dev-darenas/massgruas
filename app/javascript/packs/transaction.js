@@ -227,6 +227,8 @@ $(document).on('turbolinks:load', function () {
     var $priced = $("#priced");
     var $descuento = $("#descuento");
     var $pago_total = $("#pago_total");
+    var $porcentaje_tecnico = $("#porcentaje_tecnico");
+    var $pago_tecnico = $("#pago_tecnico");
 
     if ($val_km.val() !== "" && $val_km.val() !== undefined){
         $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
@@ -275,12 +277,25 @@ $(document).on('turbolinks:load', function () {
     function calculoPagoTotal() {
         $pago_total.val(parseFloat($priced.val()) - parseFloat($priced.val()) * (parseFloat($descuento.val())/100));
     }
+
     if ($priced.val() !== null && $priced.val() !== undefined && $priced.val() !== ""){
         if ($descuento.val() !== null && $descuento.val() !== undefined && $descuento.val() !== ""){
             calculoPagoTotal();
         }
     }else {
         $descuento.change(calculoPagoTotal());
+    }
+
+    function calculoPagoTecnico() {
+        $pago_tecnico.val(parseFloat($pago_total.val()) * (parseFloat($porcentaje_tecnico.val())/100));
+    }
+
+    if ($pago_total.val() !== null && $pago_total.val() !== undefined && $pago_total.val() !== ""){
+        if ($porcentaje_tecnico.val() !== null && $porcentaje_tecnico.val() !== undefined && $porcentaje_tecnico.val() !== ""){
+            calculoPagoTecnico();
+        }
+    }else {
+        $porcentaje_tecnico.change(calculoPagoTecnico());
     }
 
 });

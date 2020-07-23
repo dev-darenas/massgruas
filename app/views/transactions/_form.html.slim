@@ -220,12 +220,12 @@
         .col
           .row
             .field.col-md
-              = form.label :porcentaje_tecnico
-              = form.number_field :porcentaje_tecnico, class: 'form-control'
+              = form.label :porcentaje_tecnico, "Porcentaje técnico (%)"
+              = form.number_field :porcentaje_tecnico, step:"any", min:'0', max:'100', class: 'form-control', id:'porcentaje_tecnico'
 
             .field.col-md
               = form.label :pago_tecnico
-              = form.number_field :pago_tecnico, class: 'form-control'
+              = form.number_field :pago_tecnico, step:"any", class: 'form-control', id:'pago_tecnico'
 
             .field.col-md
               = form.label :combustible
