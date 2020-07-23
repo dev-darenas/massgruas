@@ -39,7 +39,7 @@ class Transaction < ApplicationRecord
         self.fecha_de_cierre = DateTime.now
         self.save
       end
-      transition all - [:closed] => :closed
+      transition :delivered => :closed, if: -> {valid_ganancias}
     end
 
     event :deliver do
@@ -68,6 +68,15 @@ class Transaction < ApplicationRecord
   def valid_celula_costo
     if celula_costo.blank?
       self.errors.add(:celula_costo, "It cant be empty")
+      false
+    else
+      true
+    end
+  end
+
+  def valid_ganancias
+    if ganancias.blank?
+      self.errors.add(:ganancias, "It cant be empty")
       false
     else
       true
