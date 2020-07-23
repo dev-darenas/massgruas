@@ -229,20 +229,20 @@
 
             .field.col-md
               = form.label :combustible
-              = form.number_field :combustible, class: 'form-control'
+              = form.number_field :combustible, step:"any", class: 'form-control', id:'combustible'
 
           .row
             .field.col-md
               = form.label :peajes
-              = form.number_field :peajes, class: 'form-control'
+              = form.number_field :peajes, step:"any", class: 'form-control', id:'peajes'
 
             .field.col-md
               = form.label :gasto_viaje
-              = form.number_field :gasto_viaje, class: 'form-control'
+              = form.number_field :gasto_viaje, step:"any", class: 'form-control', id:'gasto_viaje'
 
             .field.col-md
               = form.label :gastos
-              = form.number_field :gastos, class: 'form-control'
+              = form.number_field :gastos, step:"any", class: 'form-control', id:'gastos'
 
             .field.col-md
               = form.label :ganancias

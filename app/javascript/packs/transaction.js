@@ -229,6 +229,11 @@ $(document).on('turbolinks:load', function () {
     var $pago_total = $("#pago_total");
     var $porcentaje_tecnico = $("#porcentaje_tecnico");
     var $pago_tecnico = $("#pago_tecnico");
+    var $combustible = $("#combustible");
+    var $peajes = $("#peajes");
+    var $gasto_viaje = $("#gasto_viaje");
+    var $gastos = $("#gastos");
+
 
     if ($val_km.val() !== "" && $val_km.val() !== undefined){
         $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
@@ -288,6 +293,7 @@ $(document).on('turbolinks:load', function () {
 
     function calculoPagoTecnico() {
         $pago_tecnico.val(parseFloat($pago_total.val()) * (parseFloat($porcentaje_tecnico.val())/100));
+        $pago_tecnico.trigger('change');
     }
 
     if ($pago_total.val() !== null && $pago_total.val() !== undefined && $pago_total.val() !== ""){
@@ -297,5 +303,19 @@ $(document).on('turbolinks:load', function () {
     }else {
         $porcentaje_tecnico.change(calculoPagoTecnico());
     }
+
+    function sumTotalGastos() {
+        var pago_tecnico = ($pago_tecnico.val() === null || $pago_tecnico.val() === undefined || $pago_tecnico.val() === "") ? 0 : $pago_tecnico.val();
+        var combustible = ($combustible.val() === null || $combustible.val() === undefined || $combustible.val() === "") ? 0 : $combustible.val();
+        var peajes = ($peajes.val() === null || $peajes.val() === undefined || $peajes.val() === "") ? 0 : $peajes.val();
+        var gasto_viaje = ($gasto_viaje.val() === null || $gasto_viaje.val() === undefined || $gasto_viaje.val() === "") ? 0 : $gasto_viaje.val();
+
+        $gastos.val(parseFloat(pago_tecnico)+parseFloat(combustible)+parseFloat(peajes)+parseFloat(gasto_viaje));
+    }
+
+    $pago_tecnico.change(sumTotalGastos());
+    $combustible.change(sumTotalGastos());
+    $peajes.change(sumTotalGastos());
+    $gasto_viaje.change(sumTotalGastos());
 
 });
