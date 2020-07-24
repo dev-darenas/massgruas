@@ -3,4 +3,8 @@ p#notice = notice
 h1 Editing Transaction
 
 = link_to 'Create PDF', transaction_path(@transaction, :format => :pdf), class: 'btn btn-primary'
+| |
+button class="btn_clip_board btn-primary"
+  | Copiar
+
 = render 'form', transaction: @transaction

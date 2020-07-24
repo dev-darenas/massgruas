@@ -8,8 +8,16 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 import "bootstrap";
-import "./transaction"
+import "./transaction";
+import "./clibboard_Transaction";
+import "multiple-select/dist/multiple-select";
 
+$(document).on('turbolinks:load',function () {
+    $('multiple-select').multipleSelect({
+        multiple: true,
+        multipleWidth: 60
+    });
+})
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
