@@ -131,7 +131,7 @@
           .col
             = form.label :vehicle_id, "Placa Grúa"
             = form.collection_select :vehicle_id, @enterprise.vehicles,
-                    :id, :placa_and_services,
+                    :id, :placa,
                     {include_blank: true},
                     {class: 'form-control mb-2'}
           .col-2

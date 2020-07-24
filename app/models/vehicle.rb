@@ -16,8 +16,4 @@ class Vehicle < ApplicationRecord
                                 reject_if: lambda {
                                     |a| a[:image].blank?
                                 }, allow_destroy: true
-
-  def placa_and_services
-    "#{self.placa} servicio: #{self.servicio}"
-  end
 end
