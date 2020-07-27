@@ -1,11 +1,4 @@
-- if @user.errors.any?
-  #error_explanation
-    h2 = pluralize(@user.errors.count, "error")
-    | prohibited this client from being saved:
-
-    ul
-      - @user.errors.full_messages.each do |message|
-        li = message
+= alert_error(@user)
 
 .field
   = f.label "Full name"

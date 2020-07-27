@@ -1,13 +1,5 @@
 = form_with(model: document_type, local: true) do |form|
-  - if document_type.errors.any?
-    #error_explanation
-      h2
-        = pluralize(document_type.errors.count, "error")
-        | prohibited this document_type from being saved:
-
-      ul
-        - document_type.errors.full_messages.each do |message|
-          li = message
+  = alert_error(document_type)
 
   .field
     = form.label :name, class: 'form-label'

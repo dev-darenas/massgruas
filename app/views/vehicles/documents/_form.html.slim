@@ -1,14 +1,7 @@
 = render 'vehicles/tabs', page: 'document'
 
 = form_with model: [@vehicle, @document], local: true do |form|
-  - if @document.errors.any?
-    #error_explanation
-      h2 = pluralize(@document.errors.count, "error")
-      | prohibited this list Price from being saved:
-
-      ul
-        - @document.errors.full_messages.each do |message|
-          li = message
+  = alert_error(@document)
 
   .field
     = form.label :document_type

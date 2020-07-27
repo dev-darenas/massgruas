@@ -2,14 +2,7 @@
 
 = form_with model: [@client, @list_price], local: true do |form|
 
-  - if @list_price.errors.any?
-    #error_explanation
-      h2 = pluralize(@list_price.errors.count, "error")
-      | prohibited this list Price from being saved:
-
-      ul
-        - @list_price.errors.full_messages.each do |message|
-          li = message
+  = alert_error(@list_price)
   .container
     .row
       .field.col-md-4

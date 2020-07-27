@@ -1,13 +1,6 @@
 = form_with(model: transaction, local: true) do |form|
   .container
-    - if form.object.errors.any?
-      #error_explanation
-        h2 = pluralize(form.object.errors.count, "error")
-        | prohibited this transaction from being saved:
-          
-        ul
-          - form.object.errors.full_messages.each do |message|
-            li = message
+    = alert_error(transaction)
     .row
       .field.col-md
         = form.label :fecha, "fecha y hora"

@@ -2,14 +2,7 @@
 = render 'technicals/tabs', page: 'fecha_vinculación'
 
 = form_with(model: [@technical, @bonding_date], local: true) do |form|
-  - if @bonding_date.errors.any?
-    #error_explanation
-      h2 = pluralize(@bonding_date.errors.count, "error")
-        | prohibited this bonding_date from being saved:
-
-      ul
-        - @bonding_date.errors.full_messages.each do |message|
-          li = message
+  = alert_error(@bonding_date)
 
   .field
     = form.label :entry_date

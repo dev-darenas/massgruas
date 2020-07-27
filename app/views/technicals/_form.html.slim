@@ -1,13 +1,6 @@
 = form_with(model: technical, local: true) do |form|
 
-  - if form.object.errors.any?
-    #error_explanation
-      h2 = pluralize(vehicle.errors.count, "error")
-      | prohibited this vehicle from being saved:
-
-      ul
-        - form.object.errors.full_messages.each do |message|
-          li = message
+  = alert_error(technical)
   - unless @technical.id.nil?
     = render 'technicals/tabs', page: 'general'
 

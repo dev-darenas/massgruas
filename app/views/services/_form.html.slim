@@ -1,12 +1,5 @@
 = form_with(model: service, local: true) do |form|
-  - if service.errors.any?
-    #error_explanation
-      h2 = pluralize(service.errors.count, "error")
-      | prohibited this service from being saved:
-
-      ul
-        - service.errors.full_messages.each do |message|
-          li = message
+  = alert_error(service)
 
   .field
     = form.label :name, class: 'form-label'
