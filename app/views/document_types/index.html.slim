@@ -14,6 +14,8 @@ table.table
         td = link_to 'Destroy', document_type,
                       method: :delete,
                       data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+= pagy_bootstrap_nav(@pagy).html_safe
+= pagy_bootstrap_nav_js(@pagy).html_safe
 
 br
 

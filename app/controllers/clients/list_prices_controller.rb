@@ -3,7 +3,7 @@ module Clients
     before_action :set_list_price, only: [:show, :edit, :update, :destroy]
 
     def index
-      @list_prices = @client.list_prices
+      @pagy, @list_prices = pagy( @client.list_prices)
     end
 
     def new

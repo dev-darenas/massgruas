@@ -4,15 +4,15 @@ class TransactionsController < EnterpriseController
   def index
     case params[:status]
     when 'open'
-      @transactions = @enterprise.transactions.s_opened
+      @pagy, @transactions = pagy( @enterprise.transactions.s_opened)
     when 'delivered'
-      @transactions = @enterprise.transactions.s_delivered
+      @pagy, @transactions = pagy( @enterprise.transactions.s_delivered)
     when 'closed'
-      @transactions = @enterprise.transactions.s_closed
+      @pagy, @transactions = pagy( @enterprise.transactions.s_closed)
     when 'invoiced'
-      @transactions = @enterprise.transactions.s_invoiced
+      @pagy, @transactions = pagy( @enterprise.transactions.s_invoiced)
     else
-      @transactions = @enterprise.transactions
+      @pagy, @transactions = pagy( @enterprise.transactions)
     end
   end
 

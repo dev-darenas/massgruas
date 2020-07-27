@@ -2,7 +2,7 @@ class TechnicalsController < EnterpriseController
   before_action :set_technical, only: [:show, :edit, :update, :destroy]
 
   def index
-    @technicals = Technical.all
+    @pagy, @technicals = pagy( @enterprise.technicals)
   end
 
   def show

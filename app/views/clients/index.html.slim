@@ -28,6 +28,8 @@ table.table
       td = client.email
       td = link_to 'Edit', edit_client_path(client), class: 'btn btn-primary'
       td = link_to 'Destroy', client, method: :delete, data: {confirm: 'Estas Seguro?'}, class: 'btn btn-danger'
+= pagy_bootstrap_nav(@pagy).html_safe
+= pagy_bootstrap_nav_js(@pagy).html_safe
 
 br
 

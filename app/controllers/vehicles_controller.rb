@@ -4,7 +4,7 @@ class VehiclesController < EnterpriseController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = @enterprise.vehicles
+    @pagy, @vehicles = pagy( @enterprise.vehicles)
   end
 
   # GET /vehicles/1

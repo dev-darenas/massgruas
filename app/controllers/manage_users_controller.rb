@@ -2,7 +2,7 @@ class ManageUsersController < EnterpriseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = @enterprise.users.all
+    @pagy, @users = pagy( @enterprise.users)
   end
 
   def show

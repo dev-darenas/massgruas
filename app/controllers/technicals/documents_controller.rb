@@ -3,7 +3,7 @@ module Technicals
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
     def index
-      @documents = @technical.documents
+      @pagy, @documents = pagy( @technical.documents )
     end
 
     def new

@@ -4,7 +4,7 @@ class ServicesController < EnterpriseController
   # GET /services
   # GET /services.json
   def index
-    @services = @enterprise.services.all
+    @pagy, @services = pagy( @enterprise.services)
   end
 
   # GET /services/1

@@ -4,7 +4,7 @@ class DocumentTypesController < EnterpriseController
   # GET /document_types
   # GET /document_types.json
   def index
-    @document_types = @enterprise.document_types.all
+    @pagy, @document_types = pagy( @enterprise.document_types)
   end
 
   # GET /document_types/1

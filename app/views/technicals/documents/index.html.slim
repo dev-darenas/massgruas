@@ -19,6 +19,9 @@ table.table
         td = link_to 'Destroy', technical_document_path(@technical, document),
                                 method: :delete, data: {confirm: 'Estas Seguro?'},
                                 class: 'btn btn-danger'
+= pagy_bootstrap_nav(@pagy).html_safe
+= pagy_bootstrap_nav_js(@pagy).html_safe
+
     - unless expired.nil?
       = expired.html_safe
 br

@@ -1,5 +1,7 @@
 module ApplicationHelper
   require 'open-uri'
+  include Pagy::Frontend
+
   def embed_remote_image(url, content_type)
     asset = open(url, "r:UTF-8") { |f| f.read }
     base64 = Base64.encode64(asset.to_s).gsub(/\s+/, "")

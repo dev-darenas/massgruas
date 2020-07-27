@@ -3,7 +3,7 @@ module Clients
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
     def index
-      @documents = @client.documents
+      @pagy, @documents = pagy( @client.documents)
     end
 
     def new

@@ -4,7 +4,7 @@ class ClientsController < EnterpriseController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = @enterprise.clients
+    @pagy, @clients = pagy( @enterprise.clients)
   end
 
   # GET /clients/1

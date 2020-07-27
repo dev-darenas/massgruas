@@ -4,7 +4,7 @@ class AccountsController < EnterpriseController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = @enterprise.accounts.all
+    @pagy, @accounts = pagy( @enterprise.accounts)
   end
 
   # GET /accounts/1

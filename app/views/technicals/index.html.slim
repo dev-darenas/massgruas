@@ -31,6 +31,8 @@ table.table
         td = link_to 'Edit', edit_technical_path(technical), class: 'btn btn-primary'
         td = link_to 'Destroy', technical, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
         td = link_to 'Create PDF', technical_path(technical, :format => :pdf), class: 'btn btn-primary'
+= pagy_bootstrap_nav(@pagy).html_safe
+= pagy_bootstrap_nav_js(@pagy).html_safe
 
 br
 = link_to 'Nuevo Técnico', new_technical_path, class: 'btn btn-primary'
