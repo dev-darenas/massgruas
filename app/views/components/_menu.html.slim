@@ -1,42 +1,51 @@
-aside.main-sidebar.sidebar-dark-primary.elevation-4
-  .sidebar
-    nav.mt-2
-      ul.nav.nav-pills.nav-sidebar.flex-column data-widget="treeview" role="menu" data-accordion="false"
-        li.nav-item
-          a.nav-link href="#"
-            i.nav-icon.fas.fa-tachometer-alt
-            p 
-              | Configuración
-              i.right.fas.fa-angle-left
-          ul.nav.nav-treeview
-            = link_to clients_path, class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Cliente
-            = link_to vehicles_path, class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Vehiculos
-            = link_to technicals_path, class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Tecnicos
-            = link_to manage_users_path, class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Usuarios
-        li.nav-item
-          a.nav-link href="#"
-            i.nav-icon.fas.fa-tachometer-alt
-            p 
-              | Transacciones
-              i.right.fas.fa-angle-left
-          ul.nav.nav-treeview
-            = link_to transactions_path({status: 'open'}), class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Abierto
-            = link_to transactions_path({status: 'delivered'}), class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Entregado
-            = link_to transactions_path({status: 'closed'}), class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Cerrados
-            = link_to transactions_path({status: 'invoiced'}), class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Facturados
+- if current_user
+  aside.main-sidebar.sidebar-dark-primary.elevation-4
+    .sidebar
+      nav.mt-2
+        ul.nav.nav-pills.nav-sidebar.flex-column data-widget="treeview" role="menu" data-accordion="false"
+          li.nav-item
+            a.nav-link href="#"
+              i.nav-icon.fas.fa-tachometer-alt
+              p
+                | Configuración
+                i.right.fas.fa-angle-left
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to clients_path, class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Cliente
+              li.nav-item
+                = link_to vehicles_path, class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Vehiculos
+              li.nav-item
+                = link_to technicals_path, class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Tecnicos
+              li.nav-item
+                = link_to manage_users_path, class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Usuarios
+          li.nav-item
+            a.nav-link href="#"
+              i.nav-icon.fas.fa-tachometer-alt
+              p
+                | Transacciones
+                i.right.fas.fa-angle-left
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to transactions_path({status: 'open'}), class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Abierto
+              li.nav-item
+                = link_to transactions_path({status: 'delivered'}), class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Entregado
+              li.nav-item
+                = link_to transactions_path({status: 'closed'}), class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Cerrados
+              li.nav-item
+                = link_to transactions_path({status: 'invoiced'}), class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Facturados
