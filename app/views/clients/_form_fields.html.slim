@@ -2,10 +2,11 @@
 = f.text_field :nombre, class: 'form-control'
 
 = f.label :account_ids, "Cuentas"
+br/
 = f.collection_select :account_ids, @enterprise.accounts, :id, :name,
-                        {:prompt => "Por favor seleccione"},
-                        {:multiple => true, class: 'form-control multiple-select'}
-
+                        { },
+                        { multiple: true, class: 'multiple-select' }
+br/
 = f.label "Identificación"
 = f.number_field :identificacion, class: 'form-control'
 

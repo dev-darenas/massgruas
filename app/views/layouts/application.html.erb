@@ -8,21 +8,37 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval':false%>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
     <%= javascript_pack_tag 'application'%>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
-
-  <body>
-    <body class='container'>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
       <%= render '/components/navbar' %>
-      <%= render '/components/flash' %>
-      <%= yield %>
-    </body>
-    <footer class="py-4 bg-light text-white-50">
-      <div class="container text-secondary text-center">
-        Proyecto Demo creado por
-        © 2020 Copyright:
-        <a href="http://softdreams.co"> softdreams.co </a>
+      <%= render '/components/menu' %>
+      <div class="content-wrapper">
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <section class="content">
+                <div class="container-fluid">
+                  <%= render '/components/flash' %>
+                  <%= yield %>
+                  <br>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
       </div>
-    </footer>
+
+      <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+          <b>MasGruas</b>
+        </div>
+        <strong>Copyright &copy; 2020 <a href="http://softdreams.co">Softdreams.co</a>.</strong> All rights reserved.
+      </footer>
+    </div>
   </body>
 </html>

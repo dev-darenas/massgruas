@@ -1,42 +1,12 @@
-- if current_user
-  .navbar.navbar-expand-lg.navbar-light.bg-light
-    a.navbar-brand href="/"
-      | MasGruas
-
-    button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-      span.navbar-toggler-icon
-
-    .collapse.navbar-collapse id="navbarSupportedContent"
-      ul.navbar-nav.mr-auto
-        li.nav-item
-          = link_to 'Clientes', clients_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Vehiculos', vehicles_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Usuarios', manage_users_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Tecnicos', technicals_path, class: 'nav-link'
-        li.nav-item.dropdown
-          a.nav-link.dropdown-toggle#navbarDropdown href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            | Transacciones
-          .dropdown-menu aria-labelledby="navbarDropdown"
-            = link_to 'Open', transactions_path({status: 'open'}), class: 'dropdown-item'
-            = link_to 'Delivered', transactions_path({status: 'delivered'}), class: 'dropdown-item'
-            = link_to 'Closed', transactions_path({status: 'closed'}), class: 'dropdown-item'
-            = link_to 'Invoiced', transactions_path({status: 'invoiced'}), class: 'dropdown-item'
-        li.nav-item
-          = link_to 'Tipos de documentos', document_types_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Servicios', services_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Cuentas', accounts_path, class: 'nav-link'
-
-
-      span.navbar-text
-        ul.navbar-nav.mr-auto
-          li.nav-item.dropdown
-            a.nav-link.dropdown-toggle href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              = current_user.email
-            div.dropdown-menu aria-labelledby="navbarDropdown"
-              .dropdown-divider
-              = link_to 'Salir', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+  ul.navbar-nav
+    li.nav-item
+      a.nav-link href="/" data-widget="pushmenu" role="button"
+        i.fas.fa-bars
+    li.nav-item.d-none.d-sm-inline-block
+      a.nav-link href="/" Home
+  ul.navbar-nav.ml-auto
+    li.nav-item
+      = current_user.email
+    li.nav-item
+      = link_to 'Salir', destroy_user_session_path, method: :delete
