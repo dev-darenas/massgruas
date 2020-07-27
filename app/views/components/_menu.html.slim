@@ -9,9 +9,10 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
               | Configuración
               i.right.fas.fa-angle-left
           ul.nav.nav-treeview
-            = link_to clients_path, class: 'nav-link'
-              i.far.fa-circle.nav-icon
-              p Cliente
+            li.nav-item
+              = link_to clients_path, class: 'nav-link'
+                i.far.fa-circle.nav-icon
+                p Cliente
             = link_to vehicles_path, class: 'nav-link'
               i.far.fa-circle.nav-icon
               p Vehiculos
