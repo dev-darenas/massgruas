@@ -9,9 +9,10 @@ require("@rails/activestorage").start();
 require("channels");
 
 import init from '../src/init';
-import "bootstrap";
-import './../stylesheets/application';
+import './../stylesheets/application.scss';
 import './admin-template';
+import '@fortawesome/fontawesome-free/js/all'
+
 import "./transaction";
 import "./clibboard_Transaction";
 import "multiple-select";

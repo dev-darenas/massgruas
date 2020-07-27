@@ -5,10 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval':false%>
+    <%= stylesheet_pack_tag 'application'%>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
     <%= javascript_pack_tag 'application'%>
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
