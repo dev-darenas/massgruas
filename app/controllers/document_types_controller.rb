@@ -4,7 +4,8 @@ class DocumentTypesController < EnterpriseController
   # GET /document_types
   # GET /document_types.json
   def index
-    @pagy, @document_types = pagy( @enterprise.document_types)
+    @q = @enterprise.document_types.ransack(params[:q])
+    @pagy, @document_types = pagy( @q.result )
   end
 
   # GET /document_types/1

@@ -29,6 +29,7 @@ gem 'geocoder'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'pagy', '~> 3.5'
+gem 'ransack'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

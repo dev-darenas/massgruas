@@ -2,7 +2,8 @@ class TechnicalsController < EnterpriseController
   before_action :set_technical, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @technicals = pagy( @enterprise.technicals)
+    @q = @enterprise.technicals.ransack(params[:q])
+    @pagy, @technicals = pagy( @q.result)
   end
 
   def show

@@ -4,7 +4,8 @@ class VehiclesController < EnterpriseController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @pagy, @vehicles = pagy( @enterprise.vehicles)
+    @q = @enterprise.vehicles.ransack(params[:q])
+    @pagy, @vehicles = pagy( @q.result )
   end
 
   # GET /vehicles/1

@@ -4,15 +4,20 @@ class TransactionsController < EnterpriseController
   def index
     case params[:status]
     when 'open'
-      @pagy, @transactions = pagy( @enterprise.transactions.s_opened)
+      @q = @enterprise.transactions.s_opened.ransack(params[:q])
+      @pagy, @transactions = pagy( @q.result )
     when 'delivered'
-      @pagy, @transactions = pagy( @enterprise.transactions.s_delivered)
+      @q = @enterprise.transactions.s_delivered.ransack(params[:q])
+      @pagy, @transactions = pagy( @q.result )
     when 'closed'
-      @pagy, @transactions = pagy( @enterprise.transactions.s_closed)
+      @q = @enterprise.transactions.s_closed.ransack(params[:q])
+      @pagy, @transactions = pagy( @q.result )
     when 'invoiced'
-      @pagy, @transactions = pagy( @enterprise.transactions.s_invoiced)
+      @q = @enterprise.transactions.s_invoiced.ransack(params[:q])
+      @pagy, @transactions = pagy( @q.result )
     else
-      @pagy, @transactions = pagy( @enterprise.transactions)
+      @q = @enterprise.transactions.ransack(params[:q])
+      @pagy, @transactions = pagy( @q.result)
     end
   end
 

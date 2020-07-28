@@ -4,7 +4,8 @@ class AccountsController < EnterpriseController
   # GET /accounts
   # GET /accounts.json
   def index
-    @pagy, @accounts = pagy( @enterprise.accounts)
+    @q = @enterprise.accounts.ransack(params[:q])
+    @pagy, @accounts = pagy( @q.result)
   end
 
   # GET /accounts/1
