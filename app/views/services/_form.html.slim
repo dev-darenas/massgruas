@@ -2,10 +2,10 @@
   = alert_error(service)
 
   .field
-    = form.label :name, class: 'form-label'
+    = form.label :name, "Nombre"
     = form.text_field :name, class: 'form-control'
 
   .actions
     = form.submit 'Actualizar', class: 'btn btn-primary'
     | |
-    = link_to 'Back', services_path, class: 'btn btn-warning'
+    = link_to 'Atrás', services_path, class: 'btn btn-warning'

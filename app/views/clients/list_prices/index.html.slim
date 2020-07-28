@@ -1,4 +1,4 @@
-h1 List Prices
+h1 Lista de precios
 
 = render 'clients/tabs', page: 'tprecios'
 
@@ -8,9 +8,9 @@ table.table
       th Servicio
       th Banderazo
       th Valor Horas de espera
-      th Valor de kilometro
+      th Valor de kilometro zona normal
       th Recargo Nocturno
-      th Valor Zona Roja
+      th Valor de kilometro zona Roja
       th Recargo Festivo
       th colspan='1'
   tbody
@@ -24,7 +24,7 @@ table.table
         td = listPrice.red_zone_value
         td = listPrice.holiday_surcharge
         td = link_to 'Editar', edit_client_list_price_path(@client, listPrice), class: 'btn btn-primary'
-        td = link_to 'Destroy', client_list_price_path(@client, listPrice), method: :delete, data: {confirm: 'Estas Seguro?'}, class: 'btn btn-danger'
+        td = link_to 'Destruir', client_list_price_path(@client, listPrice), method: :delete, data: {confirm: 'Estas Seguro?'}, class: 'btn btn-danger'
 = pagy_bootstrap_nav(@pagy).html_safe
 = pagy_bootstrap_nav_js(@pagy).html_safe
 br

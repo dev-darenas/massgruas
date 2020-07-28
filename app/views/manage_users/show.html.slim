@@ -1,5 +1,5 @@
 p
-  strong Full name:
+  strong Nombre completo:
   = @user.fullname
 
 p
@@ -11,6 +11,6 @@ p
   = @user.rol
 
 
-= link_to 'Edit', edit_manage_user_path(@user), class: 'btn btn-primary'
+= link_to 'Editar', edit_manage_user_path(@user), class: 'btn btn-primary'
 | |
 = link_to 'Atras', manage_users_path, class: 'btn btn-warning'

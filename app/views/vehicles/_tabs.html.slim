@@ -3,8 +3,8 @@ nav
     a class="nav-item nav-link #{page == 'general' ? 'active' : ''}" href="#{edit_vehicle_path(@vehicle) unless @vehicle.id.nil?}" role="tab" aria-controls="nav-General" aria-selected="true"
       | General
     - unless @vehicle.id.blank?
-      a.nav-item.nav-link#nav-detalle-tab data-toggle="#{page == 'general' ? 'tab' : ''}" href="#nav-detalle" role="tab" aria-controls="nav-detalle" aria-selected="false" Detalle
-      a.nav-item.nav-link#nav-fechas-tab data-toggle="tab" href="#nav-fechas" role="tab" aria-controls="nav-fechas" aria-selected="false" Fechas
-      a.nav-item.nav-link#nav-imagenes-tab data-toggle="tab" href="#nav-imagenes" role="tab" aria-controls="nav-imagenes" aria-selected="false" Imagenes
+      a.nav-item.nav-link#nav-detalle-tab data-toggle="#{page == 'general' ? 'pill' : ''}" href="#nav-detalle" role="tab" aria-controls="nav-detalle" aria-selected="false" Detalle
+      a.nav-item.nav-link#nav-fechas-tab data-toggle="pill" href="#nav-fechas" role="tab" aria-controls="nav-fechas" aria-selected="false" Fechas
+      a.nav-item.nav-link#nav-imagenes-tab data-toggle="pill" href="#nav-imagenes" role="tab" aria-controls="nav-imagenes" aria-selected="false" Imagenes
       a class="nav-item nav-link #{page == 'document' ? 'active' : ''}" role="tab" aria-controls="nav-documentos" aria-selected="true" href = "#{vehicle_documents_path(@vehicle)}"
         | Documentos

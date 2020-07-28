@@ -3,21 +3,21 @@ h1 Servicios
 table.table
   thead
     tr
-      th Name
+      th Nombre
       th colspan="2"
 
   tbody
     - @services.each do |service|
       tr
         td = service.name
-        td = link_to 'Edit', edit_service_path(service),  class: 'btn btn-primary'
-        td = link_to 'Destroy', service,
+        td = link_to 'Editar', edit_service_path(service),  class: 'btn btn-primary'
+        td = link_to 'Destruir', service,
                                 method: :delete,
-                                data: { confirm: 'Are you sure?' },
+                                data: { confirm: 'Está seguro' },
                                 class: 'btn btn-danger'
 = pagy_bootstrap_nav(@pagy).html_safe
 = pagy_bootstrap_nav_js(@pagy).html_safe
 
 br
 
-= link_to 'New Service', new_service_path,  class: 'btn btn-primary'
+= link_to 'Nuevo Servicio', new_service_path,  class: 'btn btn-primary'

@@ -1,9 +1,9 @@
-h1 Transactions
+h1 Transacción
 
 table.table
   thead
     tr
-      th Status
+      th Estado
       th Fecha y hora
       th Orden_Trabajo
       th Remision
@@ -23,9 +23,9 @@ table.table
         td = transaction.factura
         td = transaction.asegurado
         td = @enterprise.clients.find(transaction.client_id).nombre
-        td = link_to 'Edit', edit_transaction_path(transaction), class: 'btn btn-primary'
-        td = link_to 'Destroy', transaction, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
-        td = link_to 'Create PDF', transaction_path(transaction, :format => :pdf), class: 'btn btn-primary'
+        td = link_to 'Editar', edit_transaction_path(transaction), class: 'btn btn-primary'
+        td = link_to 'Destruir', transaction, method: :delete, data: {confirm: 'Está seguro?'}, class: 'btn btn-danger'
+        td = link_to 'Crear PDF', transaction_path(transaction, :format => :pdf), class: 'btn btn-primary'
 = pagy_bootstrap_nav(@pagy).html_safe
 = pagy_bootstrap_nav_js(@pagy).html_safe
 

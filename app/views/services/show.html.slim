@@ -1,10 +1,7 @@
 p
-  strong Name:
+  strong Nombre:
   = @service.name
-p
-  strong Enterprise:
-  = @service.enterprise_id
 
-= link_to 'Edit', edit_service_path(@service), class: 'btn btn-primary'
+= link_to 'Editar', edit_service_path(@service), class: 'btn btn-primary'
 | |
-= link_to 'Back', services_path,  class: 'btn btn-warning'
+= link_to 'Atrás', services_path,  class: 'btn btn-warning'

@@ -1,8 +1,8 @@
-h1 Editing Transaction
+h1 Editar Transacción
 
-= link_to 'Create PDF', transaction_path(@transaction, :format => :pdf), class: 'btn btn-primary'
+= link_to 'Crear PDF', transaction_path(@transaction, :format => :pdf), class: 'btn btn-primary'
 | |
-button class="btn_clip_board btn-primary"
+.btn_clip_board.btn.btn-primary
   | Copiar
 
 = render 'form', transaction: @transaction

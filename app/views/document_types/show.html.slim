@@ -1,11 +1,7 @@
 p
-  strong Name:
+  strong Nombre:
   = @document_type.name
-
-p
-  strong Enterprise:
-  = @document_type.enterprise_id
-
-= link_to 'Edit', edit_document_type_path(@document_type), class: 'btn btn-primary'
+br
+= link_to 'Editar', edit_document_type_path(@document_type), class: 'btn btn-primary'
 | |
-= link_to 'Back', document_types_path, class: 'btn btn-warning'
+= link_to 'Atrás', document_types_path, class: 'btn btn-warning'

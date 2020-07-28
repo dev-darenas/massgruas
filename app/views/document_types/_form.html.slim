@@ -2,11 +2,11 @@
   = alert_error(document_type)
 
   .field
-    = form.label :name, class: 'form-label'
+    = form.label :name, "Nombre"
     = form.text_field :name, class: 'form-control'
 
 
   .actions
     = form.submit 'Actualizar', class: 'btn btn-primary'
     | |
-    = link_to 'Back', document_types_path, class: 'btn btn-warning'
+    = link_to 'Atrás', document_types_path, class: 'btn btn-warning'

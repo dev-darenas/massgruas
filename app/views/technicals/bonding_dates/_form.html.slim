@@ -5,15 +5,15 @@
   = alert_error(@bonding_date)
 
   .field
-    = form.label :entry_date
+    = form.label :entry_date, "Fecha de entrada"
     = form.date_field :entry_date, class: 'form-control'
 
   .field
-    = form.label :departure_date
+    = form.label :departure_date, "Fecha de salida"
     = form.date_field :departure_date, class: 'form-control'
 
   .field
-    = form.label :observation
+    = form.label :observation, "Observación"
     = form.text_field :observation, class: 'form-control'
 
   .actions

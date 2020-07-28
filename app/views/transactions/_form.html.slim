@@ -11,7 +11,7 @@
         = form.text_field :orden_Trabajo, class: 'form-control'
 
       .field.col-md
-        = form.label :service_number
+        = form.label :service_number, "Número de servicio"
         = form.text_field :service_number, readonly:'readonly', class: 'form-control'
 
       .field.col-md
@@ -28,7 +28,7 @@
         = form.time_field :hora_llegada, class: 'form-control', id:'hora_llegada'
 
       .field.col-md
-        = form.label :response_time
+        = form.label :response_time, "Tiempo de respuesta"
         = form.text_field :response_time, class: 'form-control', id:'response_time'
 
       .field.col-md
@@ -165,12 +165,12 @@
         = form.number_field :horas_de_espera, class: 'form-control', id:'horas_de_espera'
 
       .field.col-md
-        = form.label :waiting_hours_value
+        = form.label :waiting_hours_value, "Valor hora de espera"
         = form.number_field :waiting_hours_value, class: 'form-control', id:'waiting_hours_value'
         = form.hidden_field :total_waiting_hours, id:'total_waiting_hours'
 
       .field.col-md
-        = form.label :rango_nocturno
+        = form.label :rango_nocturno, "Recargo nocturno"
         = form.number_field :rango_nocturno, class: 'form-control', id:'r_nocturno'
 
       .field.col-md
@@ -183,7 +183,7 @@
         = form.number_field :valor_servicio, step:"any", readonly:'readonly',class: 'form-control', id:'valor_servicio'
 
       .field.col-md-3
-        = form.label :priced
+        = form.label :priced, "Tarifado"
         = form.number_field :priced, step:"any", class: 'form-control', id:'priced'
 
       .field.col-md
@@ -276,15 +276,15 @@
       - unless @transaction.id.blank?
         - if @transaction.id.present? && @transaction.open?
           | |
-          = link_to "Deliver", transaction_deliver_path(@transaction), confirm: "Are you sure?", class: 'btn btn-warning'
+          = link_to "Enviar", transaction_deliver_path(@transaction), confirm: "Está seguro?", class: 'btn btn-warning'
         - unless @transaction.closed?
           - if @transaction.id.present? && @transaction.delivered?
             | |
-            = link_to "Close", transaction_close_path(@transaction), confirm: "Are you sure?", class: 'btn btn-danger'
+            = link_to "Cerrar", transaction_close_path(@transaction), confirm: "Está seguro?", class: 'btn btn-danger'
 
         -if @transaction.closed?
           | |
-          = link_to "check_in", transaction_check_in_path(@transaction), confirm: "Are you sure?", class: 'btn btn-danger'
+          = link_to "Facturar", transaction_check_in_path(@transaction), confirm: "Está seguro?", class: 'btn btn-danger'
 
     br
 

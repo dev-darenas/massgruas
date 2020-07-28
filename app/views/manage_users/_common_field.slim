@@ -1,7 +1,7 @@
 = alert_error(@user)
 
 .field
-  = f.label "Full name"
+  = f.label "Nombre completo"
   = f.text_field :fullname, class: 'form-control'
 
 .field
@@ -13,11 +13,11 @@
   = f.select :rol, User.rols.keys, {}, class: 'form-control'
 
 .field
-  = f.label "Password"
+  = f.label "contraseña"
   = f.password_field :password, class: 'form-control'
 
 .field
-  = f.label "Password confirmation"
+  = f.label "confirmación de contraseña"
   = f.password_field :password_confirmation, class: 'form-control'
 
 .actions

@@ -1,4 +1,4 @@
-h1 Documents
+h1 Documento
 
 = render 'clients/tabs', page: 'document'
 
@@ -16,7 +16,7 @@ table.table
         td = document.document_type.name
         td = document.due_date
         td = link_to 'Editar', edit_client_document_path(@client, document), class: 'btn btn-primary'
-        td = link_to 'Destroy', client_document_path(@client, document),
+        td = link_to 'Destruir', client_document_path(@client, document),
                                 method: :delete, data: {confirm: 'Estas Seguro?'},
                                 class: 'btn btn-danger'
 = pagy_bootstrap_nav(@pagy).html_safe

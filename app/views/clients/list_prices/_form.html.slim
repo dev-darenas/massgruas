@@ -12,29 +12,29 @@
                       { include_blank: true },{ class: 'form-control'}
 
       .field.col-md-4
-        = form.label :kilometer_value
+        = form.label :kilometer_value, "valor de Kilometro zona normal"
         = form.number_field :kilometer_value, class: 'form-control'
 
       .field.col-md-4
-        = form.label :red_zone_value
+        = form.label :red_zone_value, "valor de Kilometro zona roja"
         = form.number_field :red_zone_value, class: 'form-control'
 
     .row
       .field.col-md-4
-        = form.label :flag
+        = form.label :flag, "Banderazo"
         = form.number_field :flag , class: 'form-control'
 
       .field.col-md-4
-        = form.label :night_surcharge
+        = form.label :night_surcharge, "Recargo Nocturno"
         = form.number_field :night_surcharge, class: 'form-control'
 
       .field.col-md-4
-        = form.label :holiday_surcharge
+        = form.label :holiday_surcharge, "Recargo Festivo"
         = form.number_field :holiday_surcharge, class: 'form-control'
 
     .row
       .field.col-md-4
-        = form.label :waiting_hours_value
+        = form.label :waiting_hours_value, "Valor hora de espera"
         = form.number_field :waiting_hours_value, class: 'form-control'
 
 

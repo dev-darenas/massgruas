@@ -3,20 +3,20 @@ h1 Tipos de Documentos
 table.table
   thead
     tr
-      th Name
+      th Nombre
       th colspan="2"
   tbody
 
     - @document_types.each do |document_type|
       tr
         td = document_type.name
-        td = link_to 'Edit', edit_document_type_path(document_type), class: 'btn btn-primary'
-        td = link_to 'Destroy', document_type,
+        td = link_to 'Editar', edit_document_type_path(document_type), class: 'btn btn-primary'
+        td = link_to 'Destruir', document_type,
                       method: :delete,
-                      data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+                      data: { confirm: 'Está seguro?' }, class: 'btn btn-danger'
 = pagy_bootstrap_nav(@pagy).html_safe
 = pagy_bootstrap_nav_js(@pagy).html_safe
 
 br
 
-= link_to 'New Document Type', new_document_type_path, class: 'btn btn-primary'
+= link_to 'Nuevo tipo de documento', new_document_type_path, class: 'btn btn-primary'

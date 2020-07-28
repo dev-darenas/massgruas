@@ -4,20 +4,21 @@
   = alert_error(@document)
 
   .field
-    = form.label :document_type
+    = form.label :document_type, "Tipo de documento"
     = form.select :document_type_id,
                   @enterprise.document_types.collect { |p| [ p.name, p.id ] },
                   { include_blank: true },{ class: 'form-control'}
 
   .field
-    = form.label :due_date
+    = form.label :due_date, "Fecha de vencimiento"
     = form.date_field :due_date , class: 'form-control'
   .field
-    = form.label :renewable
+    = form.label :renewable, "Renovable"
     = form.check_box :renewable, class: 'form-check'
 
   = form.fields_for :pictures do |p|
     .field
+      = p.label :image, "Imagen"
       = p.file_field :image, class: 'form-control'
 
   .actions

@@ -1,13 +1,13 @@
-h1 Fecha de vinculación
+h1 Fechas de vinculación
 
 = render 'technicals/tabs', page: 'fecha_vinculación'
 
 table.table
   thead
     tr
-      th Entry date
-      th Departure date
-      th Observation
+      th Fecha de entrada
+      th Fecha de salida
+      th Observación
       th colspan="2"
 
   tbody
@@ -16,10 +16,10 @@ table.table
         td = bonding_date.entry_date
         td = bonding_date.departure_date
         td = bonding_date.observation
-        td = link_to 'Edit', edit_technical_bonding_date_path(@technical,bonding_date), class: 'btn btn-primary'
-        td = link_to 'Destroy', technical_bonding_date_path(@technical, bonding_date),
+        td = link_to 'Editar', edit_technical_bonding_date_path(@technical,bonding_date), class: 'btn btn-primary'
+        td = link_to 'Destruir', technical_bonding_date_path(@technical, bonding_date),
                                   method: :delete,
-                                  data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+                                  data: { confirm: 'Estás seguro?' }, class: 'btn btn-danger'
 = pagy_bootstrap_nav(@pagy).html_safe
 = pagy_bootstrap_nav_js(@pagy).html_safe
 
