@@ -63,3 +63,16 @@
                 = link_to transactions_path({status: 'invoiced'}), class: 'nav-link'
                   i.far.fa-circle.nav-icon
                   p Facturados
+
+          li.nav-item
+            a.nav-link href="#"
+              i.nav-icon.fas.fa-file-contract
+              p
+                | Reportes
+                i.right.fas.fa-angle-left
+            ul.nav.nav-treeview
+              li.nav-item
+                = link_to technical_payment_path, class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Pago Técnico
+

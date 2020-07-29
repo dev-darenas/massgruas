@@ -1,0 +1,51 @@
+h1 Liquidacion pago Técnico
+
+= form_with(url:technical_clearance_path, method: "get", local: true)  do |form|
+
+  .form-inline
+    .form-group
+      = form.label :technical_id, "Id Tecnico", class:'mx-sm-3 mb-2'
+      = form.collection_select :technical_id, @enterprise.technicals,
+              :id, :cedula,
+              {include_blank:true},
+              {class:'mb-2 multiple-select'}
+
+  .form-inline
+    .form-group
+      = form.label :initial_date, "Fecha incial", class:'mx-sm-3 mb-2'
+      = form.date_field :initial_date, class:'mb-2 form-control'
+
+  .form-inline
+    .form-group
+      = form.label :final_date, "Fecha Final", class:'mx-sm-3 mb-2'
+      = form.date_field :final_date, class: 'mb-2 form-control'
+
+  .form-inline
+    .form-group
+      = form.label :administration, "Administración (%)", class:'mx-sm-3 mb-2'
+      = form.number_field :administration, step: 'any', value: 0, class: 'mb-2 form-control'
+
+  .form-inline
+    .form-group
+      = form.label :liquidation, "Liquidación (%)", class:'mx-sm-3 mb-2'
+      = form.number_field :liquidation, step: 'any', value: 0, class: 'mb-2 form-control'
+
+  .form-inline
+    .form-group
+      = form.label :eps_discount, "Descuento EPS ($)", class:'mx-sm-3 mb-2'
+      = form.number_field :eps_discount, step: 'any', value: 0, class: 'mb-2 form-control'
+
+  .form-inline
+    .form-group
+      = form.label :discount_loans, "Descuento Prestamos ($)", class:'mx-sm-3 mb-2'
+      = form.number_field :discount_loans, step: 'any', value: 0,class: 'mb-2 form-control'
+
+  .form-inline
+    .form-group
+      = form.label :other_discounts, "Descuento Prestamos ($)", class:'mx-sm-3 mb-2'
+      = form.number_field :other_discounts, step: 'any', value: 0, class: 'mb-2 form-control'
+
+  br
+  .actions
+    = form.submit 'Generar Liquidación', class: 'btn btn-primary'
+
