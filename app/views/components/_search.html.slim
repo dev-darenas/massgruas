@@ -1,5 +1,5 @@
 .text-right
-  = search_form_for @q, html: { class: 'form-inline' } do |f|
+  = search_form_for @q, url: url, html: { class: 'form-inline' } do |f|
     .form-group
       = f.search_field field_search, placeholder: 'Buscar', class: 'form-control'
       = f.submit 'Buscar', class: 'btn btn-primary'

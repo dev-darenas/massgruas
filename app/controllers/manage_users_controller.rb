@@ -2,7 +2,8 @@ class ManageUsersController < EnterpriseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @users = pagy( @enterprise.users)
+    @q = @enterprise.users.ransack(params[:q])
+    @pagy, @users = pagy( @q.result )
   end
 
   def show

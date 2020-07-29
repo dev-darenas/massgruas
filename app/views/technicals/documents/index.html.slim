@@ -2,6 +2,7 @@ h1 Documento
 
 = render 'technicals/tabs', page: 'document'
 
+= render "components/search", field_search: :document_type_name_cont, url: technical_documents_path
 table.table
   thead
     tr

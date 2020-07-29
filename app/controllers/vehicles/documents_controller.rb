@@ -3,7 +3,8 @@ module Vehicles
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
     def index
-       @pagy, @documents = pagy( @vehicle.documents)
+      @q = @vehicle.documents.ransack(params[:q])
+      @pagy, @documents = pagy(@q.result.includes(:document_type))
     end
 
     def new
@@ -40,8 +41,8 @@ module Vehicles
     end
 
     def document_params
-      params.require(:document).permit(:document_type_id, :renewable, :due_date, 
-        pictures_attributes: [ :id, :image, :image_cache, :_destroy]
+      params.require(:document).permit(:document_type_id, :renewable, :due_date,
+                                       pictures_attributes: [:id, :image, :image_cache, :_destroy]
       )
     end
   end

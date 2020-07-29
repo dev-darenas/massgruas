@@ -3,7 +3,8 @@ module Technicals
     before_action :set_bonding_date, only: [:show, :edit, :update, :destroy]
 
     def index
-      @pagy, @bonding_dates = pagy( @technical.bonding_dates )
+      @q = @technical.bonding_dates.ransack(params[:q])
+      @pagy, @bonding_dates = pagy( @q.result )
     end
 
     def show

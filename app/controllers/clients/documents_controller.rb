@@ -3,7 +3,8 @@ module Clients
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
     def index
-      @pagy, @documents = pagy( @client.documents)
+      @q = @client.documents.ransack(params[:q])
+      @pagy, @documents = pagy(@q.result.includes(:document_type))
     end
 
     def new

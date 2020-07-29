@@ -3,7 +3,8 @@ module Technicals
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
     def index
-      @pagy, @documents = pagy( @technical.documents )
+      @q = @technical.documents.ransack(params[:q])
+      @pagy, @documents = pagy(@q.result.includes(:document_type))
     end
 
     def new

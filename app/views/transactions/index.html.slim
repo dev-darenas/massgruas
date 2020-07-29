@@ -1,6 +1,6 @@
 h1 Transacción
 
-= render "components/search", field_search: :status_or_orden_Trabajo_or_remision_or_factura_cont
+= render "components/search", url: transactions_path({status: @transactions.first.status}), field_search: :status_or_orden_Trabajo_or_remision_or_factura_cont
 table.table
   thead
     tr

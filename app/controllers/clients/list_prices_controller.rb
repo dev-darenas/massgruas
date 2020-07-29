@@ -3,7 +3,8 @@ module Clients
     before_action :set_list_price, only: [:show, :edit, :update, :destroy]
 
     def index
-      @pagy, @list_prices = pagy( @client.list_prices)
+      @q = @client.list_prices.ransack(params[:q])
+      @pagy, @list_prices = pagy( @q.result.includes(:service) )
     end
 
     def new

@@ -2,6 +2,7 @@ h1 Documentos
 
 = render 'vehicles/tabs', page: 'document'
 
+= render "components/search", field_search: :document_type_name_cont, url: vehicle_documents_path
 table.table
   thead
     tr

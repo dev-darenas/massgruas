@@ -2,6 +2,8 @@ h1 Lista de precios
 
 = render 'clients/tabs', page: 'tprecios'
 
+= render "components/search", url: client_list_prices_path,
+                              field_search: :service_name_cont
 table.table
   thead
     tr

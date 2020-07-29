@@ -2,6 +2,7 @@ h1 Documento
 
 = render 'clients/tabs', page: 'document'
 
+= render "components/search", field_search: :document_type_name_cont, url: client_documents_path
 table.table
   thead
     tr
