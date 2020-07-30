@@ -4,7 +4,11 @@
     .row
       .field.col-md
         = form.label :fecha, "fecha y hora"
-        = form.datetime_field :fecha, value:"#{DateTime.now.strftime("%Y-%m-%dT%H:%M")}",class: 'form-control', id:'fecha_Y_hora'
+        div class="input-group date" id="datetimepicker2" data-target-input="nearest"
+          = form.text_field :fecha, size:16, class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker2", id:'fecha_Y_hora'
+          div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker"
+            div class="input-group-text"
+              i class="fa fa-calendar"
 
       .field.col-md
         = form.label :orden_Trabajo
@@ -134,15 +138,15 @@
     .row  
       .field.col-md
         = form.label :total_km
-        = form.number_field :total_km, step:"any",class: 'form-control', id: 'total_km'
+        = form.number_field :total_km, step:"any", value: 0, class: 'form-control', id: 'total_km'
 
       .field.col-md
         = form.label :km_zona_normal
-        = form.number_field :km_zona_normal, step:"any", class: 'form-control', id:'km_zona_normal'
+        = form.number_field :km_zona_normal, step:"any", value: 0, class: 'form-control', id:'km_zona_normal'
 
       .field.col-md
         = form.label :km_zona_roja
-        = form.number_field :km_zona_roja, step:"any", class: 'form-control', id:'km_zona_roja'
+        = form.number_field :km_zona_roja, step:"any", value: 0, class: 'form-control', id:'km_zona_roja'
 
     .row
       .field.col-md

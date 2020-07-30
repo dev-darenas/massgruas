@@ -10,8 +10,10 @@
     "bootstrap": "4.3.1",
     "clipboard": "^2.0.6",
     "jquery": "^3.5.1",
+    "moment": "^2.27.0",
     "multiple-select": "^1.5.2",
     "popper.js": "^1.16.1",
+    "tempusdominus-bootstrap-4": "^5.1.2",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
