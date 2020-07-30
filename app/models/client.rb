@@ -7,6 +7,7 @@ class Client < ApplicationRecord
 
   validates :nombre, presence: true
   validates :identificacion, presence: true
+  validates :identificacion, uniqueness: true
   validates :telefono, presence: true
 
   enum regimen: { common: 'Comun', simplified: 'Simplificado' }

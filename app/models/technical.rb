@@ -10,6 +10,9 @@ class Technical < ApplicationRecord
                                 reject_if: lambda {
                                     |a| a[:image].blank?
                                 }, allow_destroy: true
+  validates :nombre, presence: true
+  validates :cedula, presence: true
+  validates :cedula, uniqueness: true
 
   def age
     now = Time.now.utc.to_date

@@ -1,5 +1,7 @@
 class Transaction < ApplicationRecord
   validates :orden_Trabajo, uniqueness: true
+  validates :remision, uniqueness: true
+  validates :factura, uniqueness: true
   validate :sum_of_normal_zone_and_red_zone
 
   belongs_to :enterprise

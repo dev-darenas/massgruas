@@ -3,7 +3,8 @@ class ReportsController < EnterpriseController
   end
 
   def technical_clearance
-    render plain: @enterprise.technicals.find(params[:technical_id]).inspect
+    #render plain: @enterprise.technicals.find(params[:technical_id]).inspect
+    @technical = @enterprise.technicals.find(params[:technical_id])
   end
 
 end

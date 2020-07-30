@@ -6,6 +6,6 @@ class User < ApplicationRecord
   
   belongs_to :enterprise, autosave: true
   has_many :observations
-
+  validates :email, uniqueness: true
   enum rol: { admin: 'Admin', mananger: 'Mananger', activated: 'Activated'}
 end

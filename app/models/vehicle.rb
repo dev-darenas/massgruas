@@ -4,6 +4,7 @@ class Vehicle < ApplicationRecord
   has_many :documents, as: :documentable, dependent: :destroy
 
   validates :placa, presence: true
+  validates :placa, uniqueness: true
   validates :licencia, presence: true
   validates :clase, presence: true
   validates :marca, presence: true
