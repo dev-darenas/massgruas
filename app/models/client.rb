@@ -11,6 +11,7 @@ class Client < ApplicationRecord
   validates :telefono, presence: true
 
   enum regimen: { common: 'Comun', simplified: 'Simplificado' }
+  enum tipo_identificacion: {'Cedula de Ciudadanía': 'CC', 'Cedula de Extranjería':'CE', Pasaporte:'P', 'Registro Civil':'RC'}
 
   def arrays_acounts
     @array = []

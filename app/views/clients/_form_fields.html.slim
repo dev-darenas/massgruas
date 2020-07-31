@@ -7,6 +7,9 @@ br
                         { },
                         { multiple: true, class: 'multiple-select' }
 br
+= f.label :tipo_identificacion,"Identificación"
+= f.select :tipo_identificacion, Client.tipo_identificacions.keys, {include_blank:true}, class: 'form-control'
+
 = f.label "Identificación"
 = f.number_field :identificacion, class: 'form-control'
 
