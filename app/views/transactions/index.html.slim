@@ -1,6 +1,6 @@
 h1 Transacción
 
-= render "components/search", url: transactions_path({status: "#{ params[:status] }"}), field_search: :status_or_orden_Trabajo_or_remision_or_factura_cont
+= render "components/search", url: transactions_path({status: "#{ params[:status] }"}), field_search: :status_or_expediente_or_orden_Trabajo_or_remision_or_factura_cont
 table.table
   thead
     tr
@@ -8,6 +8,7 @@ table.table
       th Fecha y hora
       th Orden_Trabajo
       th Remision
+      th Expediente
       th factura
       th Asegurado
       th Cliente
@@ -21,6 +22,7 @@ table.table
         td = transaction.fecha
         td = transaction.orden_Trabajo
         td = transaction.remision
+        td = transaction.expediente
         td = transaction.factura
         td = transaction.asegurado
         td = @enterprise.clients.find(transaction.client_id).nombre

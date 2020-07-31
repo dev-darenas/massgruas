@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_221222) do
+ActiveRecord::Schema.define(version: 2020_07_31_162921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,7 +156,6 @@ ActiveRecord::Schema.define(version: 2020_07_22_221222) do
     t.string "remision"
     t.string "factura"
     t.time "hora_llegada"
-    t.time "hora_final"
     t.string "response_time"
     t.bigint "client_id", null: false
     t.string "expediente"
@@ -204,6 +203,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_221222) do
     t.integer "waiting_hours_value"
     t.float "total_waiting_hours"
     t.float "priced"
+    t.datetime "hora_final"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["client_id"], name: "index_transactions_on_client_id"
     t.index ["enterprise_id"], name: "index_transactions_on_enterprise_id"

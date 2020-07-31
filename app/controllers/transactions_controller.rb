@@ -35,7 +35,7 @@ class TransactionsController < EnterpriseController
   end
 
   def new
-    @transaction = @enterprise.transactions.new(service_number: @enterprise.service_number)
+    @transaction = @enterprise.transactions.new(fecha:Time.now.strftime("%d-%m-%y %H:%M %z"),service_number: @enterprise.service_number)
     @transaction.observations.build(user_id: current_user.id)
     @transaction.pictures.build
   end

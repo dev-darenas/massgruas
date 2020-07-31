@@ -5,7 +5,7 @@
       .field.col-md
         = form.label :fecha, "fecha y hora"
         div class="input-group date" id="datetimepicker2" data-target-input="nearest"
-          = form.text_field :fecha, size:16, class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker2", id:'fecha_Y_hora'
+          = form.text_field :fecha, readonly:true, size:16, class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker2", id:'fecha_Y_hora'
           div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker"
             div class="input-group-text"
               i class="fa fa-calendar"
@@ -29,7 +29,11 @@
     .row
       .field.col-md
         = form.label :hora_llegada
-        = form.time_field :hora_llegada, class: 'form-control', id:'hora_llegada'
+        div class="input-group date" id="datetimepicker3" data-target-input="nearest"
+          = form.text_field :hora_llegada, readonly:true, class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker3", id:'hora_llegada'
+          div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker"
+            div class="input-group-text"
+              i class="far fa-clock"
 
       .field.col-md
         = form.label :response_time, "Tiempo de respuesta"
@@ -37,7 +41,11 @@
 
       .field.col-md
         = form.label :hora_final
-        = form.time_field :hora_final, class: 'form-control'
+        div class="input-group date" id="datetimepicker4" data-target-input="nearest"
+          = form.text_field :hora_final, readonly: true, class: 'form-control datetimepicker-input', 'data-target': "#datetimepicker4", id: 'fecha_Y_hora'
+          div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker"
+            div class="input-group-text"
+              i class="fa fa-calendar"
 
     .row
       .col-md#client
