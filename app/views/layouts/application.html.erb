@@ -16,21 +16,21 @@
     <div class="wrapper">
       <%= render '/components/navbar' %>
       <%= render '/components/menu' %>
-      <div class="content-wrapper">
 
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <section class="content">
-                <div class="container-fluid">
+      <div class="content-wrapper">
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-primary">
                   <%= render '/components/flash' %>
                   <%= yield %>
                   <br>
                 </div>
-              </section>
+             </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
 
       <footer class="main-footer">

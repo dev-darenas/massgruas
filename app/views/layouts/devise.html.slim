@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title Masgruas
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application'
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+    = javascript_pack_tag 'application'
+    link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"
+
+  body
+    .container
+      .row.justify-content-center
+        .col-7
+          .card.card-primary
+            = yield
+          .card-footer
+            footer
+              .float-right.d-none.d-sm-block
+                b MasGruas
+              strong
+                | Copyright &copy; 2020
+                a< href="http://softdreams.co"
+                  | Softdreams.co
+                |. All rights reserved.
+
