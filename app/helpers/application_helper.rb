@@ -10,7 +10,8 @@ module ApplicationHelper
 
   $TYPE_NOTIFICATION = {
     "notice": "success",
-    "error": "danger"
+    "error": "danger",
+    "alert": "danger"
   }
 
   def type_notification(key)
