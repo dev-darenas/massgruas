@@ -74,7 +74,7 @@ $(document).on('turbolinks:load', function () {
             lng2: lng2.value
         }, function (resp) {
             total_km.value = resp.distance_km;
-            km_zona_normal.value = 0;
+            km_zona_normal.value = resp.distance_km;
             km_zona_roja.value = 0;
         });
     }
