@@ -23,7 +23,7 @@ module Technicals
 
     def update
       if @document.update(document_params)
-        redirect_to edit_technical_document_path(@client, @document), notice: 'Document was successfully updated.'
+        redirect_to edit_technical_document_path(@technical, @document), notice: 'Document was successfully updated.'
       else
         render :edit
       end
