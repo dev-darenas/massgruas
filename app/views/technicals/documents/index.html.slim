@@ -20,11 +20,11 @@ table.table
         td = link_to 'Destruir', technical_document_path(@technical, document),
                                 method: :delete, data: {confirm: 'Esta Seguro?'},
                                 class: 'btn btn-danger'
+  - unless expired.nil?
+    = expired.html_safe
 = pagy_bootstrap_nav(@pagy).html_safe
 = pagy_bootstrap_nav_js(@pagy).html_safe
 
-    - unless expired.nil?
-      = expired.html_safe
 br
 
 = link_to 'Nuevo Documento', new_technical_document_path(@technical), class: 'btn btn-primary'
