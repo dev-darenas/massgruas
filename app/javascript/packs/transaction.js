@@ -271,12 +271,12 @@ $(document).on('turbolinks:load', function () {
             function (resp) {
                 for (lp of resp.list_prices) {
                     if (lp.service_id === parseInt($servicio.val())) {
-                        $banderazo.val(lp.flag);
-                        $val_km.val(lp.kilometer_value);
-                        $val_km_red.val(lp.red_zone_value);
-                        $waiting_hours_value.val(lp.waiting_hours_value);
-                        $r_nocturno.val(lp.night_surcharge);
-                        $r_festivo.val(lp.holiday_surcharge);
+                        $banderazo.val(lp.flag === null ? 0 : lp.flag);
+                        $val_km.val(lp.kilometer_value === null ? 0 : lp.kilometer_value);
+                        $val_km_red.val(lp.red_zone_value === null ? 0 : lp.red_zone_value);
+                        $waiting_hours_value.val(lp.waiting_hours_value === null ? 0 : lp.waiting_hours_value );
+                        $r_nocturno.val(lp.night_surcharge === null ? 0 : lp.night_surcharge);
+                        $r_festivo.val(lp.holiday_surcharge === null ? 0 : lp.holiday_surcharge);
                     }
                 }
             }
