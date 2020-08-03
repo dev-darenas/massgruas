@@ -1,6 +1,10 @@
 module Vehicles::DocumentHelper
   def expired_date(document)
-    expired = ((Date.parse document.due_date.to_s) - (Date.parse Time.now.to_s)).to_i
+    if document.due_date.to_s.blank?
+      expired=6
+    else
+      expired = ((Date.parse document.due_date.to_s) - (Date.parse Time.now.to_s)).to_i
+    end
 
     if expired <= 0 && !document.renewable
       @expired = "<div class='alert alert-danger' role='alert'>

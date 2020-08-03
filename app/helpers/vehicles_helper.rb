@@ -17,7 +17,7 @@ module VehiclesHelper
   end
 
   def days_next_oil_change_date(vehicle)
-    unless vehicle.vencimiento_rtm.blank?
+    unless vehicle.next_oil_change_date.blank?
       ((Date.parse vehicle.next_oil_change_date.to_s) - (Date.parse Time.now.to_s)).to_i
     else
       6
