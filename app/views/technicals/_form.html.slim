@@ -6,6 +6,12 @@
 
   .tab-content#myTabContent
     .tab-pane.fade.show.active#nav-General role="tabpanel" aria-labelledby="nav-General-tab"
+      .field.form-check.form-check-inline
+        = form.label :active
+        .input-group-prepend
+          .input-group-text
+            = form.check_box :active
+
       = render 'technicals/form_fields', f: form
 
       .field

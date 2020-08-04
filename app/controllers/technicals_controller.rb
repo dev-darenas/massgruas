@@ -69,7 +69,7 @@ class TechnicalsController < EnterpriseController
   end
 
   def technical_params
-    params.require(:technical).permit(:nombre, :cedula, :cargo, :direccion, :telefono1, :telefono2,
+    params.require(:technical).permit(:active, :nombre, :cedula, :cargo, :direccion, :telefono1, :telefono2,
                                     :fecha_nacimiento, :estado_civil, :conyuge, :hijos, :n_licencia,
                                     :categoria, :eps, :arl, :vinculacion, :retiro,
                                     pictures_attributes: [:id, :image, :image_cache, :_destroy])

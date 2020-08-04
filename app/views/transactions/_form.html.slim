@@ -120,7 +120,7 @@
         .form-row.align-items-center
           .col-4
             = form.label :technical_id, "Tecnico"
-            = form.collection_select :technical_id, @enterprise.technicals,
+            = form.collection_select :technical_id, @enterprise.technicals.is_active,
                     :id, :nombre,
                     {},
                     {class: 'form-control mb-2', id:'tecnicos'}
@@ -128,7 +128,7 @@
             - unless @transaction.technical.nil?
               = render 'transactions/technicals/phone_fields', f: form, model_technical: @transaction.technical
             - else
-              = render 'transactions/technicals/phone_fields', f: form, model_technical: @enterprise.technicals.first
+              = render 'transactions/technicals/phone_fields', f: form, model_technical: @enterprise.technicals.is_active.first
 
           .col-2.offset-md-0
             - if @transaction.id.nil?

@@ -14,6 +14,8 @@ class Technical < ApplicationRecord
   validates :cedula, presence: true
   validates :cedula, uniqueness: true
 
+  scope :is_active, -> { where(active: 'true') }
+
   def age
     now = Time.now.utc.to_date
     now.year - self.fecha_nacimiento.year - (self.fecha_nacimiento.to_date.change(:year => now.year) > now ? 1 : 0)
