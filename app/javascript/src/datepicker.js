@@ -36,7 +36,7 @@ const init2 = () => {
 
     console.log(' init datetimepicker ');
     $('#datetimepicker2').datetimepicker({
-        format: 'DD-MM-YYYY HH:mm zz',
+        format: 'YYYY-MM-DD HH:mm zz',
         ignoreReadonly: true,
         icons: {
             time: "far fa-clock"
@@ -57,7 +57,7 @@ const init2 = () => {
     });
 
     $('#datetimepicker4').datetimepicker({
-        format: 'DD-MM-YYYY HH:mm zz',
+        format: 'YYYY-MM-DD HH:mm zz',
         ignoreReadonly: true,
         icons: {
             time: "far fa-clock"
