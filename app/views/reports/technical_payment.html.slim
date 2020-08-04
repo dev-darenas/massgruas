@@ -6,9 +6,9 @@ h1 Liquidacion pago Técnico
     .form-group
       = form.label :technical_id, "Id Tecnico", class:'mx-sm-3 mb-2'
       = form.collection_select :technical_id, @enterprise.technicals,
-              :id, :cedula,
-              {include_blank:true},
-              {class:'mb-2 multiple-select'}
+                              :id, :cedula_and_name,
+                              {include_blank:true},
+                              {class:'mb-2 multiple-select'}
 
   .form-inline
     .form-group

@@ -25,4 +25,8 @@ class Technical < ApplicationRecord
     "#{self.nombre} telefonos: #{self.telefono1}, #{self.telefono2} "
   end
 
+  def cedula_and_name
+    "#{self.cedula} #{self.nombre}"
+  end
+
 end
