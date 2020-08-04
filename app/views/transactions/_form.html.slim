@@ -60,12 +60,15 @@
               = link_to 'Nuevo', new_transactions_client_path, class: 'btn btn-outline-primary', remote: true
 
     .row
-      .field.col-md
+      .field.col-md#account
         = form.label :account_id, "Cuenta"
         = form.collection_select :account_id, @transaction.account.nil? ? [] : @transaction.client.accounts ,
                                  :id, :name,
                                  {include_blank: true},
                                  {class: 'form-control', id:'cuentas'}
+        - if @transaction.id.nil?
+          .input-group-append
+            = link_to 'Nuevo', new_transactions_account_path, id:'new_account', class: 'btn btn-outline-primary', remote: true
 
       .field.col-md
         = form.label :service_id, "Servicio"

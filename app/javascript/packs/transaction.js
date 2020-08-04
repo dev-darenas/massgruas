@@ -42,6 +42,30 @@ function sumTotalGastos() {
     $ganancias.val(parseFloat(priced) - parseFloat(gastos));
 }
 
+function sumaKM(valorinputEvento, inputCompletar) {
+    var $total_km = $("#total_km");
+
+    if (parseFloat(valorinputEvento) <= parseFloat($total_km.val())) {
+        resultado = parseFloat(parseFloat($total_km.val()) - parseFloat(valorinputEvento)).toFixed(2);
+        inputCompletar.val(resultado);
+        total_zonas_km();
+    } else {
+        alert("El valor está fuera de rango");
+    }
+}
+
+function total_zonas_km(){
+    var $val_km_red = $("#val_km_red");
+    var $total_red_zone = $("#total_red_zone");
+    var $total_normal_zone = $("#total_normal_zone");
+    var $val_km = $("#val_km");
+    var $km_zona_normal = $("#km_zona_normal");
+    var $km_zona_roja = $("#km_zona_roja");
+
+    $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
+    $total_red_zone.val(parseFloat($km_zona_roja.val()) * parseFloat($val_km_red.val()));
+}
+
 $(document).on('turbolinks:load', function () {
     function initializeAutocomplete(id) {
         var element = document.getElementById(id);
@@ -65,6 +89,8 @@ $(document).on('turbolinks:load', function () {
     var total_km = document.getElementById("total_km");
     var km_zona_normal = document.getElementById("km_zona_normal");
     var km_zona_roja = document.getElementById("km_zona_roja");
+    var $km_zona_normal = $("#km_zona_normal");
+    var $km_zona_roja = $("#km_zona_roja");
 
     function distanceAPI() {
         $.getJSON('/api/v1/calulate_distance', {
@@ -76,6 +102,8 @@ $(document).on('turbolinks:load', function () {
             total_km.value = resp.distance_km;
             km_zona_normal.value = resp.distance_km;
             km_zona_roja.value = 0;
+            sumaKM($km_zona_normal.val(), $km_zona_roja);
+            sumTotalService();
         });
     }
 
@@ -109,29 +137,9 @@ $(document).on('turbolinks:load', function () {
 $(document).on('turbolinks:load', function () {
     var $km_zona_normal = $("#km_zona_normal");
     var $km_zona_roja = $("#km_zona_roja");
-    var $total_km = $("#total_km");
-    var $val_km_red = $("#val_km_red");
-    var $total_red_zone = $("#total_red_zone");
-    var $total_normal_zone = $("#total_normal_zone");
-    var $val_km = $("#val_km");
     var $horas_de_espera = $("#horas_de_espera");
     var $waiting_hours_value = $("#waiting_hours_value");
     var $total_waiting_hours = $("#total_waiting_hours");
-
-    function sumaKM(valorinputEvento, inputCompletar) {
-        if (parseFloat(valorinputEvento) <= parseFloat($total_km.val())) {
-            resultado = parseFloat(parseFloat($total_km.val()) - parseFloat(valorinputEvento)).toFixed(2);
-            inputCompletar.val(resultado);
-            total_zonas_km();
-        } else {
-            alert("El valor está fuera de rango");
-        }
-    }
-
-    function total_zonas_km(){
-        $total_normal_zone.val(parseFloat($val_km.val()) * parseFloat($km_zona_normal.val()));
-        $total_red_zone.val(parseFloat($km_zona_roja.val()) * parseFloat($val_km_red.val()));
-    }
 
     $km_zona_normal.change(function () {
         sumaKM($km_zona_normal.val(), $km_zona_roja);
@@ -290,4 +298,20 @@ $(document).on('turbolinks:load', function () {
         }
     });
 
+});
+
+$(document).on('turbolinks:load', function (){
+   var $clientes = $("#clientes");
+   var $new_account = $("#new_account");
+
+   $new_account.click(function (){
+       if ($clientes.val() === ""){
+           alert("Debe escoger primero un cliente")
+           return false
+       }else{
+           $(document).on('change', 'input', function() {
+               $('#client_ids').val($clientes.val());
+           });
+       }
+   });
 });

@@ -147,7 +147,8 @@ class TransactionsController < EnterpriseController
                                         vehicle_attributes: [:enterprise_id, :placa, :licencia, :clase, :marca, :tipo, :linea, :servicio],
                                         technical_attributes: [:id, :enterprise_id, :nombre, :cedula, :cargo, :direccion, :telefono1,
                                                                :telefono2, :fecha_nacimiento, :n_licencia,
-                                                               :categoria, :eps, :arl])
+                                                               :categoria, :eps, :arl],
+                                        account_attributes: [:name, :enterprise_id, :client_ids])
 
 
   end

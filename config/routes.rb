@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :clients, only: :new
     resources :vehicles, only: :new
     resources :technicals, only: :new
+    resources :accounts, only: :new
   end
 
   devise_for :users

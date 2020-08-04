@@ -1,0 +1,14 @@
+= form_with model: @transaction do |form|
+  = form.fields_for :account do |account_form|
+    = account_form.hidden_field :enterprise_id, value: @transaction.enterprise_id
+    = account_form.hidden_field :client_ids, id:'client_ids'
+    h4 Nueva Cuenta
+    hr
+
+    .field
+      = account_form.label :name, "Nombre"
+      = account_form.text_field :name, class: 'form-control'
+
+    = link_to 'Cancelar', new_transaction_path, class: 'btn btn-outline-primary'
+
+hr

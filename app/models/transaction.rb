@@ -16,6 +16,7 @@ class Transaction < ApplicationRecord
   accepts_nested_attributes_for :client
   accepts_nested_attributes_for :vehicle
   accepts_nested_attributes_for :technical
+  accepts_nested_attributes_for :account
 
   delegate :nombre, :identificacion, :razon_social, :regimen, :actividad_comercial, :direccion, :ciudad,
            :telefono, :email, to: :client, prefix: true
