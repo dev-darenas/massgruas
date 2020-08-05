@@ -35,17 +35,23 @@
         = form.date_field :retiro, class: 'form-control'
 
       = form.fields_for :pictures do |p|
-        .field
-          = p.hidden_field :image_cache, class: 'form-control'
+        - if p.object.attachments?
+          - p.object.attachments.each do |attachment|
+            .field
+              = p.hidden_field :image_cache, class: 'form-control'
+              = p.label :attachments, "Imagen guardada"
+              = p.file_field :attachments, multiple: true, class: 'form-control'
+              = image_tag attachment.thumb.url, alt: 'Image'
+          div
+            = label_tag :_destroy do
+              | Remover imagenenes
+              = p.check_box :_destroy
 
-          = p.label :image, "Imagen "
-          = p.file_field :image, class: 'form-control'
-          - if p.object.image?
-            = image_tag p.object.image.thumb.url, alt: 'Image'
-            div
-              = label_tag :_destroy do
-                | Remover imagen
-                = p.check_box :_destroy, class: 'form-control'
+        - else
+          .field
+            = p.hidden_field :image_cache, class: 'form-control'
+            = p.label :attachments, "Nuevas imagenes"
+            = p.file_field :attachments, multiple: true, class: 'form-control'
 
 
   .actions

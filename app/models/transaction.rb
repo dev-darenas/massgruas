@@ -33,7 +33,7 @@ class Transaction < ApplicationRecord
 
   accepts_nested_attributes_for :pictures,
                                 reject_if: lambda {
-                                    |a| a[:image].blank?
+                                    |a| a[:image].blank? && a[:attachments].blank?
                                 }, allow_destroy: true
 
   enum status: { open: 'Open', delivered: 'Delivered', closed: 'Closed', invoiced: 'Invoiced'} do

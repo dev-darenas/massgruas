@@ -18,8 +18,20 @@
 
   = form.fields_for :pictures do |p|
     .field
-      = p.label :image, "Imagen"
-      = p.file_field :image, class: 'form-control'
+      = p.hidden_field :image_cache, class: 'form-control'
+
+      - if p.object.image?
+        = p.label :image, "Imagen guardada"
+        = p.file_field :image, class: 'form-control'
+        = image_tag p.object.image.thumb.url, alt: 'Image'
+        div
+          = label_tag :_destroy do
+            | Remover imagen
+            = p.check_box :_destroy
+
+      - else
+        = p.label :image, "Nueva imagen"
+        = p.file_field :image, class: 'form-control'
 
   .actions
     = form.submit 'Actualizar', class: 'btn btn-primary'

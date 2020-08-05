@@ -21,6 +21,10 @@ module Technicals
       end
     end
 
+    def edit
+      @document.pictures.build
+    end
+
     def update
       if @document.update(document_params)
         redirect_to edit_technical_document_path(@technical, @document), notice: 'Document was successfully updated.'

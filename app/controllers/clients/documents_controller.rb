@@ -21,6 +21,10 @@ module Clients
       end
     end
 
+    def edit
+      @document.pictures.build
+    end
+
     def update
       if @document.update(document_params)
         redirect_to edit_client_document_path(@client, @document), notice: 'Document was successfully updated.'
@@ -41,8 +45,8 @@ module Clients
     end
 
     def document_params
-      params.require(:document).permit(:document_type_id, :renewable, :due_date, 
-        pictures_attributes: [ :id, :image, :image_cache, :_destroy]
+      params.require(:document).permit(:document_type_id, :renewable, :due_date,
+                                       pictures_attributes: [ :id, :image, :image_cache, :_destroy]
       )
     end
   end

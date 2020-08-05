@@ -21,6 +21,10 @@ module Vehicles
       end
     end
 
+    def edit
+      @document.pictures.build
+    end
+
     def update
       if @document.update(document_params)
         redirect_to edit_vehicle_document_path(@vehicle, @document), notice: 'Document was successfully updated.'
