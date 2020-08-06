@@ -1,8 +1,10 @@
 - if current_user
   aside.main-sidebar.sidebar-dark-primary.elevation-4
     = link_to "/", class: 'brand-link'
-      = (image_tag @enterprise.pictures.first.image.thumb.url, alt:"AdminLTE Logo",
-                  class:"brand-image img-circle elevation-3",style:"opacity: .8") if @enterprise.pictures.first.image?
+      - if !current_user.enterprise.pictures.first.nil?
+        - if current_user.enterprise.pictures.first.image?
+          = (image_tag current_user.enterprise.pictures.first.image.thumb.url, alt:"AdminLTE Logo",
+                       class:"brand-image img-circle elevation-3",style:"opacity: .8")
       span class="brand-text font-weight-light" MasGruas
     .sidebar
       nav.mt-2
