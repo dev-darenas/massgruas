@@ -1,5 +1,9 @@
 - if current_user
   aside.main-sidebar.sidebar-dark-primary.elevation-4
+    = link_to "/", class: 'brand-link'
+      = (image_tag @enterprise.pictures.first.image.thumb.url, alt:"AdminLTE Logo",
+                  class:"brand-image img-circle elevation-3",style:"opacity: .8") if @enterprise.pictures.first.image?
+      span class="brand-text font-weight-light" MasGruas
     .sidebar
       nav.mt-2
         ul.nav.nav-pills.nav-sidebar.flex-column data-widget="treeview" role="menu" data-accordion="false"
@@ -10,6 +14,10 @@
                 | Configuración
                 i.right.fas.fa-angle-left
             ul.nav.nav-treeview
+              li.nav-item
+                = link_to edit_enterprise_path(current_user.enterprise), class: 'nav-link'
+                  i.far.fa-circle.nav-icon
+                  p Logo de empresa
               li.nav-item
                 = link_to clients_path, class: 'nav-link'
                   i.far.fa-circle.nav-icon

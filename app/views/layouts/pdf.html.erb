@@ -7,6 +7,9 @@
   </head>
   <body>
     <div class='container'>
+      <div class="row">
+        <%= image_tag(embed_remote_image("#{Rails.root}/public#{@enterprise.pictures.first.image.small_thumb.url}",'image/'), alt:'Logo') if @enterprise.pictures.first.image? %>
+      </div>
       <%= yield %>
     </div>
   </body>
