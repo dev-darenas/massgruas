@@ -17,4 +17,6 @@ class Vehicle < ApplicationRecord
                                 reject_if: lambda {
                                     |a| a[:image].blank? && a[:attachments].blank?
                                 }, allow_destroy: true
+
+  before_save :to_upper
 end

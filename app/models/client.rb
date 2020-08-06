@@ -7,11 +7,12 @@ class Client < ApplicationRecord
 
   validates :nombre, presence: true
   validates :identificacion, presence: true
-  validates :identificacion, uniqueness: true
+  validates :identificacion, uniqueness: { case_sensitive: false }
   validates :telefono, presence: true
 
-  enum regimen: { common: 'Comun', simplified: 'Simplificado' }
-  enum tipo_identificacion: {'Cedula de Ciudadanía': 'CC', 'Cedula de Extranjería':'CE', Pasaporte:'P', 'Registro Civil':'RC', NIT:'NIT'}
+  enum regimen: { 'COMUN': 'COMUN', SIMPLIFICADO: 'SIMPLIFICADO' }
+  enum tipo_identificacion: {'CEDULA DE CIUDADANIA': 'CC', 'CEDULA DE EXTRANJERÍA':'CE', PASAPORTE:'P', 'REGISTRO CIVIL':'RC', NIT:'NIT'}
+  before_save :to_upper
 
   def arrays_acounts
     @array = []

@@ -204,7 +204,7 @@
       .field.col-md
         = form.label :operador
         = form.text_field :operador, class: 'form-control'
-    - if @transaction.id.present? && @transaction.open? || @transaction.delivered? || @transaction.closed?
+    - if @transaction.id.present? && @transaction.ABIERTO? || @transaction.ENVIADO? || @transaction.CERRADO?
       .row
         .field.col-md
           = form.label :celula_costo
@@ -214,7 +214,7 @@
           = form.label :fecha_de_cierre, "fecha y hora de cierre"
           = form.datetime_field :fecha_de_cierre, class: 'form-control', value:"#{DateTime.now.strftime("%Y-%m-%dT%H:%M")}"
 
-    - if @transaction.delivered? || @transaction.closed?
+    - if @transaction.ENVIADO? || @transaction.CERRADO?
       .row
         .col-md-3
           .field.col-md-7
@@ -295,15 +295,15 @@
       = form.submit 'Actualizar', class: 'btn btn-primary'
 
       - unless @transaction.id.blank?
-        - if @transaction.id.present? && @transaction.open?
+        - if @transaction.id.present? && @transaction.ABIERTO?
           | |
           = link_to "Enviar", transaction_deliver_path(@transaction), confirm: "Está seguro?", class: 'btn btn-warning'
-        - unless @transaction.closed?
-          - if @transaction.id.present? && @transaction.delivered?
+        - unless @transaction.CERRADO?
+          - if @transaction.id.present? && @transaction.ENVIADO?
             | |
             = link_to "Cerrar", transaction_close_path(@transaction), confirm: "Está seguro?", class: 'btn btn-danger'
 
-        -if @transaction.closed?
+        -if @transaction.CERRADO?
           | |
           = link_to "Facturar", transaction_check_in_path(@transaction), confirm: "Está seguro?", class: 'btn btn-danger'
 

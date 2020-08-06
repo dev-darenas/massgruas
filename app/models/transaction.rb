@@ -36,30 +36,31 @@ class Transaction < ApplicationRecord
                                     |a| a[:image].blank? && a[:attachments].blank?
                                 }, allow_destroy: true
 
-  enum status: { open: 'Open', delivered: 'Delivered', closed: 'Closed', invoiced: 'Invoiced'} do
+  enum status: {ABIERTO: 'OPEN', ENVIADO: 'DELIVERED', CERRADO: 'CLOSED', FACTURADO: 'INVOICED'} do
     event :close do
       before do
         self.fecha_de_cierre = DateTime.now
         self.save
       end
-      transition :delivered => :closed, if: -> {valid_ganancias}
+      transition :ENVIADO => :CERRADO, if: -> {valid_ganancias}
     end
 
     event :deliver do
-      transition :open => :delivered, if: -> {valid_celula_costo}
+      transition :ABIERTO => :ENVIADO, if: -> {valid_celula_costo}
     end
 
     event :check_in do
-      transition :closed => :invoiced
+      transition :CERRADO => :FACTURADO
     end
   end
 
-  scope :s_opened, -> { where(status: 'open') }
-  scope :s_delivered, -> { where(status: 'delivered') }
-  scope :s_closed, -> { where(status: 'closed') }
-  scope :s_invoiced, -> {where(status: 'invoiced')}
+  scope :s_opened, -> { where(status: 'OPEN') }
+  scope :s_delivered, -> { where(status: 'DELIVERED') }
+  scope :s_closed, -> { where(status: 'CLOSED') }
+  scope :s_invoiced, -> {where(status: 'INVOICED')}
 
   after_create :add_one_to_service_number
+  before_save :to_upper
 
   def add_one_to_service_number
     self.enterprise.update(service_number: self.enterprise.service_number + 1)
@@ -89,5 +90,14 @@ class Transaction < ApplicationRecord
     else
       true
     end
+  end
+
+  private
+  def to_upper
+    self.tarea.try(:upcase!)
+    self.asegurado.try(:upcase!)
+    self.direccion.try(:upcase!)
+    self.operador.try(:upcase!)
+    self.celula_costo.try(:upcase!)
   end
 end

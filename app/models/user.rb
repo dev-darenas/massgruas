@@ -6,6 +6,12 @@ class User < ApplicationRecord
   
   belongs_to :enterprise, autosave: true
   has_many :observations
-  validates :email, uniqueness: true
+  validates :email, uniqueness: { case_sensitive: false }
   enum rol: { admin: 'Admin', mananger: 'Mananger', activated: 'Activated'}
+  before_save :to_upper
+
+
+  def to_upper
+    self.fullname.try(:upcase!)
+  end
 end

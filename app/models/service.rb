@@ -4,4 +4,5 @@ class Service < ApplicationRecord
   has_many :transactions
   validates :name, presence: true
   validates :name, uniqueness: true
+  before_save :to_upper
 end

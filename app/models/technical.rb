@@ -15,6 +15,7 @@ class Technical < ApplicationRecord
   validates :cedula, uniqueness: true
 
   scope :is_active, -> { where(active: 'true') }
+  before_save :to_upper
 
   def age
     now = Time.now.utc.to_date

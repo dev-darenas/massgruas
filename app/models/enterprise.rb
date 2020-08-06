@@ -12,4 +12,5 @@ class Enterprise < ApplicationRecord
                                 reject_if: lambda {
                                     |a| a[:image].blank?
                                 }, allow_destroy: true
+  before_save :to_upper
 end
