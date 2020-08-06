@@ -39,5 +39,5 @@ h1 Editando Vehiculo
   .alert.alert-warning role="alert"
     | La fecha de próximo cambio de aceite está proxima a vencer
 
-= link_to 'Create PDF', vehicle_path(@vehicle, :format => :pdf), class: 'btn btn-primary'
+= link_to 'Crear PDF', vehicle_path(@vehicle, :format => :pdf), class: 'btn btn-primary'
 = render 'form', vehicle: @vehicle

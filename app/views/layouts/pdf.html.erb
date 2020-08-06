@@ -7,9 +7,13 @@
   </head>
   <body>
     <div class='container'>
-      <div class="row">
-        <%= image_tag(embed_remote_image("#{Rails.root}/public#{@enterprise.pictures.first.image.small_thumb.url}",'image/'), alt:'Logo') if @enterprise.pictures.first.image? %>
-      </div>
+      <% if !current_user.enterprise.pictures.first.nil? %>
+        <% if current_user.enterprise.pictures.first.image? %>
+          <div class="row">
+            <%= image_tag(embed_remote_image("#{Rails.root}/public#{current_user.enterprise.pictures.first.image.small_thumb.url}",'image/'), alt:'Logo')%>
+          </div>
+        <% end %>
+      <% end %>
       <%= yield %>
     </div>
   </body>

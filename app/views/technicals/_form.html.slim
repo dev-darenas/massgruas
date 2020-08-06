@@ -26,14 +26,6 @@
         = form.label :hijos
         = form.text_field :hijos, class: 'form-control'
 
-      .field
-        = form.label :vinculacion
-        = form.date_field :vinculacion, class: 'form-control'
-
-      .field
-        = form.label :retiro
-        = form.date_field :retiro, class: 'form-control'
-
       = form.fields_for :pictures do |p|
         - if p.object.attachments?
           - p.object.attachments.each do |attachment|
