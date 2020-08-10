@@ -1,3 +1,6 @@
-h1 Editando Cliente
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+              title: 'Clientes',
+              links: [['Clientes', clients_path], [@client.nombre, ''] ]
 
 = render 'form', client: @client

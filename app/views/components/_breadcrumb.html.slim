@@ -1,0 +1,17 @@
+section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-4
+        h1
+          = title
+      .col-sm-8
+        ol.breadcrumb.float-sm-right
+          li.breadcrumb-item
+            a href="/" Dashboard
+            - links.each do |link|
+              - if link[1].blank?
+                li.breadcrumb-item.active
+                  = link[0]
+              - else
+                li.breadcrumb-item
+                  = link_to link[0], link[1]
