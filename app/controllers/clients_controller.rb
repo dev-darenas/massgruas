@@ -29,7 +29,7 @@ class ClientsController < EnterpriseController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to edit_client_path(@client), notice: 'Client was successfully created.' }
+        format.html { redirect_to edit_client_path(@client), notice: 'El cliente ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @client }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ClientsController < EnterpriseController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to  edit_client_path(@client), notice: 'Client was successfully updated.' }
+        format.html { redirect_to  edit_client_path(@client), notice: 'El cliente ha sido actualizado satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @client }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class ClientsController < EnterpriseController
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
+      format.html { redirect_to clients_url, notice: 'El cliente ha sido destruido satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

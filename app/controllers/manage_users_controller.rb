@@ -21,7 +21,7 @@ class ManageUsersController < EnterpriseController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to  edit_manage_user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to  edit_manage_user_path(@user), notice: 'El usuario ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @user }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class ManageUsersController < EnterpriseController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to  edit_manage_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to  edit_manage_user_path(@user), notice: 'El usuario ha sido actualizado satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -45,7 +45,7 @@ class ManageUsersController < EnterpriseController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to manage_users_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to manage_users_path, notice: 'El usuario ha sido destruido satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

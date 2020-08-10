@@ -16,6 +16,7 @@ class VehiclesController < EnterpriseController
       format.pdf do
         render pdf: "vehicle",
                template: "vehicles/show.html.slim",
+               title: 'PDF Vehiculo',
                layout: 'pdf'
       end
     end
@@ -39,7 +40,7 @@ class VehiclesController < EnterpriseController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'Vehicle was successfully created.' }
+        format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'El vehiculo ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @vehicle }
       else
         format.html { render :new }
@@ -53,7 +54,7 @@ class VehiclesController < EnterpriseController
   def update
     respond_to do |format|
       if @vehicle.update(vehicle_params)
-        format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'Vehicle was successfully updated.' }
+        format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'El vehiculo ha sido actualizado satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @vehicle }
       else
         format.html { render :edit }
@@ -67,7 +68,7 @@ class VehiclesController < EnterpriseController
   def destroy
     @vehicle.destroy
     respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
+      format.html { redirect_to vehicles_url, notice: 'El vehiculo ha sido destruido satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

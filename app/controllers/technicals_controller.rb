@@ -13,7 +13,7 @@ class TechnicalsController < EnterpriseController
       format.pdf do
         render pdf: "technical",
                template: "technicals/show.html.slim",
-               title: 'PDF  technical',
+               title: 'PDF  Tecnico',
                layout: 'pdf'
       end
     end
@@ -33,7 +33,7 @@ class TechnicalsController < EnterpriseController
 
     respond_to do |format|
       if @technical.save
-        format.html { redirect_to edit_technical_path(@technical), notice: 'Technical was successfully created.' }
+        format.html { redirect_to edit_technical_path(@technical), notice: 'El Técnico ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @technical }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class TechnicalsController < EnterpriseController
   def update
     respond_to do |format|
       if @technical.update(technical_params)
-        format.html { redirect_to edit_technical_path(@technical), notice: 'Technical was successfully updated.' }
+        format.html { redirect_to edit_technical_path(@technical), notice: 'El Técnico ha sido actualizado satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @technical }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class TechnicalsController < EnterpriseController
   def destroy
     @technical.destroy
     respond_to do |format|
-      format.html { redirect_to technicals_path, notice: 'Technical was successfully destroyed.' }
+      format.html { redirect_to technicals_path, notice: 'El Técnico ha sido destruido satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

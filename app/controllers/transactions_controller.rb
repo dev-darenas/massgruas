@@ -53,7 +53,7 @@ class TransactionsController < EnterpriseController
     @transaction = @enterprise.transactions.new(transaction_params)
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully created.' }
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'La Transacción ha sido creada satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @transaction }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class TransactionsController < EnterpriseController
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully updated.' }
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'La Transacción ha sido actualizada satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @transaction }
       else
         format.html { render :edit }
@@ -76,13 +76,13 @@ class TransactionsController < EnterpriseController
 
   def destroy
     @transaction.destroy
-    redirect_to transaction_path, notice: 'Transactions was successfully destroyed.'
+    redirect_to transaction_path, notice: 'La Transacción ha sido destruida satisfactoriamente.'
   end
 
   def close
     respond_to do |format|
       if @transaction.close
-        format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully closed.' }
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'La Transacción ha sido cerrada satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @transaction }
       else
         format.html { render :edit }
@@ -94,7 +94,7 @@ class TransactionsController < EnterpriseController
   def deliver
     respond_to do |format|
       if @transaction.deliver
-        format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully delivered.' }
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'La Transacción ha sido enviada satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @transaction }
       else
         format.html { render :edit }
@@ -106,7 +106,7 @@ class TransactionsController < EnterpriseController
   def check_in
     respond_to do |format|
       if @transaction.check_in
-        format.html { redirect_to edit_transaction_path(@transaction), notice: 'Transaction was successfully invoiced.' }
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'La Transacción ha sido faturada satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @transaction }
       else
         format.html { render :edit }

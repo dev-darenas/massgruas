@@ -29,7 +29,7 @@ class DocumentTypesController < EnterpriseController
 
     respond_to do |format|
       if @document_type.save
-        format.html { redirect_to edit_document_type_path(@document_type), notice: 'Document type was successfully created.' }
+        format.html { redirect_to edit_document_type_path(@document_type), notice: 'El tipo de documento ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @document_type }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class DocumentTypesController < EnterpriseController
   def update
     respond_to do |format|
       if @document_type.update(document_type_params)
-        format.html { redirect_to edit_document_type_path(@document_type), notice: 'Document type was successfully updated.' }
+        format.html { redirect_to edit_document_type_path(@document_type), notice: 'El tipo de documento ha sido actualizado satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @document_type }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class DocumentTypesController < EnterpriseController
   def destroy
     @document_type.destroy
     respond_to do |format|
-      format.html { redirect_to document_types_url, notice: 'Document type was successfully destroyed.' }
+      format.html { redirect_to document_types_url, notice: 'El tipo de documento ha sido destruido satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

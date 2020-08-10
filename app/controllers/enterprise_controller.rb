@@ -10,7 +10,7 @@ class EnterpriseController < ApplicationController
   def update
     respond_to do |format|
       if @enterprise.update(enterprise_params)
-        format.html { redirect_to edit_enterprise_path(@enterprise), notice: 'Enterprise was successfully updated.' }
+        format.html { redirect_to edit_enterprise_path(@enterprise), notice: 'La empresa ha sido actualizada satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @enterprise }
       else
         format.html { render :edit }

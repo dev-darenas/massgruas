@@ -29,7 +29,7 @@ class AccountsController < EnterpriseController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to edit_account_path(@account), notice: 'Account was successfully created.' }
+        format.html { redirect_to edit_account_path(@account), notice: 'la cuenta ha sido creada satisfactoriamente.' }
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class AccountsController < EnterpriseController
   def update
     respond_to do |format|
       if @account.update(account_params)
-        format.html { redirect_to edit_account_path(@account), notice: 'Account was successfully updated.' }
+        format.html { redirect_to edit_account_path(@account), notice: 'La cuenta ha sido actualizada satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @account }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class AccountsController < EnterpriseController
   def destroy
     @account.destroy
     respond_to do |format|
-      format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
+      format.html { redirect_to accounts_url, notice: 'La cuenta ha sido destruida satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

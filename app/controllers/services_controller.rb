@@ -29,7 +29,7 @@ class ServicesController < EnterpriseController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to edit_service_path(@service), notice: 'Service was successfully created.' }
+        format.html { redirect_to edit_service_path(@service), notice: 'El servicio ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @service }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ServicesController < EnterpriseController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to edit_service_path(@service), notice: 'Service was successfully updated.' }
+        format.html { redirect_to edit_service_path(@service), notice: 'El servicio ha sido actualizado satisfactoriamente.' }
         format.json { render :edit, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class ServicesController < EnterpriseController
   def destroy
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to services_url, notice: 'El servicio ha sido destruido satisfactoriamente.' }
       format.json { head :no_content }
     end
   end
