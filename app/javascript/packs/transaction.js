@@ -104,6 +104,7 @@ $(document).on('turbolinks:load', function () {
             km_zona_roja.value = 0;
             sumaKM($km_zona_normal.val(), $km_zona_roja);
             sumTotalService();
+            sumTotalGastos();
         });
     }
 
@@ -285,6 +286,9 @@ $(document).on('turbolinks:load', function () {
                         $waiting_hours_value.val(lp.waiting_hours_value === null ? 0 : lp.waiting_hours_value );
                         $r_nocturno.val(lp.night_surcharge === null ? 0 : lp.night_surcharge);
                         $r_festivo.val(lp.holiday_surcharge === null ? 0 : lp.holiday_surcharge);
+                        total_zonas_km();
+                        sumTotalService();
+                        sumTotalGastos();
                     }
                 }
             }
