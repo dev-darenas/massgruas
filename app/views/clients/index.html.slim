@@ -1,5 +1,12 @@
-h1 Clientes
-= render "components/search", url: clients_path, field_search: :nombre_or_identificacion_or_razon_social_or_regimen_or_actividad_comercial_or_direccion_or_ciudad_or_telefono_or_email_cont
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+              title: 'Clientes',
+              links: [ ['Clientes', ''] ]
+
+= render "components/search",
+          url: clients_path,
+          field_search: :nombre_or_identificacion_or_razon_social_or_regimen_or_actividad_comercial_or_direccion_or_ciudad_or_telefono_or_email_cont
+
 table.table
   thead
     tr

@@ -18,13 +18,18 @@
       <%= render '/components/menu' %>
 
       <div class="content-wrapper">
+
+        <%= yield :breadcrumb %>
+
         <section class="content">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-12">
                 <div class="card card-primary">
-                  <%= render '/components/flash' %>
-                  <%= yield %>
+                  <div class="card-body">
+                    <%= render '/components/flash' %>
+                    <%= yield %>
+                  </div>
                   <br>
                 </div>
              </div>
