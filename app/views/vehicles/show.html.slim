@@ -85,4 +85,4 @@ p
   strong<> = @vehicle.km_proximocambio
 p
   - @vehicle.pictures.each do |v|
-    =image_tag embed_remote_image("#{Rails.root}/public#{v.image.thumb.url}",'image/')
+    =image_tag embed_remote_image("#{Rails.root}/public#{v.image.thumb.url}",'image/') if v.image?
