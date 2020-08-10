@@ -36,7 +36,7 @@ class Transaction < ApplicationRecord
                                     |a| a[:image].blank? && a[:attachments].blank?
                                 }, allow_destroy: true
 
-  enum status: {ABIERTO: 'OPEN', ENVIADO: 'DELIVERED', CERRADO: 'CLOSED', FACTURADO: 'INVOICED'} do
+  enum status: {ABIERTO: 'Open', ENVIADO: 'Delivered', CERRADO: 'Closed', FACTURADO: 'Invoiced'} do
     event :close do
       before do
         self.fecha_de_cierre = DateTime.now
@@ -54,10 +54,10 @@ class Transaction < ApplicationRecord
     end
   end
 
-  scope :s_opened, -> { where(status: 'OPEN') }
-  scope :s_delivered, -> { where(status: 'DELIVERED') }
-  scope :s_closed, -> { where(status: 'CLOSED') }
-  scope :s_invoiced, -> {where(status: 'INVOICED')}
+  scope :s_opened, -> { where(status: 'Open') }
+  scope :s_delivered, -> { where(status: 'Delivered') }
+  scope :s_closed, -> { where(status: 'Closed') }
+  scope :s_invoiced, -> {where(status: 'Invoiced')}
 
   after_create :add_one_to_service_number
   before_save :to_upper

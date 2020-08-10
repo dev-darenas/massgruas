@@ -35,7 +35,7 @@ class TransactionsController < EnterpriseController
   end
 
   def new
-    @transaction = @enterprise.transactions.new(fecha:Time.now.strftime("%d-%m-%y %H:%M %z"),
+    @transaction = @enterprise.transactions.new(fecha:Time.now.strftime("%Y-%m-%d %H:%M %z"),
                                                 service_number: @enterprise.service_number,
                                                 total_km: 0,
                                                 km_zona_normal: 0,

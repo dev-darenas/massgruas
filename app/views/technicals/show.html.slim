@@ -12,7 +12,7 @@ p
 
 p
   - unless @technical.pictures.first.nil?
-    = image_tag embed_remote_image("#{Rails.root}/public#{@technical.pictures.first.image.thumb.url}", 'image/')
+    = image_tag embed_remote_image("#{Rails.root}/public#{@technical.pictures.first.image.thumb.url}", 'image/') if @technical.pictures.first.image?
 
 p
   | Cargo:
@@ -66,4 +66,4 @@ p
   - @technical.pictures.each do |t|
     - next if t == @technical.pictures.first
 
-    = image_tag embed_remote_image("#{Rails.root}/public#{t.image.thumb.url}", 'image/')
+    = image_tag embed_remote_image("#{Rails.root}/public#{t.image.thumb.url}", 'image/') if t.image?
