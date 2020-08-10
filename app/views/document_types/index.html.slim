@@ -1,4 +1,7 @@
-h1 Tipos de Documentos
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Tipos de Documento',
+          links: [ ['Tipos de documentos', ''] ]
 
 = render "components/search", field_search: :name_cont, url: document_types_path
 table.table

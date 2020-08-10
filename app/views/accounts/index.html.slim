@@ -1,4 +1,8 @@
-h1 Cuentas
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Cuentas',
+          links: [ ['Cuentas', ''] ]
+
 = render "components/search", field_search: :name_cont, url: accounts_path
 table.table
   thead

@@ -1,3 +1,6 @@
-h1 Editando Cuenta
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+            title: 'Cuentas',
+            links: [ ['Cuentas', accounts_path], [@account.name,''] ]
 
 = render 'form', account: @account

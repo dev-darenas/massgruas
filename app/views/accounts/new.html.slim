@@ -1,3 +1,6 @@
-h1 Nueva Cuenta
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Cuentas',
+          links: [['Cuentas', accounts_path], ['Nueva', ''] ]
 
 = render 'form', account: @account

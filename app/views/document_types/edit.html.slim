@@ -1,4 +1,8 @@
-h1 Editando tipo de Documento
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Tipos de Documento',
+          links: [ ['Tipos de documentos', document_types_path],
+                  [@document_type.name,''] ]
 
 = render 'form', document_type: @document_type
 

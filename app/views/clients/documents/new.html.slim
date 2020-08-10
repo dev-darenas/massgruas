@@ -1,3 +1,9 @@
-h1 Nuevo Documento
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Clientes',
+          links: [['Clientes', clients_path],
+                  [@client.nombre, edit_client_path(@client)],
+                  ['Documentos', client_documents_path(@client)],
+                  ['Nuevo', '']]
 
 = render 'form'
