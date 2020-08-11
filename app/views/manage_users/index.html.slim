@@ -1,4 +1,7 @@
-h1 Usuarios
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Usuarios',
+          links: [ ['Usuarios', ''] ]
 
 = render "components/search", field_search: :fullname_or_email_or_rol_cont, url: manage_users_path
 table.table

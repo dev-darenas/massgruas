@@ -1,3 +1,8 @@
-h1 Editando Técnico
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Técnicos',
+          links: [ ['Técnicos', technicals_path],
+                   [@technical.nombre,'']]
+
 = link_to 'Crear PDF', technical_path(@technical, :format => :pdf), class: 'btn btn-primary'
 = render 'form', technical: @technical

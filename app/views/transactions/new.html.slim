@@ -1,3 +1,7 @@
-h1 Crear Transacción
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Transacción',
+          links: [ ['Transacción', transactions_path],
+                   ['Nueva', '']]
 
 = render 'form', transaction: @transaction

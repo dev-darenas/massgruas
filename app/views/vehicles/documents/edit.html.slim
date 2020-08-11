@@ -1,3 +1,9 @@
-h1 Editar Documento
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Documentos',
+          links: [['Vehiculos', vehicles_path],
+                  [@vehicle.placa, edit_vehicle_path(@vehicle)],
+                  ['Documentos', vehicle_documents_path],
+                  [@document.document_type.name, '']]
 
 = render 'form'

@@ -1,4 +1,9 @@
-h1 Documento
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Documentos',
+          links: [['Técnicos', technicals_path],
+                  [@technical.nombre, edit_technical_path(@technical)],
+                  ['Documentos', '']]
 
 = render 'technicals/tabs', page: 'document'
 

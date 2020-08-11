@@ -1,3 +1,9 @@
-h1 Editar Documento
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Documentos',
+          links: [['Técnicos', technicals_path],
+                  [@technical.nombre, edit_technical_path(@technical)],
+                  ['Documentos', technical_documents_path],
+                  [@document.document_type.name, '']]
 
 = render 'form'

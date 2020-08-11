@@ -1,4 +1,8 @@
-h1 Editando Vehiculo
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Vehiculos',
+          links: [['Vehiculos', vehicles_path],
+                  [@vehicle.placa, '']]
 
 - if days_soat_zero(@vehicle) && days_rtm_zero(@vehicle)
 

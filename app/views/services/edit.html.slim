@@ -1,3 +1,7 @@
-h1 Editar Servicios
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Servicios',
+          links: [ ['Servicios', services_path],
+                   [@service.name, '']]
 
 = render 'form', service: @service

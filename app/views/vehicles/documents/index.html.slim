@@ -1,4 +1,9 @@
-h1 Documentos
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Documentos',
+          links: [['Vehiculos', vehicles_path],
+                  [@vehicle.placa, edit_vehicle_path(@vehicle)],
+                  ['Documentos', '']]
 
 = render 'vehicles/tabs', page: 'document'
 

@@ -1,4 +1,7 @@
-h1 Servicios
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Servicios',
+          links: [ ['Usuarios', '']]
 
 = render "components/search", field_search: :name_cont, url: services_path
 table.table

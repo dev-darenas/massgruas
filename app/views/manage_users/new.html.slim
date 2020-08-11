@@ -1,4 +1,8 @@
-h1 Nuevo Usuario
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Usuarios',
+          links: [ ['Usuarios', manage_users_path],
+                  ['Nuevo',''] ]
 
 = form_with(model: @user, url: "/manage_users", local: true) do |form|
 

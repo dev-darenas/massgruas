@@ -1,4 +1,7 @@
-h1 Transacción
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Transacción',
+          links: [ ['Transacción', ''] ]
 
 = render "components/search", url: transactions_path({status: "#{ params[:status] }"}), field_search: :status_or_expediente_or_orden_Trabajo_or_remision_or_factura_cont
 table.table

@@ -1,4 +1,8 @@
-h1 Editar Transacción
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Transacción',
+          links: [ ['Transacción', transactions_path],
+                  ['Editar', '']]
 
 = link_to 'Crear PDF', transaction_path(@transaction, :format => :pdf), class: 'btn btn-primary'
 | |

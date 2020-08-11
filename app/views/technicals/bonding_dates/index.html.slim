@@ -1,4 +1,10 @@
-h1 Fechas de vinculación
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Fechas de vinculación',
+          links: [['Técnicos', technicals_path],
+                  [@technical.nombre, edit_technical_path(@technical)],
+                  ['Fechas de vinculación', '']]
+
 
 = render 'technicals/tabs', page: 'fecha_vinculación'
 

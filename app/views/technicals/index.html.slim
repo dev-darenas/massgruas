@@ -1,4 +1,7 @@
-h1 Técnicos
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Técnicos',
+          links: [ ['Técnicos', '']]
 
 = render "components/search", url: technicals_path, field_search: :nombre_or_cedula_or_cargo_or_n_licencia_or_categoria_or_eps_or_arl_cont
 table.table

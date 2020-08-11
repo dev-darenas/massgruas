@@ -1,4 +1,8 @@
-h1 Crear Vehiculo
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Vehiculos',
+          links: [['Vehiculos', vehicles_path],
+                  ['Nuevo', '']]
 
 = render 'form', vehicle: @vehicle
 

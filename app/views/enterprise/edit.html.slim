@@ -1,3 +1,6 @@
-h1 Editar Enterprise
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Empresa',
+          links: [ [@enterprise.name,''] ]
 
 = render 'form'
