@@ -1,6 +1,6 @@
 h1 Liquidacion pago Técnico
 
-= form_with(url:technical_clearance_path, method: "get", local: true)  do |form|
+= form_with(url:technical_clearance_path(:format => :pdf), method: "get", local: true)  do |form|
 
   .form-inline
     .form-group
@@ -8,17 +8,17 @@ h1 Liquidacion pago Técnico
       = form.collection_select :technical_id, @enterprise.technicals,
                               :id, :cedula_and_name,
                               {include_blank:true},
-                              {class:'mb-2 multiple-select'}
+                              {class:'mb-2 multiple-select', required:true}
 
   .form-inline
     .form-group
       = form.label :initial_date, "Fecha incial", class:'mx-sm-3 mb-2'
-      = form.date_field :initial_date, class:'mb-2 form-control'
+      = form.date_field :initial_date, class:'mb-2 form-control', required:true
 
   .form-inline
     .form-group
       = form.label :final_date, "Fecha Final", class:'mx-sm-3 mb-2'
-      = form.date_field :final_date, class: 'mb-2 form-control'
+      = form.date_field :final_date, class: 'mb-2 form-control', required:true
 
   .form-inline
     .form-group
@@ -42,7 +42,7 @@ h1 Liquidacion pago Técnico
 
   .form-inline
     .form-group
-      = form.label :other_discounts, "Descuento Prestamos ($)", class:'mx-sm-3 mb-2'
+      = form.label :other_discounts, "Otros Descuentos ($)", class:'mx-sm-3 mb-2'
       = form.number_field :other_discounts, step: 'any', value: 0, class: 'mb-2 form-control'
 
   br
