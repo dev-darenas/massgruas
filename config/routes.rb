@@ -52,5 +52,7 @@ Rails.application.routes.draw do
 
   get 'reports/technical_payment', as: 'technical_payment'
   get 'reports/technical_clearance', as: 'technical_clearance'
+  get 'reports/payment_per_vehicle', as: 'payment_per_vehicle'
+  get 'reports/vehicle_liquidation', as: 'vehicle_liquidation'
 
 end

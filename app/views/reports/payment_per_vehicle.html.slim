@@ -1,0 +1,25 @@
+h1 Liquidacion por Vehiculo
+
+= form_with(url:vehicle_liquidation_path(:format => :pdf), method: "get", local: true)  do |form|
+
+  .form-inline
+    .form-group
+      = form.label :vehicle_id, "Id vehiculo", class:'mx-sm-3 mb-2'
+      = form.collection_select :vehicle_id, @enterprise.vehicles,
+              :id, :placa,
+              {include_blank:true},
+              {class:'mb-2 multiple-select', required:true}
+
+  .form-inline
+    .form-group
+      = form.label :initial_date, "Fecha incial", class:'mx-sm-3 mb-2'
+      = form.date_field :initial_date, class:'mb-2 form-control', required:true
+
+  .form-inline
+    .form-group
+      = form.label :final_date, "Fecha Final", class:'mx-sm-3 mb-2'
+      = form.date_field :final_date, class: 'mb-2 form-control', required:true
+
+  br
+  .actions
+    = form.submit 'Generar Liquidación', class: 'btn btn-primary'

@@ -1,0 +1,36 @@
+.container
+  .row
+    h1.col-md Liquidación de Vehiculo
+
+    h2.col-md =@vehicle.placa
+
+    p.col-md
+      strong Fecha:
+      =< Time.now.strftime("%d/%m/%Y")
+  hr
+
+.table-responsive-lg
+  table.table
+    thead
+      tr
+        th scope='col' FECHA Y HORA
+        th scope='col' OT
+        th scope='col' TAREA
+        th scope='col' ORIGEN
+        th scope='col' DESTINO
+        th scope='col' PAGO
+    tbody
+      - @vehicle.transactions.where(fecha: params[:initial_date]..params[:final_date]).each do |t|
+        tr
+          td = t.fecha.strftime("%d/%m/%Y")
+          td = t.orden_Trabajo
+          td = t.tarea
+          td = t.origen
+          td = t.destino
+          td = t.priced.blank? ? 0 : t.priced
+          - @total += t.priced.blank? ? 0 : t.priced
+
+      tr
+        td.text-sm-right colspan='5'
+          strong Pago total:
+        td = number_with_precision(@total, :precision => 2)
