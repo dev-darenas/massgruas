@@ -34,13 +34,14 @@ p
           td = t.tarea
           td = t.origen
           td = t.destino
-          td = t.pago_tecnico.blank? ? 0 : t.pago_tecnico
           - @total += t.pago_tecnico.blank? ? 0 : t.pago_tecnico
+          td = number_to_currency((t.pago_tecnico.blank? ? 0 : t.pago_tecnico),locale: :es)
+
 
       tr
         td.text-sm-right colspan='5'
           strong Pago total:
-        td = number_with_precision(@total, :precision => 2)
+        td = number_to_currency(@total,locale: :es)
       tr
         td.text-sm-right colspan='5'
           strong % de Administración:
@@ -50,7 +51,7 @@ p
         td.text-sm-right colspan='5'
           strong subtotal($):
         - @total = @total - (@total * params[:administration].to_i/100)
-        td = number_with_precision(@total, :precision => 2)
+        td = number_to_currency(@total,locale: :es)
 
       tr
         td.text-sm-right colspan='5'
@@ -61,7 +62,7 @@ p
         td.text-sm-right colspan='5'
           strong Liquidación($):
         - @total = @total - (@total * params[:liquidation].to_i/100)
-        td = number_with_precision(@total, :precision => 2)
+        td = number_to_currency(@total,locale: :es)
 
       tr
         td.text-sm-right colspan='5'
@@ -82,4 +83,4 @@ p
         td.text-sm-right colspan='5'
           strong Neto a pagar($):
         - @total = @total - params[:eps_discount].to_i - params[:discount_loans].to_i - params[:other_discounts].to_i
-        td = number_with_precision(@total, :precision => 2)
+        td = number_to_currency(@total,locale: :es)

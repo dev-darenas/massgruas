@@ -1,6 +1,87 @@
 ---
 es:
   activerecord:
+    models:
+      account: Cuenta
+      enterprise: Empresa
+      user: Usuario
+      client: Cliente
+      vehicle: Vehiculo
+      picture: Imagen
+      technical: Técnico
+      transaction: Transacción
+      observation: Observación
+      document_type: Tipo de documento
+      service: Servicio
+      document: Documento
+      list_price: Lista de precio
+      bonding_date: Fechas de vinculación
+
+    attributes:
+      account:
+        name: Nombre
+        enterprise_id: Id de empresa
+      enterprise:
+        name: Nombre
+        service_number: Número de servicio
+      user:
+        fullname: Nombre completo
+        email: Correo
+        enterprise_id: Id de empresa
+      client:
+        email: Correo
+        enterprise_id: Id de empresa
+      vehicle:
+        next_oil_change_date: Fecha de proximo cambio de aceite
+        enterprise_id: Id de empresa
+      picture:
+        image: Imagen
+      technical:
+        active: Activo
+        enterprise_id: Id de empresa
+      transaction:
+        status: Estado
+        service_number: Número de servicio
+        enterprise_id: Id de empresa
+        response_time: Tiempo de respuesta
+        client_id: Id de Cliente
+        technical_id: Id de Técnico
+        vehicle_id: Id de vehículo
+        account_id: Id de cuenta
+        service_id: id de servicio
+        total_normal_zone: Total zona normal
+        total_red_zone: Total zona roja
+        waiting_hours_value: Valor hora de espera
+        total_waiting_hours: Total valor hora de espera
+        priced: tarifado
+      observation:
+        description: Descripción
+        user_id: Id de Usuario
+      document_type:
+        name: Nombre
+        enterprise_id: Id de empresa
+      service:
+        name: Nombre
+        enterprise_id: Id de empresa
+      document:
+        document_type_id: Id de tipo de documento
+        renewable: Renovable
+        due_date: Fecha de vencimiento
+      list_price:
+        flag: Banderazo
+        waiting_hours_value: Valor hora de espera
+        kilometer_value: Valor Kilometro Zona normal
+        night_surcharge: Recargo nocturno
+        red_zone_value: Valor Kilometro zona roja
+        holiday_surcharge: Recargo festivo
+        client_id: Id de cliente
+        service_id: Id de servicio
+      bonding_date:
+        entry_date: Fecha de vinculación
+        departure_date: Fecha de salida
+        observation: Observación
+        technical_id: Id de técnico
+
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
@@ -193,12 +274,12 @@ es:
     currency:
       format:
         delimiter: "."
-        format: "%n %u"
-        precision: 2
+        format: "%u %n"
+        precision: 0
         separator: ","
         significant: false
         strip_insignificant_zeros: false
-        unit: "€"
+        unit: "$"
     format:
       delimiter: "."
       precision: 3

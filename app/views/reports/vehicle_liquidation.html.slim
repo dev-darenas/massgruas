@@ -27,10 +27,11 @@
           td = t.tarea
           td = t.origen
           td = t.destino
-          td = t.priced.blank? ? 0 : t.priced
           - @total += t.priced.blank? ? 0 : t.priced
+          td = number_to_currency((t.priced.blank? ? 0 : t.priced),locale: :es)
+
 
       tr
         td.text-sm-right colspan='5'
           strong Pago total:
-        td = number_with_precision(@total, :precision => 2)
+        td = number_to_currency(@total,locale: :es)
