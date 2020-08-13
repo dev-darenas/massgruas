@@ -10,11 +10,11 @@ p
 
 p
   strong Cliente:
-  = @enterprise.clients.find(@transaction.client_id).nombre
+  = @transaction.client_including_deleted.nombre
 
 p
   strong Cuenta:
-  = @transaction.account.name
+  = @transaction.account_including_deleted.name
 
 p
   strong Placa de servicio:
@@ -46,4 +46,4 @@ p
 
 p
   strong Placa Grua:
-  = @enterprise.vehicles.find(@transaction.vehicle_id).placa
+  = @transaction.vehicle_including_deleted.placa

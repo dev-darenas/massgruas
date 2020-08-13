@@ -4,6 +4,6 @@
           links: [['Clientes', clients_path],
                   [@client.nombre, edit_client_path(@client)],
                   ['Documentos', client_documents_path(@client)],
-                  [@document.document_type.name, '']]
+                  [@document.document_type_including_deleted.name, '']]
 
 = render 'form'

@@ -30,7 +30,7 @@ p
       - @technical.transactions.where(fecha: params[:initial_date]..params[:final_date]).each do |t|
         tr
           td = t.fecha.strftime("%d/%m/%Y %H:%M")
-          td = t.client.nombre
+          td = t.client_including_deleted.nombre
           td = t.tarea
           td = t.origen
           td = t.destino

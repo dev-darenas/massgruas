@@ -1,4 +1,5 @@
 class Service < ApplicationRecord
+  acts_as_paranoid
   belongs_to :enterprise
   has_one :list_price
   has_many :transactions

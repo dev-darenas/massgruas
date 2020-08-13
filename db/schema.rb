@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_131324) do
+ActiveRecord::Schema.define(version: 2020_08_13_183842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_accounts_on_deleted_at"
     t.index ["enterprise_id"], name: "index_accounts_on_enterprise_id"
   end
 
@@ -52,6 +54,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "tipo_identificacion"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_clients_on_deleted_at"
     t.index ["enterprise_id"], name: "index_clients_on_enterprise_id"
   end
 
@@ -60,6 +64,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_document_types_on_deleted_at"
     t.index ["enterprise_id"], name: "index_document_types_on_enterprise_id"
   end
 
@@ -71,6 +77,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.date "due_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_documents_on_deleted_at"
     t.index ["document_type_id"], name: "index_documents_on_document_type_id"
     t.index ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id"
   end
@@ -93,7 +101,9 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.bigint "service_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.index ["client_id"], name: "index_list_prices_on_client_id"
+    t.index ["deleted_at"], name: "index_list_prices_on_deleted_at"
     t.index ["service_id"], name: "index_list_prices_on_service_id"
   end
 
@@ -104,6 +114,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.bigint "observable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_observations_on_deleted_at"
     t.index ["observable_type", "observable_id"], name: "index_observations_on_observable_type_and_observable_id"
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
@@ -115,6 +127,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
     t.json "attachments"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_pictures_on_deleted_at"
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
   end
 
@@ -123,6 +137,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_services_on_deleted_at"
     t.index ["enterprise_id"], name: "index_services_on_enterprise_id"
   end
 
@@ -147,6 +163,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "active", default: true
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_technicals_on_deleted_at"
     t.index ["enterprise_id"], name: "index_technicals_on_enterprise_id"
   end
 
@@ -207,8 +225,10 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.float "total_waiting_hours"
     t.float "priced"
     t.datetime "hora_final"
+    t.datetime "deleted_at"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["client_id"], name: "index_transactions_on_client_id"
+    t.index ["deleted_at"], name: "index_transactions_on_deleted_at"
     t.index ["enterprise_id"], name: "index_transactions_on_enterprise_id"
     t.index ["service_id"], name: "index_transactions_on_service_id"
     t.index ["technical_id"], name: "index_transactions_on_technical_id"
@@ -257,6 +277,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_131324) do
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_vehicles_on_deleted_at"
     t.index ["enterprise_id"], name: "index_vehicles_on_enterprise_id"
   end
 

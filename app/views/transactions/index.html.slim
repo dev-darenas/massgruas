@@ -28,7 +28,7 @@ table.table
         td = transaction.expediente
         td = transaction.factura
         td = transaction.asegurado
-        td = @enterprise.clients.find(transaction.client_id).nombre
+        td = transaction.client_including_deleted.nombre
         td = link_to 'Editar', edit_transaction_path(transaction), class: 'btn btn-primary'
         td = link_to 'Destruir', transaction, method: :delete, data: {confirm: 'Está seguro?'}, class: 'btn btn-danger'
         td = link_to 'Crear PDF', transaction_path(transaction, :format => :pdf), class: 'btn btn-primary'

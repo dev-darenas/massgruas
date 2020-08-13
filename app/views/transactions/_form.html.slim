@@ -62,7 +62,8 @@
     .row
       .field.col-md#account
         = form.label :account_id, "Cuenta"
-        = form.collection_select :account_id, @transaction.account.nil? ? [] : @transaction.client.accounts ,
+        = form.collection_select :account_id,
+                                  @transaction.account_including_deleted.nil? ? [] : @transaction.client_including_deleted.accounts.with_deleted,
                                  :id, :name,
                                  {include_blank: true},
                                  {class: 'form-control', id:'cuentas'}

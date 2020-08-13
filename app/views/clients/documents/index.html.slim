@@ -19,7 +19,7 @@ table.table
       - expired_date(document)
 
       tr
-        td = document.document_type.name
+        td = document.document_type_including_deleted.name
         td = document.due_date
         td = link_to 'Editar', edit_client_document_path(@client, document), class: 'btn btn-primary'
         td = link_to 'Destruir', client_document_path(@client, document),

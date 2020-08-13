@@ -1,4 +1,5 @@
 class Client < ApplicationRecord
+  acts_as_paranoid
   belongs_to :enterprise
   has_many :transactions
   has_many :documents, as: :documentable
@@ -20,6 +21,13 @@ class Client < ApplicationRecord
       @array.push([ac.id, ac.name])
     end
     @array
+  end
+
+  private def to_upper
+    self.direccion.try(:upcase!)
+    self.actividad_comercial.try(:upcase!)
+    self.nombre.try(:upcase!)
+    self.ciudad.try(:upcase!)
   end
 
 end

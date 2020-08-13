@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  acts_as_paranoid
+  validates :orden_Trabajo, presence: true
   validates :orden_Trabajo, uniqueness: true
   validates :remision, uniqueness: true
   validates :factura, uniqueness: true
@@ -8,8 +10,14 @@ class Transaction < ApplicationRecord
   has_many :observations, as: :observable, dependent: :destroy
   has_many :pictures, as: :imageable, dependent: :destroy
   belongs_to :account
+  belongs_to :account_including_deleted, class_name: "Account",
+             foreign_key: 'account_id', with_deleted: true
   belongs_to :client
+  belongs_to :client_including_deleted, class_name: "Client",
+      foreign_key: 'client_id', with_deleted: true
   belongs_to :vehicle
+  belongs_to :vehicle_including_deleted, class_name: "Vehicle",
+             foreign_key: 'vehicle_id', with_deleted: true
   belongs_to :technical
   belongs_to :service
 

@@ -1,4 +1,5 @@
 class Vehicle < ApplicationRecord
+  acts_as_paranoid
   belongs_to :enterprise
   has_many :transactions
   has_many :documents, as: :documentable, dependent: :destroy

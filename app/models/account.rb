@@ -1,7 +1,9 @@
 class Account < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :enterprise
   has_and_belongs_to_many :clients
-  has_many :transactions
+  has_many :transactions, class_name: 'Transaction'
 
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }

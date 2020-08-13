@@ -1,4 +1,5 @@
 class Technical < ApplicationRecord
+  acts_as_paranoid
   belongs_to :enterprise
   has_many :transactions
   has_many :bonding_dates

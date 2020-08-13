@@ -23,7 +23,7 @@ table.table
   tbody
     - @list_prices.each do |listPrice|
       tr
-        td = listPrice.service.name
+        td = listPrice.service_including_deleted.name
         td = listPrice.flag
         td = listPrice.waiting_hours_value
         td = listPrice.kilometer_value

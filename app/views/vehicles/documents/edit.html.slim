@@ -4,6 +4,6 @@
           links: [['Vehiculos', vehicles_path],
                   [@vehicle.placa, edit_vehicle_path(@vehicle)],
                   ['Documentos', vehicle_documents_path],
-                  [@document.document_type.name, '']]
+                  [@document.document_type_including_deleted.name, '']]
 
 = render 'form'

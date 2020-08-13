@@ -31,6 +31,7 @@ gem 'figaro'
 gem 'jquery-rails'
 gem 'pagy', '~> 3.5'
 gem 'ransack'
+gem 'acts_as_paranoid', '~> 0.6.3'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
