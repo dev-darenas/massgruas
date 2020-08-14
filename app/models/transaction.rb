@@ -19,7 +19,11 @@ class Transaction < ApplicationRecord
   belongs_to :vehicle_including_deleted, class_name: "Vehicle",
              foreign_key: 'vehicle_id', with_deleted: true
   belongs_to :technical
+  belongs_to :technical_including_deleted, class_name: "Technical",
+             foreign_key: 'technical_id', with_deleted: true
   belongs_to :service
+  belongs_to :service_including_deleted, class_name: "Service",
+             foreign_key: 'service_id', with_deleted: true
 
   accepts_nested_attributes_for :client
   accepts_nested_attributes_for :vehicle

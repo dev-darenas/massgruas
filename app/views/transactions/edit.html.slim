@@ -1,7 +1,7 @@
 - content_for :breadcrumb do
   = render 'components/breadcrumb',
           title: 'Transacción',
-          links: [ ['Transacción', transactions_path],
+          links: [['Transacción', transactions_path],
                   ['Editar', '']]
 
 = link_to 'Crear PDF', transaction_path(@transaction, :format => :pdf), class: 'btn btn-primary'
@@ -10,3 +10,7 @@
   | Copiar
 
 = render 'form', transaction: @transaction
+
+div id='data_transaction' data-transaction="#{@transaction.to_json(:include=> [:enterprise, :service_including_deleted, :technical_including_deleted,
+                                                                               :account_including_deleted, :vehicle_including_deleted])}"
+
