@@ -23,6 +23,10 @@ class Client < ApplicationRecord
     @array
   end
 
+  def identification_name
+    "#{self.identificacion} #{self.nombre}"
+  end
+
   private def to_upper
     self.direccion.try(:upcase!)
     self.actividad_comercial.try(:upcase!)

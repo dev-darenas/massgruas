@@ -1,0 +1,51 @@
+h1 Reporte de transacción
+
+= form_with(url:service_report_path, method: "get", local: true)  do |form|
+
+  .form-inline
+    .form-group
+      = form.label :initial_date, "Fecha incial", class:'mx-sm-3 mb-2'
+      = form.date_field :initial_date, class:'mb-2 form-control', required:true
+
+  .form-inline
+    .form-group
+      = form.label :final_date, "Fecha Final", class:'mx-sm-3 mb-2'
+      = form.date_field :final_date, class: 'mb-2 form-control', required:true
+
+  .form-inline
+    .form-group
+      = form.label :client_ids, "Cliente", class: 'mx-sm-3 mb-2'
+      = form.collection_select :client_ids, @enterprise.clients,
+              :id, :identification_name,
+              {},
+              {class: 'mb-2 multiple-select', multiple:true}
+
+  .form-inline
+    .form-group
+      = form.label :account_ids, "Cuenta", class: 'mx-sm-3 mb-2'
+      = form.collection_select :account_ids, @enterprise.accounts, :id, :name,
+              {},
+              {multiple: true, class: 'multiple-select'}
+  .form-inline
+    .form-group
+      = form.label :service_ids, "Servicios", class: 'mx-sm-3 mb-2'
+      = form.collection_select :service_ids, @enterprise.services, :id, :name,
+              {},
+              {multiple: true, class: 'multiple-select'}
+
+  .form-inline
+    .form-group
+      = form.label :vehcle_ids, "Gruas", class: 'mx-sm-3 mb-2'
+      = form.collection_select :vehcle_ids, @enterprise.vehicles, :id, :placa,
+              {},
+              {multiple: true, class: 'multiple-select'}
+
+  .form-inline
+    .form-group.col-md
+      = form.label :wait_time, "Tiempo de espera", class: 'mx-sm-3 mb-2'
+      = form.text_field :wait_time, placeholder:'HH:MM / 0 si no desea aplicar', class: 'mb-2 col-md-3 form-control', required: true
+
+  br
+  .actions
+    = form.submit 'Generar Liquidación', class: 'btn btn-primary'
+

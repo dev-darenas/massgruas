@@ -1,0 +1,41 @@
+.container
+  .row
+    h1.col-md Reporte transacción
+
+    p.col-md
+      strong Fecha:
+      =< Time.now.strftime("%d/%m/%Y")
+  hr
+
+.table-responsive-lg
+  table.table
+    thead
+      tr
+        th scope='col' FECHA Y HORA
+        th scope='col' CLIENTE
+        th scope='col' CUENTA
+        th scope='col' SERVICIO
+        th scope='col' GRUA
+        th scope='col' GANANCIAS
+        th scope='col' TARIFADO
+    tbody
+      - @transactions.each do |t|
+        tr
+          td = t.fecha.strftime("%d/%m/%Y")
+          td = t.client_including_deleted.nombre
+          td = t.account_including_deleted.name
+          td = t.service_including_deleted.name
+          td = t.vehicle_including_deleted.placa
+          - @totalg += t.ganancias.blank? ? 0 : t.ganancias
+          td = td = number_to_currency((t.ganancias.blank? ? 0 : t.ganancias),locale: :es)
+          - @totalt += t.priced.blank? ? 0 : t.priced
+          td = number_to_currency((t.priced.blank? ? 0 : t.priced),locale: :es)
+
+
+      tr
+        td.text-sm-right colspan='4'
+          strong Total ganancias:
+        td = number_to_currency(@totalg,locale: :es)
+        td.text-sm-right
+          strong Total tarifado
+        td = number_to_currency(@totalt,locale: :es)
