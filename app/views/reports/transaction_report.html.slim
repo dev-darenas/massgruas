@@ -43,7 +43,7 @@ h1 Reporte de transacción
   .form-inline
     .form-group.col-md
       = form.label :wait_time, "Tiempo de espera", class: 'mx-sm-3 mb-2'
-      = form.text_field :wait_time, placeholder:'HH:MM / 0 si no desea aplicar', class: 'mb-2 col-md-3 form-control', required: true
+      = form.text_field :wait_time, value: 0, placeholder:'HH:MM / 0 si no desea aplicar', class: 'mb-2 col-md-3 form-control', required: true
 
   br
   .actions

@@ -34,11 +34,9 @@
 
 
       tr
-        td.text-sm-right colspan='4'
+        td.text-sm-right colspan='5'
           strong Total ganancias:
         td = number_to_currency(@totalg,locale: :es)
-        td.text-sm-right
-          strong Total tarifado
         td = number_to_currency(@totalt,locale: :es)
 
       tr
