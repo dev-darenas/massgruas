@@ -5,12 +5,12 @@ h1 Reporte de transacción
   .form-inline
     .form-group
       = form.label :initial_date, "Fecha incial", class:'mx-sm-3 mb-2'
-      = form.date_field :initial_date, class:'mb-2 form-control', required:true
+      = form.date_field :initial_date, class:'mb-2 form-control', value: Date.today.beginning_of_month.strftime("%Y-%m-%d")
 
   .form-inline
     .form-group
       = form.label :final_date, "Fecha Final", class:'mx-sm-3 mb-2'
-      = form.date_field :final_date, class: 'mb-2 form-control', required:true
+      = form.date_field :final_date, class: 'mb-2 form-control', value: Date.today.end_of_month.strftime("%Y-%m-%d")
 
   .form-inline
     .form-group

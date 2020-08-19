@@ -33,6 +33,8 @@ class ReportsController < EnterpriseController
                template: "reports/vehicle_liquidation.html.slim",
                title: 'Liquidación por Vehiculo',
                layout: 'pdf'
+
+
       end
     end
   end
@@ -67,6 +69,7 @@ class ReportsController < EnterpriseController
     @transactions = @transactions.where(account_id: params[:account_ids]) unless params[:account_ids].blank?
     @transactions = @transactions.where(service_id: params[:service_ids]) unless params[:service_ids].blank?
     @transactions = @transactions.where(vehicle_id: params[:vehcle_ids]) unless params[:vehcle_ids].blank?
+    @transactions = @transactions.where("horas_de_espera >= ?", params[:wait_time]) if params[:wait_time].to_i > 0
 
     @totalg = 0.0
     @totalt = 0.0
