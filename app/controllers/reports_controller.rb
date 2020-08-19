@@ -50,10 +50,24 @@ class ReportsController < EnterpriseController
       end
     end
 
+    params[:account_ids].each_with_index do |c, index|
+      if c.blank?
+        params[:account_ids].delete_at(index)
+      end
+      end
+    params[:vehcle_ids].each_with_index do |c, index|
+      if c.blank?
+        params[:vehcle_ids].delete_at(index)
+      end
+    end
+
     @transactions = @enterprise.transactions
     @transactions = @transactions.where(fecha: params[:initial_date]..params[:final_date])
     @transactions = @transactions.where(client_id: params[:client_ids]) unless params[:client_ids].blank?
+    @transactions = @transactions.where(account_id: params[:account_ids]) unless params[:account_ids].blank?
     @transactions = @transactions.where(service_id: params[:service_ids]) unless params[:service_ids].blank?
+    @transactions = @transactions.where(vehicle_id: params[:vehcle_ids]) unless params[:vehcle_ids].blank?
+
     @totalg = 0.0
     @totalt = 0.0
   end

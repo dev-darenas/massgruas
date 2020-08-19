@@ -19,6 +19,7 @@
         th scope='col' GANANCIAS
         th scope='col' TARIFADO
     tbody
+      tr
       - @transactions.each do |t|
         tr
           td = t.fecha.strftime("%d/%m/%Y")
@@ -39,3 +40,7 @@
         td.text-sm-right
           strong Total tarifado
         td = number_to_currency(@totalt,locale: :es)
+
+      tr
+        td colspan="7"
+          strong = "#{@transactions.count} registros encontrados"
