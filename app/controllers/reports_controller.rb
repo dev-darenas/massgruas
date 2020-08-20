@@ -10,7 +10,7 @@ class ReportsController < EnterpriseController
 
   def technical_clearance
     @technical = @enterprise.technicals.find(params[:technical_id])
-    @total=0.0
+    @total = 0.0
     respond_to do |format|
       format.html
       format.pdf do
@@ -24,7 +24,7 @@ class ReportsController < EnterpriseController
 
   def vehicle_liquidation
     @vehicle = @enterprise.vehicles.find(params[:vehicle_id])
-    @total=0.0
+    @total = 0.0
 
     respond_to do |format|
       format.html
@@ -33,35 +33,44 @@ class ReportsController < EnterpriseController
                template: "reports/vehicle_liquidation.html.slim",
                title: 'Liquidación por Vehiculo',
                layout: 'pdf'
-
-
       end
     end
   end
 
   def service_report
-    params[:client_ids].each_with_index do |c, index|
-      if c.blank?
-        params[:client_ids].delete_at(index)
+    unless params[:client_ids].nil?
+      params[:client_ids].each_with_index do |c, index|
+        if c.blank?
+          params[:client_ids].delete_at(index)
+        end
       end
     end
 
-    params[:service_ids].each_with_index do |c, index|
-      if c.blank?
-        params[:service_ids].delete_at(index)
+    unless params[:service_ids].nil?
+      params[:service_ids].each_with_index do |c, index|
+        if c.blank?
+          params[:service_ids].delete_at(index)
+        end
       end
     end
 
-    params[:account_ids].each_with_index do |c, index|
-      if c.blank?
-        params[:account_ids].delete_at(index)
-      end
-      end
-    params[:vehcle_ids].each_with_index do |c, index|
-      if c.blank?
-        params[:vehcle_ids].delete_at(index)
+    unless params[:account_ids].nil?
+      params[:account_ids].each_with_index do |c, index|
+        if c.blank?
+          params[:account_ids].delete_at(index)
+        end
       end
     end
+
+    unless params[:vehcle_ids].nil?
+      params[:vehcle_ids].each_with_index do |c, index|
+        if c.blank?
+          params[:vehcle_ids].delete_at(index)
+        end
+      end
+    end
+    params[:initial_date] ||= Date.today.beginning_of_month.strftime("%Y-%m-%d")
+    params[:final_date] ||= Date.today.end_of_month.strftime("%Y-%m-%d")
 
     @transactions = @enterprise.transactions
     @transactions = @transactions.where(fecha: params[:initial_date]..params[:final_date])
@@ -73,6 +82,18 @@ class ReportsController < EnterpriseController
 
     @totalg = 0.0
     @totalt = 0.0
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.pdf do
+        render layout: 'pdf',
+               pdf: "Reporte_Transacción",
+               template: "reports/_service_report.html.slim",
+               title: 'Reporte Transacción',
+               encoding: 'UTF-8'
+      end
+    end
   end
 
 end

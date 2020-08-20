@@ -1,6 +1,6 @@
 h1 Reporte de transacción
 
-= form_with(url:service_report_path, method: "get", local: true)  do |form|
+= form_with(url:service_report_path, method: "get", remote: true)  do |form|
 
   .form-inline
     .form-group
@@ -48,4 +48,8 @@ h1 Reporte de transacción
   br
   .actions
     = form.submit 'Generar Liquidación', class: 'btn btn-primary'
+
+br
+hr
+#result
 
