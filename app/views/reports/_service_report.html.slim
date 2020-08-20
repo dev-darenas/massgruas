@@ -1,5 +1,5 @@
 = link_to 'Generar PDF',service_report_path(request.query_parameters.merge(:format => :pdf)),
-                        class: 'btn btn-warning' unless params[:format].present?
+                        class: 'btn btn-warning', target: '_blank' unless params[:format].present?
 
 .container
   .row
