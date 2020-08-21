@@ -25,7 +25,7 @@ wb.styles do |s|
                         'Operador', 'Célula_costo', 'Fecha_de_cierre', 'Descuento', 'Pago_total',
                         'Porcentaje técnico', 'Pago técnico', 'Combustible', 'Peajes','Gasto_viaje', 'Gastos', 'Ganancias'], :style => blue_cell
         @transactions.each do |t|
-            sheet.add_row [t.status, t.service_number, t.fecha.strftime("%Y-%m-%d %H:%M"), t.orden_Trabajo, t.remision, t.factura, t.hora_llegada.strftime("%H:%M"),
+            sheet.add_row [t.status, t.service_number, t.fecha.strftime("%Y-%m-%d %H:%M"), t.orden_Trabajo, t.remision, t.factura, (t.hora_llegada.strftime("%H:%M") unless t.hora_final.nil?),
                                  (t.hora_final.strftime("%Y-%m-%d %H:%M") unless t.hora_final.nil?), t.response_time, t.client_including_deleted.nombre,t.account_including_deleted.name,
                                  t.service_including_deleted.name, t.expediente, t.placa, t.tarea, t.origen,
                                  t.destino, t.asegurado, t.direccion, t.telefono, t.technical.nombre, t.vehicle_including_deleted.placa,
