@@ -41,8 +41,6 @@ wb.styles do |s|
                                  number_to_currency(t.combustible,locale: :es), number_to_currency(t.peajes,locale: :es),
                                  number_to_currency(t.gasto_viaje,locale: :es), number_to_currency(t.gastos,locale: :es),
                                  number_to_currency(t.ganancias,locale: :es)], :style => rows
-
-            sheet.column_info.first.width = 5
         end
     end
 end
