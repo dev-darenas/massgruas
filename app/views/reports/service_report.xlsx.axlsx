@@ -1,0 +1,48 @@
+wb = xlsx_package.workbook
+wb.styles do |s|
+    blue_cell =  s.add_style  :bg_color => "0000FF",
+                              :fg_color => "FF",
+                              :sz => 14,
+                              :alignment => {
+                                              :horizontal => :center,
+                                            }
+    rows =  s.add_style  :bg_color => "FF",
+                         :fg_color => "00",
+                         :sz => 14,
+                         :border => { :style => :thin, :color => "00" },
+                         :alignment => {
+                                          :horizontal => :center,
+                                          :vertical => :center,
+                                          :wrap_text => true
+                                       }
+    wb.add_worksheet(name: "Transacción") do |sheet|
+        sheet.add_row ['Estado', 'Numero de servicio', 'Fecha', 'Orden de Trabajo', 'Remisión', 'Factura',
+                        'Hora de llegada', 'Hora final', 'Tiempo de respuesta', 'Cliente', 'Cuenta', 'Servicio', 'Expediente', 'placa',
+                        'Tarea', 'Origen', 'Destino', 'Asegurado', 'Dirección', 'Teléfono', 'Técnico', 'Placa Grúa',
+                        'Total_km', 'Km_zona_normal', 'Valor_km_zona_normal', 'Total KM zona normal', 'Km_zona_roja', 'Valor_km_zona_roja',
+                         'Total KM zona roja', 'Banderazo', 'Horas_de_espera', 'Valor Hora de espera', 'Total horas de espera',
+                        'Rango_nocturno', 'Recargo_festivo', 'Valor_servicio', 'Tarifado',
+                        'Operador', 'Célula_costo', 'Fecha_de_cierre', 'Descuento', 'Pago_total',
+                        'Porcentaje técnico', 'Pago técnico', 'Combustible', 'Peajes','Gasto_viaje', 'Gastos', 'Ganancias'], :style => blue_cell
+        @transactions.each do |t|
+            sheet.add_row [t.status, t.service_number, t.fecha.strftime("%Y-%m-%d %H:%M"), t.orden_Trabajo, t.remision, t.factura, t.hora_llegada.strftime("%H:%M"),
+                                 (t.hora_final.strftime("%Y-%m-%d %H:%M") unless t.hora_final.nil?), t.response_time, t.client_including_deleted.nombre,t.account_including_deleted.name,
+                                 t.service_including_deleted.name, t.expediente, t.placa, t.tarea, t.origen,
+                                 t.destino, t.asegurado, t.direccion, t.telefono, t.technical.nombre, t.vehicle_including_deleted.placa,
+                                 t.total_km, t.km_zona_normal, t.valor_km_zona_n, number_to_currency(t.total_normal_zone,locale: :es), t.km_zona_roja, t.valor_km_zona_r,
+                                 number_to_currency(t.total_red_zone,locale: :es), number_to_currency(t.banderazo,locale: :es),
+                                 t.horas_de_espera, number_to_currency(t.waiting_hours_value,locale: :es),
+                                 number_to_currency(t.total_waiting_hours,locale: :es),
+                                 number_to_currency(t.rango_nocturno,locale: :es), number_to_currency(t.recargo_festivo,locale: :es),
+                                 number_to_currency(t.valor_servicio,locale: :es), number_to_currency(t.priced,locale: :es),
+                                 t.operador, t.celula_costo, (t.fecha_de_cierre.strftime("%Y-%m-%d %H:%M") unless t.fecha_de_cierre.nil?),
+                                 t.descuento, number_to_currency(t.pago_total,locale: :es), t.porcentaje_tecnico,
+                                 number_to_currency(t.pago_tecnico,locale: :es),
+                                 number_to_currency(t.combustible,locale: :es), number_to_currency(t.peajes,locale: :es),
+                                 number_to_currency(t.gasto_viaje,locale: :es), number_to_currency(t.gastos,locale: :es),
+                                 number_to_currency(t.ganancias,locale: :es)], :style => rows
+
+            sheet.column_info.first.width = 5
+        end
+    end
+end

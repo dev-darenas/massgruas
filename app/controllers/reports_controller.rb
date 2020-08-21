@@ -93,6 +93,9 @@ class ReportsController < EnterpriseController
                title: 'Reporte Transacción',
                encoding: 'UTF-8'
       end
+      format.xlsx do
+        response.headers['Content-Disposition'] = 'attachment; filename="Reporte_transacción.xlsx"'
+      end
     end
   end
 
