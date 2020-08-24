@@ -8,6 +8,11 @@ class Enterprise < ApplicationRecord
   has_many :services, dependent:  :destroy
   has_many :accounts, dependent: :destroy
   has_many :pictures, as: :imageable
+
+  accepts_nested_attributes_for :users,
+                                reject_if: lambda {
+                                    |a| a[:email].blank?
+                                }
   accepts_nested_attributes_for :pictures,
                                 reject_if: lambda {
                                     |a| a[:image].blank?

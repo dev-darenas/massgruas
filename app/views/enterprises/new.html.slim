@@ -1,0 +1,6 @@
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Crear empresa',
+          links: [ ['Nueva',''] ]
+
+= render 'form', enterprise: @newEnterprise
