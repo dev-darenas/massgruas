@@ -1,4 +1,4 @@
-class AccountsController < EnterpriseController
+class AccountsController < EnterprisesController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   # GET /accounts

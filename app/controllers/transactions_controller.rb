@@ -1,4 +1,4 @@
-class TransactionsController < EnterpriseController
+class TransactionsController < EnterprisesController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy, :close, :deliver, :check_in]
 
   def index

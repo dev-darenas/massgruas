@@ -1,5 +1,5 @@
 module Vehicles
-  class BaseController < EnterpriseController
+  class BaseController < EnterprisesController
     before_action :load_vehicle
 
     private

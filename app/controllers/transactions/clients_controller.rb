@@ -1,4 +1,4 @@
-class Transactions::ClientsController < EnterpriseController
+class Transactions::ClientsController < EnterprisesController
   def new
     @transaction = @enterprise.transactions.new(client_attributes: {})
   end

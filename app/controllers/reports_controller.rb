@@ -1,4 +1,4 @@
-class ReportsController < EnterpriseController
+class ReportsController < EnterprisesController
   def technical_payment
   end
 

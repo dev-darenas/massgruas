@@ -1,4 +1,4 @@
-class DocumentTypesController < EnterpriseController
+class DocumentTypesController < EnterprisesController
   before_action :set_document_type, only: [:show, :edit, :update, :destroy]
 
   # GET /document_types

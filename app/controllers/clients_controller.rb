@@ -1,4 +1,4 @@
-class ClientsController < EnterpriseController
+class ClientsController < EnterprisesController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients

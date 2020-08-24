@@ -1,4 +1,4 @@
-class ServicesController < EnterpriseController
+class ServicesController < EnterprisesController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services

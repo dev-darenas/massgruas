@@ -1,4 +1,4 @@
-class TechnicalsController < EnterpriseController
+class TechnicalsController < EnterprisesController
   before_action :set_technical, only: [:show, :edit, :update, :destroy]
 
   def index
