@@ -47,7 +47,7 @@ class EnterprisesController < ApplicationController
 
   def enterprise_params
     params.require(:enterprise).permit(:name,
-                                              users_attributes: [:fullname, :email, :rol, :password, :password_confirmation],
+                                              users_attributes: [:fullname, :email, :password, :password_confirmation],
                                               pictures_attributes: [:id, :image, :image_cache, :_destroy])
   end
 end

@@ -31,10 +31,6 @@
         = u.email_field :email, class: 'form-control'
 
       .field
-        = u.label "Rol"
-        = u.select :rol, User.rols.keys, {}, class: 'form-control'
-
-      .field
         = u.label "contraseña"
         = u.password_field :password, class: 'form-control'
 
