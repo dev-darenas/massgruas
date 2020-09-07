@@ -4,7 +4,7 @@
     = form.label :name
     = form.text_field :name, class: 'form-control'
 
-  = form.fields_for :pictures do |p|
+  = form.fields_for :pictures, model: enterprise.pictures do |p|
     .field
       = p.hidden_field :image_cache, class: 'form-control'
       = p.label :image, "Logo"
