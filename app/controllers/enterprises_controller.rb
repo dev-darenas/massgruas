@@ -1,6 +1,5 @@
 class EnterprisesController < ApplicationController
-  before_action :load_enterprise, except: [:edit, :update]
-  before_action :set_enterprise, only: [:edit, :update]
+  before_action :load_enterprise
 
   def show
   end
