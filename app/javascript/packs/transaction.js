@@ -233,6 +233,20 @@ $(document).on('turbolinks:load', function () {
     var $clientes = $("#clientes");
     var $cuentas = $("#cuentas");
 
+    $(document).on('change','.multiple-select', function () {
+        resp = $('.multiple-select option:selected') ;
+
+        $cuentas.empty();
+        var option = document.createElement("option");
+        $cuentas.append(option);
+        for (account of resp) {
+            option = document.createElement("option");
+            option.setAttribute("value", account.value);
+            option.setAttribute("label", account.label);
+            $cuentas.append(option)
+        }
+    });
+
     function accounts() {
         $.getJSON('/clients/' + $clientes.val() + '.json',
 
@@ -275,24 +289,35 @@ $(document).on('turbolinks:load', function () {
     var $r_festivo = $("#r_festivo");
 
     function list_prices() {
+
         $.getJSON('/clients/' + $clientes.val() + '.json',
 
             function (resp) {
                 for (lp of resp.list_prices) {
                     if (lp.service_id === parseInt($servicio.val())) {
-                        $banderazo.val(lp.flag === null ? 0 : lp.flag);
-                        $val_km.val(lp.kilometer_value === null ? 0 : lp.kilometer_value);
-                        $val_km_red.val(lp.red_zone_value === null ? 0 : lp.red_zone_value);
-                        $waiting_hours_value.val(lp.waiting_hours_value === null ? 0 : lp.waiting_hours_value );
-                        $r_nocturno.val(lp.night_surcharge === null ? 0 : lp.night_surcharge);
-                        $r_festivo.val(lp.holiday_surcharge === null ? 0 : lp.holiday_surcharge);
+                        $banderazo.val((lp.flag === null || lp.flag === NaN) ? 0 : lp.flag);
+                        $val_km.val((lp.kilometer_value === null || lp.kilometer_value === NaN) ? 0 : lp.kilometer_value);
+                        $val_km_red.val((lp.red_zone_value === null || lp.red_zone_value === NaN)  ? 0 : lp.red_zone_value);
+                        $waiting_hours_value.val((lp.waiting_hours_value === null || lp.waiting_hours_value === NaN) ? 0 : lp.waiting_hours_value );
+                        $r_nocturno.val((lp.night_surcharge === null || lp.night_surcharge === NaN) ? 0 : lp.night_surcharge);
+                        $r_festivo.val((lp.holiday_surcharge === null || lp.holiday_surcharge === NaN) ? 0 : lp.holiday_surcharge);
                         total_zonas_km();
                         sumTotalService();
                         sumTotalGastos();
                     }
                 }
             }
-        );
+        ).fail(function (){
+            $banderazo.val(0);
+            $val_km.val(0);
+            $val_km_red.val(0);
+            $waiting_hours_value.val(0);
+            $r_nocturno.val(0);
+            $r_festivo.val(0);
+            total_zonas_km();
+            sumTotalService();
+            sumTotalGastos();
+        });
     }
 
     $servicio.change(function () {
