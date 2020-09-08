@@ -76,7 +76,7 @@ class TransactionsController < EnterprisesController
 
   def destroy
     @transaction.destroy
-    redirect_to transaction_path, notice: 'La Transacción ha sido destruida satisfactoriamente.'
+    redirect_to transactions_path, notice: 'La Transacción ha sido destruida satisfactoriamente.'
   end
 
   def close
