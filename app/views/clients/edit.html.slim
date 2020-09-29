@@ -3,4 +3,6 @@
               title: 'Clientes',
               links: [['Clientes', clients_path], [@client.nombre, ''] ]
 
+= link_to 'Crear PDF', client_path(@client, :format => :pdf), class: 'btn btn-primary'
+
 = render 'form', client: @client

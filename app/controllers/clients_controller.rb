@@ -11,6 +11,16 @@ class ClientsController < EnterprisesController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render pdf: "technical",
+               template: "clients/show.html.slim",
+               title: 'PDF  Cliente',
+               layout: 'pdf'
+      end
+    end
   end
 
   # GET /clients/new
