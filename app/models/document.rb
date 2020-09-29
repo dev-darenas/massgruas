@@ -10,6 +10,6 @@ class Document < ApplicationRecord
                                 reject_if: lambda {
                                     |a| a[:attachments].blank?
                                 }, allow_destroy: true
-  validates :document_type_id, uniqueness: { scope: :documentable_type, scope: :documentable_id }
+  validates :document_type_id, uniqueness: { scope: [:documentable_type, :documentable_id ]}
 
 end
