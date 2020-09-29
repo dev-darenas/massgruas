@@ -20,18 +20,21 @@
     .field
       = p.hidden_field :image_cache, class: 'form-control'
 
-      - if p.object.image?
-        = p.label :image, "Imagen guardada"
-        = p.file_field :image, class: 'form-control'
-        = image_tag p.object.image.thumb.url, alt: 'Image'
+      - if p.object.attachments?
+        .field
+          = p.hidden_field :image_cache, class: 'form-control'
+          = p.label :attachments, "Imagen guardada"
+          = p.file_field :attachments, multiple: true, class: 'form-control'
+        - p.object.attachments.each do |attachment|
+          = image_tag attachment.thumb.url, alt: 'Image'
         div
           = label_tag :_destroy do
-            | Remover imagen
+            | Remover imagenenes
             = p.check_box :_destroy
 
       - else
         = p.label :image, "Nueva imagen"
-        = p.file_field :image, class: 'form-control'
+        = p.file_field :attachments, multiple: true, class: 'form-control'
 
   .actions
     = form.submit 'Actualizar', class: 'btn btn-primary'

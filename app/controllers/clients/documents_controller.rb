@@ -46,7 +46,7 @@ module Clients
 
     def document_params
       params.require(:document).permit(:document_type_id, :renewable, :due_date,
-                                       pictures_attributes: [ :id, :image, :image_cache, :_destroy]
+                                       pictures_attributes: [ :id, :image, :image_cache, :_destroy, attachments:[]]
       )
     end
   end
