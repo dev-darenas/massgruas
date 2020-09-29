@@ -53,11 +53,12 @@
           = form.label :client_id, "Cliente"
           = form.collection_select :client_id, @enterprise.clients,
                                    :id, :nombre,
-                                    {include_blank: true},
-                                    {class: 'form-control', id:'clientes'}
+                                    { include_blank: true },
+                                    { class: 'form-control', id:'clientes' }
           - if @transaction.id.nil?
             .input-group-append
-              = link_to 'Nuevo', new_transactions_client_path, class: 'btn btn-outline-primary', remote: true
+              button.btn.btn-primary type="button" data-toggle="modal" data-target="#new_client_modal"
+                | Nuevo
 
     .row
       .field.col-md#account
@@ -69,7 +70,9 @@
                                  {class: 'form-control', id:'cuentas'}
         - if @transaction.id.nil?
           .input-group-append
-            = link_to 'Nuevo', new_transactions_account_path, id:'new_account', class: 'btn btn-outline-primary', remote: true
+            button.btn.btn-primary type="button" data-toggle="modal" data-target="#"
+              | Nuevo
+
 
       .field.col-md
         = form.label :service_id, "Servicio"
@@ -327,3 +330,5 @@
               | en la fecha:
               strong = " #{o.created_at.strftime("%d-%m-%Y")}"
         br
+
+= render 'transactions/components/new_client_modal'

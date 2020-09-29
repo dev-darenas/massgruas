@@ -5,7 +5,7 @@ class ClientsController < EnterprisesController
   # GET /clients.json
   def index
     @q = @enterprise.clients.ransack(params[:q])
-    @pagy, @clients = pagy( @q.result )
+    @pagy, @clients = pagy( @q.result, items: params[:per_page] == 'all' ? @q.result.count : 10 )
   end
 
   # GET /clients/1
@@ -30,9 +30,11 @@ class ClientsController < EnterprisesController
     respond_to do |format|
       if @client.save
         format.html { redirect_to edit_client_path(@client), notice: 'El cliente ha sido creado satisfactoriamente.' }
-        format.json { render :edit, status: :created, location: @client }
+        format.js
+        format.json { render json: @client, status: :created }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end

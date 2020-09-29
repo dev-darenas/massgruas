@@ -1,0 +1,15 @@
+console.log("<%= @client.errors.to_json %>")
+
+$.get('/clients.json?per_page=all', function(data){ 
+  $("#clientes").empty();
+  $('#clientes').append($('<option>'));
+
+  $.each(data, function (i, val) {
+    $('#clientes').append($('<option>', { 
+      value: val.id,
+      text: val.nombre
+    }));
+  });
+
+  $('#new_client_modal').modal('toggle');
+});

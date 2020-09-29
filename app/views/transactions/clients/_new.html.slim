@@ -1,12 +1,7 @@
-= form_with model: @transaction do |form|
-  = form.fields_for :client do |client_form|
-    = client_form.hidden_field :enterprise_id, value: @transaction.enterprise_id
-    h4 Nuevo Cliente
-    hr
-      
-    =render 'clients/form_fields', f: client_form
-    
-    = link_to 'Cancelar', new_transaction_path, class: 'btn btn-outline-primary'
-    
-hr
+.modal-body
+  = form_with model: Client.new, id: "new_client_modal" do |form|
+    = render 'clients/form_fields', f: form
+
+    = form.submit 'Guardar', class: 'btn btn-primary'
+    button.btn.btn-secondary data-dismiss="modal" Cerrar
     

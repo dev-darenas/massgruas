@@ -10,6 +10,9 @@ require("channels");
 require("moment/locale/es");
 require("tempusdominus-bootstrap-4");
 
+import JQuery from 'jquery';
+window.$ = window.JQuery = JQuery;
+
 import init from '../src/init';
 import initDate from "../src/init2";
 import "bootstrap";
