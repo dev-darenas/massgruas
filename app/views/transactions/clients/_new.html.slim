@@ -2,6 +2,7 @@
   = form_with model: Client.new, id: "new_client_modal" do |form|
     = render 'clients/form_fields', f: form
 
+    hr
     = form.submit 'Guardar', class: 'btn btn-primary'
     button.btn.btn-secondary data-dismiss="modal" Cerrar
     
