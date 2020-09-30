@@ -5,7 +5,7 @@ class AccountsController < EnterprisesController
   # GET /accounts.json
   def index
     @q = @enterprise.accounts.ransack(params[:q])
-    @pagy, @accounts = pagy( @q.result)
+    @pagy, @clients = pagy( @q.result, items: params[:per_page] == 'all' ? @q.result.count : 10 )
   end
 
   # GET /accounts/1
@@ -31,9 +31,11 @@ class AccountsController < EnterprisesController
       if @account.save
         format.html { redirect_to edit_account_path(@account), notice: 'la cuenta ha sido creada satisfactoriamente.' }
         format.json { render :show, status: :created, location: @account }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @account.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -70,6 +72,6 @@ class AccountsController < EnterprisesController
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name)
+      params.require(:account).permit(:name, :client_ids)
     end
 end

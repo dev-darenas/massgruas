@@ -70,7 +70,7 @@
                                  {class: 'form-control', id:'cuentas'}
         - if @transaction.id.nil?
           .input-group-append
-            button.btn.btn-primary type="button" data-toggle="modal" data-target="#"
+            button.btn.btn-primary type="button" data-toggle="modal" data-target="#new_account_modal" id="new_account"
               | Nuevo
 
 
@@ -332,3 +332,4 @@
         br
 
 = render 'transactions/components/new_client_modal'
+= render 'transactions/components/new_account_modal'

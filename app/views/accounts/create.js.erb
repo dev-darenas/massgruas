@@ -1,0 +1,19 @@
+console.log("<%= @account.errors.to_json %>")
+
+var $clientes = $("#clientes");
+var $cuentas = $("#cuentas");
+
+$.getJSON('/clients/' + $clientes.val() + '.json',
+
+    function (data) {
+        $cuentas.empty();
+        $cuentas.append($('<option>'));
+
+        $.each(data.accounts, function (i, val) {
+            $cuentas.append($('<option>', {
+                value: val.id,
+                text: val.name
+            }));
+            $('#new_account_modal').modal('toggle');
+        });
+    });
