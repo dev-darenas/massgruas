@@ -1,15 +1,21 @@
-console.log("<%= @client.errors.to_json %>")
+if(<%= @client.valid? %> == true){
+  $.get('/clients.json?per_page=all', function(data){ 
+    $("#clientes").empty();
+    $('#clientes').append($('<option>'));
 
-$.get('/clients.json?per_page=all', function(data){ 
-  $("#clientes").empty();
-  $('#clientes').append($('<option>'));
+    $.each(data, function (i, val) {
+      $('#clientes').append($('<option>', { 
+        value: val.id,
+        text: val.nombre,
+        selected: val.id == <%= @client.id %>
+      }));
+    });
 
-  $.each(data, function (i, val) {
-    $('#clientes').append($('<option>', { 
-      value: val.id,
-      text: val.nombre
-    }));
+    $('#new_client_modal').modal('toggle');
   });
-
-  $('#new_client_modal').modal('toggle');
-});
+} else {
+  <% @client.errors.each do |i, v| %>
+    console.log("<%= i %>")
+    console.log("<%= v %>")
+  <% end %>
+}
