@@ -136,7 +136,9 @@
 
           .col-2.offset-md-0
             - if @transaction.id.nil?
-              = link_to 'Nuevo', new_transactions_technical_path, class: 'btn btn-outline-primary mb-2', remote: true
+              .input-group-append
+                button.btn.btn-primary type="button" data-toggle="modal" data-target="#new_technical_modal"
+                  | Nuevo
 
       .col-md#vehicle
         .form-row.align-items-center
@@ -333,3 +335,4 @@
 
 = render 'transactions/components/new_client_modal'
 = render 'transactions/components/new_account_modal'
+= render 'transactions/components/new_technical_modal'

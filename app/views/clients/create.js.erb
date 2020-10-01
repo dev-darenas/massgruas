@@ -1,3 +1,4 @@
+$(".alert").alert('close');
 if(<%= @client.valid? %> == true){
   $.get('/clients.json?per_page=all', function(data){ 
     $("#clientes").empty();
@@ -15,6 +16,9 @@ if(<%= @client.valid? %> == true){
   });
 } else {
   <% @client.errors.each do |i, v| %>
+    $(".modal-body").prepend("<div class='alert alert-danger' role='alert'> <%= i  %>  <%= v  %> "+
+        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
+        "<span aria-hidden='true'>&times;</span>" +"</button>"+ "</div>");
     console.log("<%= i %>")
     console.log("<%= v %>")
   <% end %>

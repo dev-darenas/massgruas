@@ -1,0 +1,36 @@
+$(".alert").alert('close');
+if (<%= @technical.valid? %> == true) {
+
+    var $tecnicos = $("#tecnicos");
+
+    $.getJSON('/technicals.json?per_page=all', function (data) {
+        $tecnicos.empty();
+        $tecnicos.append($('<option>'));
+
+        $.each(data, function (i, val) {
+            $tecnicos.append($('<option>', {
+                value: val.id,
+                text: val.nombre,
+                selected: val.id == parseInt("<%= @technical.id %>")
+            }));
+
+        });
+
+        $("#id_tecnico").val("<%= @technical.id %>");
+        $("#tel1").val("<%= @technical.telefono1 %>");
+        $("#tel2").val("<%= @technical.telefono2 %>");
+        $("#ltel1").show();
+        $("#ltel2").show();
+        $("#tel1").show();
+        $("#tel2").show();
+        $('#new_technical_modal').modal('toggle');
+    });
+} else {
+    <% @technical.errors.each do |i, v| %>
+    $(".modal-body").prepend("<div class='alert alert-danger' role='alert'> <%= i  %>  <%= v  %> "+
+        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
+        "<span aria-hidden='true'>&times;</span>" +"</button>"+ "</div>");
+      console.log("<%= i %>");
+      console.log("<%= v %>");
+    <% end %>
+}

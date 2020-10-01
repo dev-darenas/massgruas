@@ -3,7 +3,7 @@ class TechnicalsController < EnterprisesController
 
   def index
     @q = @enterprise.technicals.ransack(params[:q])
-    @pagy, @technicals = pagy( @q.result)
+    @pagy, @technicals = pagy( @q.result, items: params[:per_page] == 'all' ? @q.result.count : 10 )
   end
 
   def show
@@ -35,9 +35,11 @@ class TechnicalsController < EnterprisesController
       if @technical.save
         format.html { redirect_to edit_technical_path(@technical), notice: 'El Técnico ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @technical }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @technical.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
