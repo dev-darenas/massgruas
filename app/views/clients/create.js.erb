@@ -4,10 +4,10 @@ if(<%= @client.valid? %> == true){
     $('#clientes').append($('<option>'));
 
     $.each(data, function (i, val) {
-      $('#clientes').append($('<option>', { 
+      $('#clientes').append($('<option>',{
         value: val.id,
         text: val.nombre,
-        selected: val.id == <%= @client.id %>
+        selected: val.id == parseInt("<%= @client.id %>")
       }));
     });
 

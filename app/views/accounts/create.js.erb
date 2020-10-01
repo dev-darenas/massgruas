@@ -1,19 +1,24 @@
-console.log("<%= @account.errors.to_json %>")
+if (<%= @account.valid? %> == true) {
+    var $clientes = $("#clientes");
+    var $cuentas = $("#cuentas");
 
-var $clientes = $("#clientes");
-var $cuentas = $("#cuentas");
-
-$.getJSON('/clients/' + $clientes.val() + '.json',
-
-    function (data) {
+    $.getJSON('/clients/' + $clientes.val() + '.json', function (data) {
         $cuentas.empty();
         $cuentas.append($('<option>'));
 
         $.each(data.accounts, function (i, val) {
             $cuentas.append($('<option>', {
                 value: val.id,
-                text: val.name
+                text: val.name,
+                selected: val.id == parseInt("<%= @account.id %>")
             }));
+
             $('#new_account_modal').modal('toggle');
         });
     });
+} else {
+    <% @account.errors.each do |i, v| %>
+      console.log("<%= i %>")
+      console.log("<%= v %>")
+    <% end %>
+}
