@@ -1,23 +1,23 @@
 class TransactionsController < EnterprisesController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :close, :deliver, :check_in]
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :open, :close, :deliver, :check_in]
 
   def index
     case params[:status]
     when 'open'
       @q = @enterprise.transactions.s_opened.ransack(params[:q])
-      @pagy, @transactions = pagy( @q.result )
+      @pagy, @transactions = pagy(@q.result)
     when 'delivered'
       @q = @enterprise.transactions.s_delivered.ransack(params[:q])
-      @pagy, @transactions = pagy( @q.result )
+      @pagy, @transactions = pagy(@q.result)
     when 'closed'
       @q = @enterprise.transactions.s_closed.ransack(params[:q])
-      @pagy, @transactions = pagy( @q.result )
+      @pagy, @transactions = pagy(@q.result)
     when 'invoiced'
       @q = @enterprise.transactions.s_invoiced.ransack(params[:q])
-      @pagy, @transactions = pagy( @q.result )
+      @pagy, @transactions = pagy(@q.result)
     else
       @q = @enterprise.transactions.ransack(params[:q])
-      @pagy, @transactions = pagy( @q.result)
+      @pagy, @transactions = pagy(@q.result)
     end
   end
 
@@ -35,11 +35,11 @@ class TransactionsController < EnterprisesController
   end
 
   def new
-    @transaction = @enterprise.transactions.new(fecha:Time.now.strftime("%Y-%m-%d %H:%M %z"),
+    @transaction = @enterprise.transactions.new(fecha: Time.now.strftime("%Y-%m-%d %H:%M %z"),
                                                 service_number: @enterprise.service_number,
                                                 total_km: 0,
                                                 km_zona_normal: 0,
-                                                km_zona_roja:0)
+                                                km_zona_roja: 0)
     @transaction.observations.build(user_id: current_user.id)
     @transaction.pictures.build
   end
@@ -89,7 +89,19 @@ class TransactionsController < EnterprisesController
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def open
+    respond_to do |format|
+      if @transaction.open
+        format.html { redirect_to edit_transaction_path(@transaction), notice: 'La Transacción ha sido abierta satisfactoriamente.' }
+        format.json { render :edit, status: :ok, location: @transaction }
+      else
+        format.html { render :edit }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+      end
     end
+  end
 
   def deliver
     respond_to do |format|
@@ -101,7 +113,7 @@ class TransactionsController < EnterprisesController
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
-    end
+  end
 
   def check_in
     respond_to do |format|
@@ -126,13 +138,13 @@ class TransactionsController < EnterprisesController
 
       params[:transaction][:technical_attributes] = {id: params[:transaction][:technical][:id],
                                                      telefono1: params[:transaction][:technical][:telefono1],
-                                                     telefono2:params[:transaction][:technical][:telefono2]}
+                                                     telefono2: params[:transaction][:technical][:telefono2]}
     end
 
     params.require(:transaction).permit(:status, :fecha, :orden_Trabajo, :service_number, :remision, :factura, :hora_llegada,
                                         :response_time, :hora_final, :client_id, :account_id, :expediente, :placa, :tarea, :origen,
                                         :lat, :lng, :destino, :latb, :lngb, :asegurado, :direccion, :telefono,
-                                        :technical_id, :vehicle_id, :total_km, :km_zona_normal,:total_normal_zone,
+                                        :technical_id, :vehicle_id, :total_km, :km_zona_normal, :total_normal_zone,
                                         :km_zona_roja, :total_red_zone, :banderazo,
                                         :valor_km_zona_n, :valor_km_zona_r, :horas_de_espera, :waiting_hours_value,
                                         :total_waiting_hours, :rango_nocturno, :recargo_festivo, :valor_servicio,

@@ -29,7 +29,7 @@ table.table
         td = technical.eps
         td = technical.arl
         td = link_to 'Editar', edit_technical_path(technical), class: 'btn btn-primary'
-        td = link_to 'Destruir', technical, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+        td = link_to 'Destruir', technical, method: :delete, data: {confirm: '¿Estás seguro?'}, class: 'btn btn-danger'
         td = link_to 'Crear PDF', technical_path(technical, :format => :pdf), class: 'btn btn-primary'
 = pagy_bootstrap_nav(@pagy).html_safe
 = pagy_bootstrap_nav_js(@pagy).html_safe

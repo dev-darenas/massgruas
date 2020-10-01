@@ -2,8 +2,6 @@ class Transaction < ApplicationRecord
   acts_as_paranoid
   validates :orden_Trabajo, presence: true
   validates :orden_Trabajo, uniqueness: true
-  validates :remision, uniqueness: true
-  validates :factura, uniqueness: true
   validate :sum_of_normal_zone_and_red_zone
 
   belongs_to :enterprise
@@ -55,10 +53,18 @@ class Transaction < ApplicationRecord
         self.save
       end
       transition :ENVIADO => :CERRADO, if: -> {valid_ganancias}
+      transition :FACTURADO => :CERRADO
     end
 
     event :deliver do
       transition :ABIERTO => :ENVIADO, if: -> {valid_celula_costo}
+      transition :CERRADO => :ENVIADO
+    end
+
+    event :open do
+      transition :CERRADO => :ABIERTO
+      transition :FACTURADO => :ABIERTO
+      transition :ENVIADO => :ABIERTO
     end
 
     event :check_in do

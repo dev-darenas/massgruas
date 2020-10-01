@@ -30,7 +30,7 @@
       .field.col-md
         = form.label :hora_llegada
         div class="input-group date" id="datetimepicker3" data-target-input="nearest"
-          = form.text_field :hora_llegada, readonly:true, class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker3", id:'hora_llegada'
+          = form.text_field :hora_llegada, placeholder: 'HH:MM', class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker3", id:'hora_llegada'
           div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker"
             div class="input-group-text"
               i class="far fa-clock"
@@ -300,18 +300,31 @@
     .actions
       = form.submit 'Actualizar', class: 'btn btn-primary'
 
-      - unless @transaction.id.blank?
-        - if @transaction.id.present? && @transaction.ABIERTO?
-          | |
-          = link_to "Enviar", transaction_deliver_path(@transaction), confirm: "Está seguro?", class: 'btn btn-warning'
-        - unless @transaction.CERRADO?
-          - if @transaction.id.present? && @transaction.ENVIADO?
+      -if current_user.admin?
+        - unless @transaction.id.blank?
+          - if @transaction.id.present? && (@transaction.ENVIADO? || @transaction.CERRADO? || @transaction.FACTURADO?)
             | |
-            = link_to "Cerrar", transaction_close_path(@transaction), confirm: "Está seguro?", class: 'btn btn-danger'
+            = link_to "Abrir", transaction_open_path(@transaction),  data: {confirm: '¿Estás seguro?'}, class: 'btn btn-primary'
 
-        -if @transaction.CERRADO?
-          | |
-          = link_to "Facturar", transaction_check_in_path(@transaction), confirm: "Está seguro?", class: 'btn btn-danger'
+          - if @transaction.id.present? && @transaction.ABIERTO?
+            | |
+            = link_to "Enviar", transaction_deliver_path(@transaction),  data: {confirm: '¿Estás seguro?'}, class: 'btn btn-warning'
+
+          - unless @transaction.CERRADO?
+            - if @transaction.id.present? && @transaction.ENVIADO?
+              | |
+              = link_to "Cerrar", transaction_close_path(@transaction),  data: {confirm: '¿Estás seguro?'}, class: 'btn btn-danger'
+
+          -if @transaction.CERRADO?
+            | |
+            = link_to "Devolver a Enviado", transaction_deliver_path(@transaction),  data: {confirm: '¿Estás seguro?'}, class: 'btn btn-warning'
+            | |
+            = link_to "Facturar", transaction_check_in_path(@transaction),  data: {confirm: '¿Estás seguro?'}, class: 'btn btn-danger'
+
+          - if @transaction.FACTURADO?
+            | |
+            = link_to "Devolver a cerrado", transaction_close_path(@transaction),  data: {confirm: '¿Estás seguro?'}, class: 'btn btn-danger'
+
 
     br
 
