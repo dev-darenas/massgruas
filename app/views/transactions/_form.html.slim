@@ -2,7 +2,7 @@
   .container
     = alert_error(transaction)
     .row
-      .field.col-md
+      .field.col-md-3
         = form.label :fecha, "fecha y hora"
         div class="input-group date" id="datetimepicker2" data-target-input="nearest"
           = form.text_field :fecha, readonly:true, size:16, class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker2", id:'fecha_Y_hora'
