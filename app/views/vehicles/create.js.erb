@@ -1,0 +1,32 @@
+$(".alert").alert('close');
+if (<%= @vehicle.valid? %> == true) {
+
+    var $vehicles = $("#vehicles");
+
+    $.getJSON('/vehicles.json?per_page=all', function (data) {
+        $vehicles.empty();
+        $vehicles.append($('<option>'));
+
+        $.each(data, function (i, val) {
+            $vehicles.append($('<option>', {
+                value: val.id,
+                text: val.placa,
+                selected: val.id == parseInt("<%= @vehicle.id %>")
+            }));
+
+        });
+        $('[id=campo]').each(function () {
+            $(this).val('');
+        });
+
+        $('#new_vehicle_modal').modal('toggle');
+    });
+} else {
+    <% @vehicle.errors.each do |i, v| %>
+    $(".modal-body").prepend("<div class='alert alert-danger' tabindex='-2' role='alert' id='error'> <%= i  %>  <%= v  %> "+
+        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
+        "<span aria-hidden='true'>&times;</span>" +"</button>"+ "</div>");
+      console.log("<%= i %>");
+      console.log("<%= v %>");
+    <% end %>
+}

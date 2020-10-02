@@ -11,7 +11,9 @@ if(<%= @client.valid? %> == true){
         selected: val.id == parseInt("<%= @client.id %>")
       }));
     });
-
+      $('[id=campo]').each(function () {
+          $(this).val('');
+      });
     $('#new_client_modal').modal('toggle');
   });
 } else {

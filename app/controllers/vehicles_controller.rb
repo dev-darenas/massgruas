@@ -5,7 +5,7 @@ class VehiclesController < EnterprisesController
   # GET /vehicles.json
   def index
     @q = @enterprise.vehicles.ransack(params[:q])
-    @pagy, @vehicles = pagy( @q.result )
+    @pagy, @vehicles = pagy( @q.result, items: params[:per_page] == 'all' ? @q.result.count : 10 )
   end
 
   # GET /vehicles/1
@@ -42,9 +42,11 @@ class VehiclesController < EnterprisesController
       if @vehicle.save
         format.html { redirect_to edit_vehicle_path(@vehicle), notice: 'El vehiculo ha sido creado satisfactoriamente.' }
         format.json { render :edit, status: :created, location: @vehicle }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

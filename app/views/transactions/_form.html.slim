@@ -147,10 +147,12 @@
             = form.collection_select :vehicle_id, @enterprise.vehicles,
                     :id, :placa,
                     {include_blank: true},
-                    {class: 'form-control mb-2'}
+                    {class: 'form-control mb-2', id:'vehicles'}
           .col-2
             - if @transaction.id.nil?
-              = link_to 'Nuevo', new_transactions_vehicle_path, class: 'btn btn-outline-primary mb-2', remote: true
+              .input-group-append
+                button.btn.btn-primary type="button" data-toggle="modal" data-target="#new_vehicle_modal"
+                  | Nuevo
 
     .row  
       .field.col-md
@@ -349,3 +351,4 @@
 = render 'transactions/components/new_client_modal'
 = render 'transactions/components/new_account_modal'
 = render 'transactions/components/new_technical_modal'
+= render 'transactions/components/new_vehicle_modal'

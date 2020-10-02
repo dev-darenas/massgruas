@@ -94,10 +94,10 @@ $(document).on('turbolinks:load', function () {
 
     function distanceAPI() {
         $.getJSON('/api/v1/calulate_distance', {
-            lat: lat.value,
-            lng: lng.value,
-            lat2: lat2.value,
-            lng2: lng2.value
+            lat: (lat.value === null || lat.value === undefined || lat.value === "") ? 0 : lat.value,
+            lng: (lng.value === null || lng.value === undefined || lng.value === "") ? 0 : lng.value,
+            lat2: (lat2.value === null || lat2.value === undefined || lat2.value === "") ? 0 : lat2.value,
+            lng2: (lng2.value === null || lng2.value === undefined || lng2.value === "") ? 0 : lng2.value
         }, function (resp) {
             total_km.value = resp.distance_km;
             km_zona_normal.value = resp.distance_km;

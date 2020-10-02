@@ -5,7 +5,7 @@ class AccountsController < EnterprisesController
   # GET /accounts.json
   def index
     @q = @enterprise.accounts.ransack(params[:q])
-    @pagy, @clients = pagy( @q.result, items: params[:per_page] == 'all' ? @q.result.count : 10 )
+    @pagy, @accounts = pagy( @q.result, items: params[:per_page] == 'all' ? @q.result.count : 10 )
   end
 
   # GET /accounts/1

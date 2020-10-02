@@ -13,9 +13,11 @@ if (<%= @account.valid? %> == true) {
                 text: val.name,
                 selected: val.id == parseInt("<%= @account.id %>")
             }));
-
-            $('#new_account_modal').modal('toggle');
         });
+        $('[id=campo]').each(function () {
+            $(this).val('');
+        });
+        $('#new_account_modal').modal('toggle');
     });
 } else {
     <% @account.errors.each do |i, v| %>

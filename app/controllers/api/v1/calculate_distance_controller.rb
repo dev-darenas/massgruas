@@ -9,6 +9,10 @@ module Api
         km = Geocoder::Calculations.distance_between([lat, lng], [latb, lngb])
         km = km.round(2)
 
+        if lat == 0 || lng == 0 || latb == 0 || lngb == 0
+          km = 0.0
+        end
+
         render json: {lat: lat, lng: lng, lat2: latb, lng2: lngb, distance_km: km}
       end
     end

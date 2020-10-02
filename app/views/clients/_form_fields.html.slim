@@ -1,42 +1,42 @@
 = f.label "Nombre"
-= f.text_field :nombre, class: 'form-control'
+= f.text_field :nombre, class: 'form-control', id:'campo'
 
 = f.label :account_ids, "Cuentas"
 br
 = f.collection_select :account_ids, @enterprise.accounts, :id, :name,
                         { },
-                        { multiple: true, class: 'multiple-select' }
+                        { multiple: true, class: 'multiple-select' , id:'campo'}
 br
 = f.label :tipo_identificacion,"Tipo de Identificación"
-= f.select :tipo_identificacion, Client.tipo_identificacions.keys, {include_blank:true}, class: 'form-control'
+= f.select :tipo_identificacion, Client.tipo_identificacions.keys, {include_blank:true}, class: 'form-control', id:'campo'
 
 = f.label "Identificación"
-= f.text_field :identificacion, class: 'form-control'
+= f.text_field :identificacion, class: 'form-control', id:'campo'
 
 
 = f.label "Razón social"
-= f.text_field :razon_social, class: 'form-control'
+= f.text_field :razon_social, class: 'form-control', id:'campo'
 
 
 = f.label "Regimen"
-= f.select :regimen, Client.regimen.keys, {}, class: 'form-control'
+= f.select :regimen, Client.regimen.keys, {}, class: 'form-control', id:'campo'
 
 
 = f.label "Actividad comercial"
-= f.text_field :actividad_comercial, class: 'form-control'
+= f.text_field :actividad_comercial, class: 'form-control', id:'campo'
 
 
 = f.label "Direccion"
-= f.text_field :direccion, class: 'form-control'
+= f.text_field :direccion, class: 'form-control', id:'campo'
 
 
 = f.label "Ciudad"
-= f.text_field :ciudad, class: 'form-control'
+= f.text_field :ciudad, class: 'form-control', id:'campo'
 
 
 = f.label "Teléfono"
-= f.telephone_field :telefono, class: 'form-control'
+= f.telephone_field :telefono, class: 'form-control', id:'campo'
 
 
 = f.label "Email"
-= f.email_field :email, class: 'form-control'
+= f.email_field :email, class: 'form-control', id:'campo'

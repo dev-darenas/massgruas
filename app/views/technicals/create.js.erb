@@ -23,6 +23,9 @@ if (<%= @technical.valid? %> == true) {
         $("#ltel2").show();
         $("#tel1").show();
         $("#tel2").show();
+        $('[id=campo]').each(function () {
+            $(this).val('');
+        });
         $('#new_technical_modal').modal('toggle');
     });
 } else {
