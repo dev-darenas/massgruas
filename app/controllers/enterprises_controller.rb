@@ -2,6 +2,7 @@ class EnterprisesController < ApplicationController
   before_action :load_enterprise
 
   def show
+    @enterprise = Enterprise.find(params[:id])
   end
 
   def new
@@ -11,6 +12,7 @@ class EnterprisesController < ApplicationController
   end
 
   def edit
+    @enterprise = Enterprise.find(params[:id])
     unless @enterprise.pictures.count == 1
       @enterprise.pictures.build
     end
