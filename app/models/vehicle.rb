@@ -5,7 +5,7 @@ class Vehicle < ApplicationRecord
   has_many :documents, as: :documentable, dependent: :destroy
 
   validates :placa, presence: true
-  validates :placa, uniqueness: { case_sensitive: false }
+  validates :placa, uniqueness: {scope: :enterprise_id, case_sensitive: false }
   validates :licencia, presence: true
   validates :clase, presence: true
   validates :marca, presence: true

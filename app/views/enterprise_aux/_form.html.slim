@@ -1,0 +1,41 @@
+.field
+  = f.label :name
+  = f.text_field :name, class: 'form-control'
+
+= f.fields_for :pictures, model: @enterprise.pictures do |p|
+  .field
+    = p.hidden_field :image_cache, class: 'form-control'
+    = p.label :image, "Logo"
+    = p.file_field :image, class: 'form-control'
+    - if p.object.image?
+      = image_tag p.object.image.thumb.url, alt: 'Image'
+      div
+        = label_tag :_destroy do
+          | Remover imagen
+          = p.check_box :_destroy
+
+- if @enterprise.id.nil?
+  h1 Usuario
+  hr
+
+  = f.fields_for :users do |u|
+
+    .field
+      = u.label "Nombre completo"
+      = u.text_field :fullname, class: 'form-control'
+
+    .field
+      = u.label "Email"
+      = u.email_field :email, class: 'form-control'
+
+    .field
+      = u.label "contraseña"
+      = u.password_field :password, class: 'form-control'
+
+    .field
+      = u.label "confirmación de contraseña"
+      = u.password_field :password_confirmation, class: 'form-control'
+
+.actions
+  = f.submit 'Actualizar', class: 'btn btn-primary'
+

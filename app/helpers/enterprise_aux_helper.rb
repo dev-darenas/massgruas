@@ -1,0 +1,2 @@
+module EnterpriseAuxHelper
+end

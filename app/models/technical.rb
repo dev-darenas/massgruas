@@ -13,7 +13,7 @@ class Technical < ApplicationRecord
                                 }, allow_destroy: true
   validates :nombre, presence: true
   validates :cedula, presence: true
-  validates :cedula, uniqueness: true
+  validates :cedula, uniqueness: {scope: :enterprise_id}
 
   scope :is_active, -> { where(active: 'true') }
   before_save :to_upper

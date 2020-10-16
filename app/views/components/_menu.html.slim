@@ -17,11 +17,11 @@
                 i.right.fas.fa-angle-left
             ul.nav.nav-treeview
               li.nav-item
-                = link_to edit_enterprise_path(current_user.enterprise), class: 'nav-link'
+                = link_to edit_enterprise_aux_path(current_user.enterprise), class: 'nav-link'
                   i.far.fa-circle.nav-icon
                   p Logo de empresa
               li.nav-item
-                = link_to new_enterprise_path, class: 'nav-link'
+                = link_to new_enterprise_aux_path, class: 'nav-link'
                   i.far.fa-circle.nav-icon
                   p Nueva empresa
               li.nav-item

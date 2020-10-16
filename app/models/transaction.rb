@@ -1,7 +1,7 @@
 class Transaction < ApplicationRecord
   acts_as_paranoid
   validates :orden_Trabajo, presence: true
-  validates :orden_Trabajo, uniqueness: true
+  validates :orden_Trabajo, uniqueness: {scope: :enterprise_id}
   validate :sum_of_normal_zone_and_red_zone
 
   belongs_to :enterprise

@@ -8,7 +8,7 @@ class Client < ApplicationRecord
 
   validates :nombre, presence: true
   validates :identificacion, presence: true
-  validates :identificacion, uniqueness: { case_sensitive: false }
+  validates :identificacion, uniqueness: {scope: :enterprise_id, case_sensitive: false }
   validates :telefono, presence: true
 
   enum regimen: { 'COMUN': 'COMUN', SIMPLIFICADO: 'SIMPLIFICADO' }

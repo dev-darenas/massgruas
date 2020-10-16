@@ -1,0 +1,7 @@
+p
+  strong Nombre:
+  = @enterprise.name
+p
+  - @enterprise.pictures.each do |p|
+    - if p.object.image?
+      = image_tag p.object.image.thumb.url, alt: 'Image'
