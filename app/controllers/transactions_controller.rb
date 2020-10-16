@@ -2,21 +2,24 @@ class TransactionsController < EnterprisesController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy, :open, :close, :deliver, :check_in]
 
   def index
-    case params[:status]
+    @status = params[:status] || params[:q][:status]
+    search_params = params[:q].nil? ? { } : params[:q].except(:status)
+
+    case @status
     when 'open'
-      @q = @enterprise.transactions.s_opened.ransack(params[:q])
+      @q = @enterprise.transactions.s_opened.ransack(search_params)
       @pagy, @transactions = pagy(@q.result)
     when 'delivered'
-      @q = @enterprise.transactions.s_delivered.ransack(params[:q])
+      @q = @enterprise.transactions.s_delivered.ransack(search_params)
       @pagy, @transactions = pagy(@q.result)
     when 'closed'
-      @q = @enterprise.transactions.s_closed.ransack(params[:q])
+      @q = @enterprise.transactions.s_closed.ransack(search_params)
       @pagy, @transactions = pagy(@q.result)
     when 'invoiced'
-      @q = @enterprise.transactions.s_invoiced.ransack(params[:q])
+      @q = @enterprise.transactions.s_invoiced.ransack(search_params)
       @pagy, @transactions = pagy(@q.result)
     else
-      @q = @enterprise.transactions.ransack(params[:q])
+      @q = @enterprise.transactions.ransack(search_params)
       @pagy, @transactions = pagy(@q.result)
     end
   end
