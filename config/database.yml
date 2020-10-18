@@ -84,4 +84,5 @@ production:
   <<: *default
   database: masgruas_production
   username: masgruas
+  host:     db
   password: <%= ENV['MASGRUAS_DATABASE_PASSWORD'] %>

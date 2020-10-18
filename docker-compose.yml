@@ -3,11 +3,11 @@ services:
   db:
     image: postgres:10-alpine
     environment:
-      POSTGRES_DB: massgruas_prod
-      POSTGRES_USER: db_user
+      POSTGRES_DB: masgruas_production
+      POSTGRES_USER: masgruas
       POSTGRES_PASSWORD: postgres
     volumes:
-      - data:/var/lib/postgresql/data
+      - ./tmp/db:/var/lib/postgresql/data
   web:
     build:
       context: .
@@ -15,6 +15,7 @@ services:
     environment:
       RAILS_ENV: production
       SECRET_KEY:
+      PG_PASSWORD: postgres
     volumes:
       - .:/massgruas
     ports:
