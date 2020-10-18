@@ -85,9 +85,10 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
 
   create_table "enterprises", force: :cascade do |t|
     t.string "name"
-    t.integer "service_number", default: 1, null: false
+    t.integer "remision", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "service_number", default: 1, null: false
   end
 
   create_table "list_prices", force: :cascade do |t|
@@ -121,11 +122,11 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
   end
 
   create_table "pictures", force: :cascade do |t|
+    t.string "image"
     t.string "imageable_type"
     t.bigint "imageable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
     t.json "attachments"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_pictures_on_deleted_at"
@@ -171,14 +172,13 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
   create_table "transactions", force: :cascade do |t|
     t.bigint "enterprise_id", null: false
     t.string "status", default: "Open", null: false
-    t.integer "service_number"
     t.datetime "fecha"
     t.string "orden_Trabajo"
     t.string "remision"
     t.string "factura"
     t.time "hora_llegada"
-    t.string "response_time"
     t.bigint "client_id", null: false
+    t.string "cuenta"
     t.string "expediente"
     t.string "placa"
     t.string "tarea"
@@ -225,6 +225,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
     t.float "total_waiting_hours"
     t.float "priced"
     t.datetime "hora_final"
+    t.integer "service_number"
+    t.string "response_time"
     t.datetime "deleted_at"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["client_id"], name: "index_transactions_on_client_id"

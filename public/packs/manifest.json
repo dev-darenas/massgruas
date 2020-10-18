@@ -1,0 +1,44 @@
+{
+  "admin-template.js": "/packs/js/admin-template-b5f5a6a376c2f0558f4d.js",
+  "admin-template.js.map": "/packs/js/admin-template-b5f5a6a376c2f0558f4d.js.map",
+  "application.js": "/packs/js/application-96d01b3db7ac0095f884.js",
+  "application.js.map": "/packs/js/application-96d01b3db7ac0095f884.js.map",
+  "clibboard_Transaction.js": "/packs/js/clibboard_Transaction-2425785aad4ff650a357.js",
+  "clibboard_Transaction.js.map": "/packs/js/clibboard_Transaction-2425785aad4ff650a357.js.map",
+  "entrypoints": {
+    "admin-template": {
+      "js": [
+        "/packs/js/admin-template-b5f5a6a376c2f0558f4d.js"
+      ],
+      "js.map": [
+        "/packs/js/admin-template-b5f5a6a376c2f0558f4d.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs/js/application-96d01b3db7ac0095f884.js"
+      ],
+      "js.map": [
+        "/packs/js/application-96d01b3db7ac0095f884.js.map"
+      ]
+    },
+    "clibboard_Transaction": {
+      "js": [
+        "/packs/js/clibboard_Transaction-2425785aad4ff650a357.js"
+      ],
+      "js.map": [
+        "/packs/js/clibboard_Transaction-2425785aad4ff650a357.js.map"
+      ]
+    },
+    "transaction": {
+      "js": [
+        "/packs/js/transaction-02717ad72047ce87daf8.js"
+      ],
+      "js.map": [
+        "/packs/js/transaction-02717ad72047ce87daf8.js.map"
+      ]
+    }
+  },
+  "transaction.js": "/packs/js/transaction-02717ad72047ce87daf8.js",
+  "transaction.js.map": "/packs/js/transaction-02717ad72047ce87daf8.js.map"
+}
