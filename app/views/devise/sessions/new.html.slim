@@ -2,19 +2,14 @@
   h5.card-title masGruas APP
 
 .card-body
-  .alert.alert-warning role="alert"
-    | Hola Version Demo de la app MasGruas
-    button type="button" class="close" data-dismiss="alert" aria-label="Close"
-      span aria-hidden="true" &times;
-
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-group
       = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', value: 'jhernan@masgruas.com'
+      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
 
     .form-group
       = f.label 'Contraseña'
-      = f.password_field :password, autocomplete: "current-password", class: 'form-control', value: '123456789'
+      = f.password_field :password, autocomplete: "current-password", class: 'form-control'
 
     - if devise_mapping.rememberable?
       .field
