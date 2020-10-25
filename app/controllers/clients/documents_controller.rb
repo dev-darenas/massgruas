@@ -38,6 +38,16 @@ module Clients
       redirect_to client_documents_path, notice: 'Document was deleted'
     end
 
+    def show
+      respond_to do |format|
+        format.pdf do
+          render pdf: "Documentos #{@client.nombre}",
+                 title: "PDF Documentos #{@client.nombre}",
+                 layout: 'pdf'
+        end
+      end
+    end
+
     private
 
     def set_document

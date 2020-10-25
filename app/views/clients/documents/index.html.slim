@@ -13,6 +13,7 @@ table.table
     tr
       th Documento
       th Fecha de Vencimiento
+      th Descargar
       th colspan='2'
   tbody
     - @documents.each do |document|
@@ -21,6 +22,7 @@ table.table
       tr
         td = document.document_type_including_deleted.name
         td = document.due_date
+        td = link_to 'PDF', client_document_path(@client, document, format: :pdf), class: 'btn btn-primary', target: "_blank"
         td = link_to 'Editar', edit_client_document_path(@client, document), class: 'btn btn-primary'
         td = link_to 'Destruir', client_document_path(@client, document),
                                 method: :delete, data: {confirm: 'Estas Seguro?'},

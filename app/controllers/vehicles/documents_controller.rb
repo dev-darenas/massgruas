@@ -38,6 +38,17 @@ module Vehicles
       redirect_to vehicle_documents_path, notice: 'Document was deleted'
     end
 
+
+    def show
+      respond_to do |format|
+        format.pdf do
+          render pdf: "Documentos #{@vehicle.placa}",
+                 title: "PDF Documentos #{@vehicle.placa}",
+                 layout: 'pdf'
+        end
+      end
+    end
+
     private
 
     def set_document

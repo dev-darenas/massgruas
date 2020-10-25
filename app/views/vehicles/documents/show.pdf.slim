@@ -1,0 +1,3 @@
+- @document.pictures.each do |p|
+  - p.attachments.each do |attachment|
+    = image_tag embed_remote_image("#{Rails.root}/public#{attachment.url}", 'image/')
