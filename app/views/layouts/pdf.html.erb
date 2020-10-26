@@ -11,6 +11,7 @@
         <% if current_user.enterprise.pictures.first.image? %>
           <div class="row">
             <%= image_tag(embed_remote_image("#{Rails.root}/public#{current_user.enterprise.pictures.first.image.small_thumb.url}",'image/'), alt:'Logo')%>
+            <h1> <%= current_user.enterprise.name %></h1>
           </div>
         <% end %>
       <% end %>

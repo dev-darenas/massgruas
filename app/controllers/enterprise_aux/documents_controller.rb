@@ -1,21 +1,21 @@
-module Vehicles
-  class DocumentsController < BaseController
+module EnterpriseAux
+  class DocumentsController < EnterprisesController
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
     def index
-      @q = @vehicle.documents.ransack(params[:q])
+      @q = @enterprise.documents.ransack(params[:q])
       @pagy, @documents = pagy(@q.result.includes(:document_type))
     end
 
     def new
-      @document = @vehicle.documents.new
+      @document = @enterprise.documents.new
       @document.pictures.build
     end
 
     def create
-      @document = @vehicle.documents.new(document_params)
+      @document = @enterprise.documents.new(document_params)
       if @document.save
-        redirect_to edit_vehicle_document_path(@vehicle, @document), notice: 'Document was successfully created.'
+        redirect_to edit_enterprise_aux_document_path(@enterprise, @document), notice: 'Documento creado'
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Vehicles
 
     def update
       if @document.update(document_params)
-        redirect_to edit_vehicle_document_path(@vehicle, @document), notice: 'Document was successfully updated.'
+        redirect_to edit_enterprise_aux_document_path(@enterprise, @document), notice: 'Documento actualizado correctamente'
       else
         render :edit
       end
@@ -35,7 +35,7 @@ module Vehicles
 
     def destroy
       @document.destroy
-      redirect_to vehicle_documents_path, notice: 'Document was deleted'
+      redirect_to enterprise_aux_documents_path, notice: 'Document was deleted'
     end
 
 
@@ -43,8 +43,8 @@ module Vehicles
       respond_to do |format|
         format.html
         format.pdf do
-          render pdf: "Documentos #{@vehicle.placa}",
-                 title: "PDF Documentos #{@vehicle.placa}",
+          render pdf: "Documentos #{@enterprise.name}",
+                 title: "PDF Documentos #{@enterprise.name}",
                  layout: 'pdf'
         end
       end
@@ -53,7 +53,7 @@ module Vehicles
     private
 
     def set_document
-      @document = @vehicle.documents.find(params[:id])
+      @document = @enterprise.documents.find(params[:id])
     end
 
     def document_params

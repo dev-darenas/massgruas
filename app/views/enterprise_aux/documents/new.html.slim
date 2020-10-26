@@ -1,0 +1,13 @@
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Documentos',
+          links: [['Enterprise', enterprise_aux_index_path],
+                  [@enterprise.name, edit_enterprise_aux_path(@enterprise)],
+                  ['Documentos', new_enterprise_aux_document_path(@enterprise)],
+                  ['Nuevo', '']]
+
+= render 'enterprise_aux/tabs', page: 'document'
+
+= form_with model: [@enterprise, @document], url:"/enterprise_aux/#{@enterprise.id}/documents", local: true do |form|
+  = alert_error(@document)
+  = render 'form', form:form

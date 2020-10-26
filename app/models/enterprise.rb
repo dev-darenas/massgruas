@@ -8,6 +8,7 @@ class Enterprise < ApplicationRecord
   has_many :services, dependent:  :destroy
   has_many :accounts, dependent: :destroy
   has_many :pictures, as: :imageable
+  has_many :documents, as: :documentable, dependent: :destroy
 
   accepts_nested_attributes_for :users,
                                 reject_if: lambda {

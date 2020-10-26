@@ -40,6 +40,7 @@ module Clients
 
     def show
       respond_to do |format|
+        format.html
         format.pdf do
           render pdf: "Documentos #{@client.nombre}",
                  title: "PDF Documentos #{@client.nombre}",

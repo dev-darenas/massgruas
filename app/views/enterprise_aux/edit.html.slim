@@ -3,6 +3,8 @@
           title: 'Empresa',
           links: [ [@enterprise.name,''] ]
 
+= render 'enterprise_aux/tabs', page: 'general'
+
 = form_with model: @enterprise, url: enterprise_aux_path,local: true do |form|
   = alert_error(@enterprise)
   = render 'form', f: form

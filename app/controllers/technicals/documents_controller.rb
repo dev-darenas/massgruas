@@ -40,6 +40,7 @@ module Technicals
 
     def show
       respond_to do |format|
+        format.html
         format.pdf do
           render pdf: "Documentos #{@technical.nombre}",
                  title: "PDF Documentos #{@technical.nombre}",

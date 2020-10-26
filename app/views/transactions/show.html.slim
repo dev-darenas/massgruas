@@ -47,3 +47,8 @@ p
 p
   strong Placa Grua:
   = @transaction.vehicle_including_deleted.placa
+
+p
+  - @transaction.pictures.each do |p|
+    - p.attachments.each do |a|
+      =image_tag embed_remote_image("#{Rails.root}/public#{a.url}",'image/') if a.url

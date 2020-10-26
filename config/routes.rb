@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :document_types
   resources :manage_users
   resources :transactions
-  resources :enterprise_aux
+  resources :enterprise_aux do
+    scope module: :enterprise_aux do
+      resources :documents
+    end
+  end
 
   resources :vehicles do
     scope module: :vehicles do

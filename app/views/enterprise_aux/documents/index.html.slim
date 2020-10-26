@@ -1,0 +1,37 @@
+- content_for :breadcrumb do
+  = render 'components/breadcrumb',
+          title: 'Documentos',
+          links: [['Enterprise', edit_enterprise_aux_path(@enterprise)],
+                  [@enterprise.name, edit_enterprise_aux_path(@enterprise)],
+                  ['Documentos', '']]
+
+= render 'enterprise_aux/tabs', page: 'document'
+
+= render "components/search", field_search: :document_type_name_cont, url: enterprise_aux_documents_path(@enterprise)
+table.table
+  thead
+    tr
+      th Documento
+      th Fecha de Vencimiento
+      th Descargar
+      th colspan='2'
+  tbody
+    - @documents.each do |document|
+      - expired_date(document)
+
+      tr
+        td = document.document_type_including_deleted.name
+        td = document.due_date
+        td = link_to 'PDF', enterprise_aux_document_path(@enterprise, document, format: :pdf), class: 'btn btn-primary', target: "_blank"
+        td = link_to 'Editar', edit_enterprise_aux_document_path(@enterprise, document), class: 'btn btn-primary'
+        td = link_to 'Destruir', "/enterprise_aux/#{@enterprise.id}/documents/#{document.id}",
+                                method: :delete, data: {confirm: 'Está Seguro?'},
+                                class: 'btn btn-danger'
+  - unless expired.nil?
+    = expired.html_safe
+= pagy_bootstrap_nav(@pagy).html_safe
+= pagy_bootstrap_nav_js(@pagy).html_safe
+
+br
+
+= link_to 'Nuevo Documento', new_enterprise_aux_document_path(@enterprise), class: 'btn btn-primary'

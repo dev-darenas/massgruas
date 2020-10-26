@@ -1,0 +1,7 @@
+nav
+  .nav.nav-tabs#nav-tab role="tablist"
+    a class="nav-item nav-link #{page == 'general' ? 'active' : ''}" href="#{edit_enterprise_aux_path(@enterprise) unless @enterprise.id.nil?}" role="tab" aria-controls="nav-General" aria-selected="true"
+      | General
+    - unless @enterprise.id.blank?
+      a class="nav-item nav-link #{page == 'document' ? 'active' : ''}" role="tab" aria-controls="nav-documentos" aria-selected="true" href = "#{enterprise_aux_documents_path(@enterprise)}"
+        | Documentos
