@@ -19,6 +19,7 @@ class Technical < ApplicationRecord
   before_save :to_upper
 
   def age
+    return '' unless self.fecha_nacimiento
     now = Time.now.utc.to_date
     now.year - self.fecha_nacimiento.year - (self.fecha_nacimiento.to_date.change(:year => now.year) > now ? 1 : 0)
   end
