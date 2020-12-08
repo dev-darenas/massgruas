@@ -264,29 +264,27 @@
               = form.label :ganancias
               = form.number_field :ganancias, step:"any", class: 'form-control', id:'ganancias'
 
-
     = form.fields_for :pictures do |p|
       .row
-        .field.col-md
-          = p.hidden_field :image_cache, class: 'form-control'
+        = p.hidden_field :image_cache, class: 'form-control'
 
-          - if p.object.attachments?
-            - p.object.attachments.each do |attachment|
-              .field
-                = p.hidden_field :image_cache, class: 'form-control'
-                = p.label :attachments, "Imagen guardada"
-                = p.file_field :attachments, multiple: true, class: 'form-control'
-                = image_tag attachment.thumb.url, alt: 'Image'
-            div
-              = label_tag :_destroy do
-                | Remover imagenenes
-                = p.check_box :_destroy
-
-          - else
-            .field
+        - if p.object.attachments?
+          - p.object.attachments.each do |attachment|
+            .col-md-4
               = p.hidden_field :image_cache, class: 'form-control'
-              = p.label :attachments, "Nuevas imagenes"
+              = p.label :attachments, "Imagen guardada"
               = p.file_field :attachments, multiple: true, class: 'form-control'
+              = image_tag attachment.thumb.url, alt: 'Image'
+          div
+            = label_tag :_destroy do
+              | Remover imagenenes
+              = p.check_box :_destroy
+
+        - else
+          .field
+            = p.hidden_field :image_cache, class: 'form-control'
+            = p.label :attachments, "Nuevas imagenes"
+            = p.file_field :attachments, multiple: true, class: 'form-control'
 
     br
     = form.fields_for :observations do |o|
