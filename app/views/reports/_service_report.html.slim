@@ -23,6 +23,8 @@
         th scope='col' SERVICIO
         th scope='col' GRUA
         th scope='col' GANANCIAS
+        th scope='col' ORDEN DE TRABAJO
+        th scope='col' EXPEDIENTE
         th scope='col' TARIFADO
     tbody
       tr
@@ -35,6 +37,8 @@
           td = t.vehicle_including_deleted.placa
           - @totalg += t.ganancias.blank? ? 0 : t.ganancias
           td = td = number_to_currency((t.ganancias.blank? ? 0 : t.ganancias),locale: :es)
+          td = t.orden_Trabajo
+          td = t.expediente
           - @totalt += t.priced.blank? ? 0 : t.priced
           td = number_to_currency((t.priced.blank? ? 0 : t.priced),locale: :es)
 

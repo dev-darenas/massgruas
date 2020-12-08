@@ -18,6 +18,8 @@
         th scope='col' TAREA
         th scope='col' ORIGEN
         th scope='col' DESTINO
+        th scope='col' ORDEN DE TRABAJO
+        th scope='col' EXPEDIENTE
         th scope='col' PAGO
     tbody
       - @vehicle.transactions.where(fecha: params[:initial_date]..params[:final_date]).each do |t|
@@ -27,11 +29,13 @@
           td = t.tarea
           td = t.origen
           td = t.destino
+          td = t.orden_Trabajo
+          td = t.expediente
           - @total += t.priced.blank? ? 0 : t.priced
           td = number_to_currency((t.priced.blank? ? 0 : t.priced),locale: :es)
 
 
       tr
-        td.text-sm-right colspan='5'
+        td.text-sm-right colspan='7'
           strong Pago total:
         td = number_to_currency(@total,locale: :es)
