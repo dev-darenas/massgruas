@@ -29,7 +29,7 @@ p
         th scope='col' EXPEDIENTE
         th scope='col' PAGO
     tbody
-      - @technical.transactions.where(fecha: params[:initial_date]..params[:final_date]).each do |t|
+      - @transactions.each do |t|
         tr
           td = t.fecha.strftime("%d/%m/%Y %H:%M")
           td = t.client_including_deleted.nombre
