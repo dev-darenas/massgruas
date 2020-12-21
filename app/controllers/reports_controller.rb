@@ -22,7 +22,8 @@ class ReportsController < EnterprisesController
         render pdf: "Liquidación Técnico",
                template: "reports/technical_clearance.html.slim",
                title: 'Liquidación Técnico',
-               layout: 'pdf'
+               layout: 'pdf',
+               orientation: 'Landscape'
       end
     end
   end
@@ -41,7 +42,8 @@ class ReportsController < EnterprisesController
         render pdf: "Liquidación por Vehiculo",
                template: "reports/vehicle_liquidation.html.slim",
                title: 'Liquidación por Vehiculo',
-               layout: 'pdf'
+               layout: 'pdf',
+               orientation: 'Landscape'
       end
     end
   end
@@ -100,7 +102,8 @@ class ReportsController < EnterprisesController
                pdf: "Reporte_Transacción",
                template: "reports/_service_report.html.slim",
                title: 'Reporte Transacción',
-               encoding: 'UTF-8'
+               encoding: 'UTF-8',
+               orientation: 'Landscape'
       end
       format.xlsx do
         response.headers['Content-Disposition'] = 'attachment; filename="Reporte_transacción.xlsx"'
