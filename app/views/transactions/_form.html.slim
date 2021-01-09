@@ -30,7 +30,7 @@
       .field.col-md
         = form.label :hora_llegada
         div class="input-group date" id="datetimepicker3" data-target-input="nearest"
-          = form.text_field :hora_llegada, placeholder: 'HH:MM', class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker3", id:'hora_llegada'
+          = form.text_field :hora_llegada, placeholder: 'HH:MM', class: 'form-control datetimepicker-input', 'data-target':"#datetimepicker3", id:'hora_llegada', value: form.object.id.nil? ? Time.now.strftime("%H:%M") : form.object.hora_llegada.strftime("%H:%M")
           div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker"
             div class="input-group-text"
               i class="far fa-clock"
