@@ -9,17 +9,21 @@
       =< Time.now.strftime("%d/%m/%Y")
   hr
 
-p
-  strong Id técnico:
-  =< @technical.cedula
+- if @technicals.length == 1
+  p
+    strong Id técnico:
+    =< @technicals&.first&.cedula
 
-p
-  strong Nombre:
-  =< @technical.nombre
+  p
+    strong Nombre:
+    =< @technicals&.first&.nombre
+
 .table-responsive-lg
   table.table
     thead
       tr
+        - if @technicals.length != 1
+          th scope='col' NOMBRE
         th scope='col' FECHA Y HORA
         th scope='col' CLIENTE
         th scope='col' TAREA
@@ -27,10 +31,12 @@ p
         th scope='col' DESTINO
         th scope='col' ORDEN DE TRABAJO
         th scope='col' EXPEDIENTE
-        th scope='col' PAGO
+        th.paid scope='col' PAGO
     tbody
       - @transactions.each do |t|
         tr
+          - if @technicals.length != 1
+            td = t.technical.nombre
           td = t.fecha.strftime("%d/%m/%Y %H:%M")
           td = t.client_including_deleted.nombre
           td = t.tarea
@@ -42,48 +48,48 @@ p
           td = number_to_currency((t.pago_tecnico.blank? ? 0 : t.pago_tecnico),locale: :es)
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong Pago total:
         td = number_to_currency(@total,locale: :es)
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong % de Administración:
         td = params[:administration]
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong subtotal($):
         - @total = @total - (@total * params[:administration].to_i/100)
         td = number_to_currency(@total,locale: :es)
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong % de Liquidación:
         td = params[:liquidation]
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong Liquidación($):
         - @total = @total - (@total * params[:liquidation].to_i/100)
         td = number_to_currency(@total,locale: :es)
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong Descuento EPS($):
         td = params[:eps_discount]
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong Prestamos($):
         td = params[:discount_loans]
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong Otros Descuentos($):
         td = params[:other_discounts]
 
       tr
-        td.text-sm-right colspan='7'
+        td.text-sm-right colspan="#{@technicals.length == 1 ? '7' : '8'}"
           strong Neto a pagar($):
         - @total = @total - params[:eps_discount].to_i - params[:discount_loans].to_i - params[:other_discounts].to_i
         td = number_to_currency(@total,locale: :es)

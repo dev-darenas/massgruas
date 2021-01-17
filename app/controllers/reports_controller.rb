@@ -9,12 +9,13 @@ class ReportsController < EnterprisesController
   end
 
   def technical_clearance
-    @technical = @enterprise.technicals.find(params[:technical_id])
+    params[:technical_id] = params[:technical_id].reject!(&:blank?)
+    @technicals = @enterprise.technicals.find(params[:technical_id])
     @total = 0.0
 
     initial_date = params[:initial_date].to_date.beginning_of_day
     final_date = params[:final_date].to_date.end_of_day
-    @transactions = @technical.transactions.where(fecha: initial_date..final_date).order(fecha: :asc)
+    @transactions = Transaction.where(technical_id: params[:technical_id], fecha: initial_date..final_date).order(fecha: :asc)
 
     respond_to do |format|
       format.html
@@ -29,12 +30,13 @@ class ReportsController < EnterprisesController
   end
 
   def vehicle_liquidation
-    @vehicle = @enterprise.vehicles.find(params[:vehicle_id])
+    params[:vehicle_id] = params[:vehicle_id].reject!(&:blank?)
+    @vehicles = @enterprise.vehicles.find(params[:vehicle_id])
     @total = 0.0
 
     initial_date = params[:initial_date].to_date.beginning_of_day
     final_date = params[:final_date].to_date.end_of_day
-    @transactions = @vehicle.transactions.where(fecha: initial_date..final_date).order(fecha: :asc)
+    @transactions = Transaction.where(vehicle_id: params[:vehicle_id], fecha: initial_date..final_date).order(fecha: :asc)
 
     respond_to do |format|
       format.html

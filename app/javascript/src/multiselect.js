@@ -2,7 +2,7 @@ const init = () => {
   console.log(' init multiselect ')
   $('.multiple-select').multipleSelect({
     showClear: true,
-    selectAll: false,
+    selectAll: true,
     dropWidth: '500',
     filter: 'Buscar'
   });

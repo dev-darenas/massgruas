@@ -5,6 +5,28 @@
     <meta charset="utf-8">
     <%= wicked_pdf_stylesheet_pack_tag("application") %>
   </head>
+  <style>
+    body {
+      font-size: 15px;
+    }
+
+    th, td {
+      font-size: 13px;
+      padding: 5px;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    .paid {
+      width: 80px;
+    }
+  </style>
   <body>
     <div class='container'>
       <% if !current_user.enterprise.pictures.first.nil? %>
