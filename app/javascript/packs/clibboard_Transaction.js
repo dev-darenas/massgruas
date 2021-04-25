@@ -13,21 +13,28 @@ function clearTooltip(e) {
 $(document).on('turbolinks:load', function () {
     var clipboard = new Clipboard('.btn_clip_board', {
         text: function (trigger) {
-            var transaction=$("#data_transaction").data("transaction");
+            var transaction= $("#data_transaction").data("transaction");
 
-            return "DETALLE DE LA SOLICITUD DEL SERVICIO \n \n \nExpediente: " + transaction.expediente +
-                "\nProveedor:"+transaction.enterprise.name+" Subservicio: "+transaction.service_including_deleted.name+
-                "\nGrupo de Cuenta: "+transaction.account_including_deleted.name+"\nNuestro Usuario: "+transaction.account_including_deleted.nombre+
-                " Quien Reporta: "+transaction.technical_including_deleted.nombre+"\nUBICACION DEL SINIESTRO: "+
-                transaction.origen+"\nTRANSPORTE INVOLUCRADO: "+transaction.vehicle_including_deleted.marca+
-                " Tipo: "+transaction.vehicle_including_deleted.tipo+"\nModelo: "+transaction.vehicle_including_deleted.modelo+
-                "\nCOMBUSTIBLE: "+transaction.vehicle_including_deleted.combustible+"\n" +
-                "TIEMPOS:\n"+
-                "Destino:"+  transaction.destino+"\n" +
-                "Fecha Apertura Expediente:"+transaction.fecha+"\n" +
-                "Fecha Término Expediente: " + transaction.fecha_de_cierre+"\n" +
-                "Estatus: "+transaction.status +"\n"+
-                "Fecha Llegada: "+transaction.hora_llegada
+            return "DETALLE DE LA SOLICITUD DEL SERVICIO"+
+                "\nExpediente: " + transaction.expediente +
+                "\nProveedor:"+transaction.enterprise.name+
+                "\nSubservicio: "+transaction.service_including_deleted.name+
+                "\nGrupo de Cuenta: "+transaction.account_including_deleted.name+
+                "\nNuestro Usuario: "+transaction.account_including_deleted.nombre+
+                "\nQuien Reporta: "+transaction.technical_including_deleted.nombre+
+                "\nUBICACION DEL SINIESTRO: "+ transaction.origen+
+                "\nTRANSPORTE INVOLUCRADO: "+transaction.vehicle_including_deleted.marca+
+                "\nNombre asegurado: "+transaction.asegurado+
+                "\nTelefono asegurado: "+transaction.telefono+
+                "\nTelefono Direccion: "+transaction.direccion+
+                "\nTipo: "+transaction.vehicle_including_deleted.tipo+
+                "\nTarea: "+transaction.tarea+
+                "\n\nTIEMPOS:\n"+
+                "\nDestino:"+  transaction.destino+
+                "\nFecha Apertura Expediente:"+transaction.fecha+
+                "\nFecha Término Expediente: " + transaction.fecha_de_cierre+
+                "\nEstatus: "+transaction.status+
+                "\nFecha Llegada: "+transaction.hora_llegada
         }
     });
 

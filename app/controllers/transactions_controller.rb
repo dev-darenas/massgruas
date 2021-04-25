@@ -2,7 +2,7 @@ class TransactionsController < EnterprisesController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy, :open, :close, :deliver, :check_in]
 
   def index
-    @status = params[:status] || params[:q][:status]
+    @status = params[:status]
     search_params = params[:q].nil? ? { } : params[:q].except(:status)
 
     case @status

@@ -3,7 +3,10 @@
           title: 'Transacción',
           links: [ ['Transacción', ''] ]
 
-= render "components/search", url: transactions_path, field_search: :status_or_expediente_or_orden_Trabajo_or_remision_or_factura_cont
+= render "components/search",
+        url: transactions_path,
+        field_search: :status_or_expediente_or_orden_Trabajo_or_remision_or_factura_or_technical_nombre_or_technical_cedula_or_client_nombre_or_client_identificacion_or_client_telefono_or_client_ciudad_or_vehicle_placa_cont
+
 table.table
   thead
     tr

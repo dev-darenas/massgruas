@@ -36,7 +36,11 @@ class ReportsController < EnterprisesController
 
     initial_date = params[:initial_date].to_date.beginning_of_day
     final_date = params[:final_date].to_date.end_of_day
-    @transactions = Transaction.where(vehicle_id: params[:vehicle_id], fecha: initial_date..final_date).order(fecha: :asc)
+    @transactions = Transaction.where(
+                      vehicle_id: params[:vehicle_id],
+                      fecha: initial_date..final_date
+                    ).includes(:vehicle)
+                     .order("vehicles.placa ASC")
 
     respond_to do |format|
       format.html

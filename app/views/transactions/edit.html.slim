@@ -11,6 +11,11 @@
 
 = render 'form', transaction: @transaction
 
-div id='data_transaction' data-transaction="#{@transaction.to_json(:include=> [:enterprise, :service_including_deleted, :technical_including_deleted,
-                                                                               :account_including_deleted, :vehicle_including_deleted])}"
+div id='data_transaction' data-transaction="#{@transaction.to_json(include: [
+                                                                             :enterprise,
+                                                                             :service_including_deleted,
+                                                                             :technical_including_deleted,
+                                                                             :account_including_deleted,
+                                                                             :vehicle_including_deleted
+                                                                             ])}"
 

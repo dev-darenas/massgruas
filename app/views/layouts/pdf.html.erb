@@ -29,14 +29,15 @@
   </style>
   <body>
     <div class='container'>
-      <% if !current_user.enterprise.pictures.first.nil? %>
-        <% if current_user.enterprise.pictures.first.image? %>
-          <div class="row">
+      <div class="row">
+        <% if !current_user.enterprise.pictures.first.nil? %>
+          <% if current_user.enterprise.pictures.first.image? %>
             <%= image_tag(embed_remote_image("#{Rails.root}/public#{current_user.enterprise.pictures.first.image.small_thumb.url}",'image/'), alt:'Logo')%>
-            <h1> <%= current_user.enterprise.name %></h1>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+        <h1> <%= current_user.enterprise.name %></h1>
+      </div>
+
       <%= yield %>
     </div>
   </body>
