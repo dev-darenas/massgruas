@@ -296,6 +296,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3)
   ransack
+  ruby2_keywords
   sass-rails (>= 6)
   slim (= 4.0.1)
   spring
