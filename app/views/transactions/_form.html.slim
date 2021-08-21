@@ -144,7 +144,7 @@
         .form-row.align-items-center
           .col
             = form.label :vehicle_id, "Placa Grúa"
-            = form.collection_select :vehicle_id, @enterprise.vehicles,
+            = form.collection_select :vehicle_id, @enterprise.vehicles.is_active,
                     :id, :placa,
                     {include_blank: true},
                     {class: 'form-control mb-2', id:'vehicles'}

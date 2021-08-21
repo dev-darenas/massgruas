@@ -20,4 +20,6 @@ class Vehicle < ApplicationRecord
                                 }, allow_destroy: true
 
   before_save :to_upper
+
+  scope :is_active, -> { where(active: true) }
 end

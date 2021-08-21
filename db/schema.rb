@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_183842) do
+ActiveRecord::Schema.define(version: 2021_08_20_235918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,32 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
   create_table "accounts_clients", id: false, force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "client_id", null: false
+  end
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
   create_table "bonding_dates", force: :cascade do |t|
@@ -85,10 +111,9 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
 
   create_table "enterprises", force: :cascade do |t|
     t.string "name"
-    t.integer "remision", default: 1, null: false
+    t.integer "service_number", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "service_number", default: 1, null: false
   end
 
   create_table "list_prices", force: :cascade do |t|
@@ -122,11 +147,11 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string "image"
     t.string "imageable_type"
     t.bigint "imageable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
     t.json "attachments"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_pictures_on_deleted_at"
@@ -172,13 +197,14 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
   create_table "transactions", force: :cascade do |t|
     t.bigint "enterprise_id", null: false
     t.string "status", default: "Open", null: false
+    t.integer "service_number"
     t.datetime "fecha"
     t.string "orden_Trabajo"
     t.string "remision"
     t.string "factura"
     t.time "hora_llegada"
+    t.string "response_time"
     t.bigint "client_id", null: false
-    t.string "cuenta"
     t.string "expediente"
     t.string "placa"
     t.string "tarea"
@@ -225,8 +251,6 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
     t.float "total_waiting_hours"
     t.float "priced"
     t.datetime "hora_final"
-    t.integer "service_number"
-    t.string "response_time"
     t.datetime "deleted_at"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["client_id"], name: "index_transactions_on_client_id"
@@ -280,6 +304,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_183842) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.boolean "active", default: true
     t.index ["deleted_at"], name: "index_vehicles_on_deleted_at"
     t.index ["enterprise_id"], name: "index_vehicles_on_enterprise_id"
   end

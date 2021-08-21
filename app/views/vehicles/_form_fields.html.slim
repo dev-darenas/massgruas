@@ -1,3 +1,8 @@
+.field.form-check.form-check-inline
+  = f.label :active
+  .input-group-prepend
+    .input-group-text
+      = f.check_box :active
 .field
   = f.label :placa
   = f.text_field :placa, class: 'form-control', id:'campo'
