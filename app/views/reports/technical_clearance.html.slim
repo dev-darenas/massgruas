@@ -48,48 +48,48 @@
             td = number_to_currency((t.pago_tecnico.blank? ? 0 : t.pago_tecnico), locale: :es)
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong Pago total:
           td = number_to_currency(@total,locale: :es)
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong % de Administración:
           td = params[:administration]
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong subtotal($):
           - @total = @total - (@total * params[:administration].to_i/100)
           td = number_to_currency(@total,locale: :es)
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong % de Liquidación:
           td = params[:liquidation]
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong Liquidación($):
           - @total = @total - (@total * params[:liquidation].to_i/100)
           td = number_to_currency(@total,locale: :es)
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong Descuento EPS($):
           td = params[:eps_discount]
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong Prestamos($):
           td = params[:discount_loans]
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong Otros Descuentos($):
           td = params[:other_discounts]
 
         tr
-          td.text-sm-right colspan="8"
+          td.text-sm-right colspan="7"
             strong Neto a pagar($):
           - @total = @total - params[:eps_discount].to_i - params[:discount_loans].to_i - params[:other_discounts].to_i
           td = number_to_currency(@total,locale: :es)
