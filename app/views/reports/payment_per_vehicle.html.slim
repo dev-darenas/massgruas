@@ -5,7 +5,7 @@ h1 Liquidacion por Vehiculo
   .form-inline
     .form-group
       = form.label :vehicle_id, "Id vehiculo", class:'mx-sm-3 mb-2'
-      = form.collection_select :vehicle_id, @enterprise.vehicles,
+      = form.collection_select :vehicle_id, @enterprise.vehicles.is_active,
               :id, :placa,
               { include_blank: false },
               {class:'mb-2 multiple-select', multiple: true, required: true}

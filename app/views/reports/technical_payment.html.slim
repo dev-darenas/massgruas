@@ -8,7 +8,7 @@ h1 Liquidacion pago Técnico
       = form.collection_select :technical_id, @enterprise.technicals.is_active,
                               :id, :cedula_and_name,
                               { include_blank: false },
-                              { class:'mb-2 multiple-select', multiple: true, required:true }
+                              { class:'mb-2 multiple-select', multiple: true, required:true, data: { 'select-all': true } }
 
   .form-inline
     .form-group

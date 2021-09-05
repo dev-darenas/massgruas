@@ -26,6 +26,12 @@
     .paid {
       width: 80px;
     }
+
+    table { page-break-after:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    td    { page-break-inside:avoid; page-break-after:auto }
+    thead { display: table-row-group; }
+    tfoot { display:table-footer-group }
   </style>
   <body>
     <div class='container'>
