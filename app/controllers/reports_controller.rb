@@ -24,7 +24,8 @@ class ReportsController < EnterprisesController
                template: "reports/technical_clearance.html.slim",
                title: 'Liquidación Técnico',
                layout: 'pdf',
-               orientation: 'Landscape'
+               orientation: 'Landscape',
+               show_as_html: params.key?('debug')
       end
     end
   end
