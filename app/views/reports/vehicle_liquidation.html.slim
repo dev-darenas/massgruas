@@ -2,8 +2,11 @@
   .row
     h1.col-md Liquidación de Vehiculo
 
-    - if @vehicles.length == 1
-      h2.col-md = @vehicles.first.placa
+- @vehicles.each do |vehicle|
+  - @total = 0
+  hr
+
+    h2.col-md = vehicle.placa
 
     p.col-md
       strong Fecha:
@@ -14,8 +17,6 @@
   table.table
     thead
       tr
-        - if @vehicles.length != 1
-          th scope='col' PLACA
         th scope='col' FECHA Y HORA
         th scope='col' OT
         th scope='col' TAREA
@@ -25,10 +26,8 @@
         th scope='col' EXPEDIENTE
         th.paid scope='col' PAGO
     tbody
-      - @transactions.each do |t|
+      - @transactions.where(vehicle_id: vehicle.id).each do |t|
         tr
-          - if @vehicles.length != 1
-            td = t.vehicle.placa
           td = t.fecha.strftime("%d/%m/%Y")
           td = t.orden_Trabajo
           td = t.tarea
@@ -37,8 +36,7 @@
           td = t.orden_Trabajo
           td = t.expediente
           - @total += t.priced.blank? ? 0 : t.priced
-          td = number_to_currency((t.priced.blank? ? 0 : t.priced),locale: :es)
-
+          td = number_to_currency((t.priced.blank? ? 0 : t.priced), locale: :es)
 
       tr
         td.text-sm-right colspan="#{@vehicles.length == 1 ? '7' : '8'}"

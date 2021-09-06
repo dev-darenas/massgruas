@@ -27,12 +27,10 @@
       width: 110px;
     }
 
-    table { page-break-after:auto }
-    tr    { page-break-inside:avoid; page-break-after:auto }
-    td    { page-break-inside:avoid; page-break-after:auto }
-    #thead { display: table-row-group; }
-    tfoot { display: table-footer-group }
-    thead { display: table-header-group }
+    table, tr, td, th, tbody, thead, tfoot {
+        page-break-inside: avoid !important;
+    }
+
   </style>
   <body>
     <div class='container'>
