@@ -6,39 +6,39 @@
   - @total = 0
   hr
 
-    h2.col-md = vehicle.placa
+  h2.col-md = vehicle.placa
 
-    p.col-md
-      strong Fecha:
-      =< Time.now.strftime("%d/%m/%Y")
+  p.col-md
+    strong Fecha:
+    =< Time.now.strftime("%d/%m/%Y")
   hr
 
-.table-responsive-lg
-  table.table
-    thead
-      tr
-        th scope='col' FECHA Y HORA
-        th scope='col' OT
-        th scope='col' TAREA
-        th scope='col' ORIGEN
-        th scope='col' DESTINO
-        th scope='col' ORDEN DE TRABAJO
-        th scope='col' EXPEDIENTE
-        th.paid scope='col' PAGO
-    tbody
-      - @transactions.where(vehicle_id: vehicle.id).each do |t|
+  .table-responsive-lg
+    table.table
+      thead
         tr
-          td = t.fecha.strftime("%d/%m/%Y")
-          td = t.orden_Trabajo
-          td = t.tarea
-          td = t.origen
-          td = t.destino
-          td = t.orden_Trabajo
-          td = t.expediente
-          - @total += t.priced.blank? ? 0 : t.priced
-          td = number_to_currency((t.priced.blank? ? 0 : t.priced), locale: :es)
+          th scope='col' FECHA Y HORA
+          th scope='col' OT
+          th scope='col' TAREA
+          th scope='col' ORIGEN
+          th scope='col' DESTINO
+          th scope='col' ORDEN DE TRABAJO
+          th scope='col' EXPEDIENTE
+          th.paid scope='col' PAGO
+      tbody
+        - @transactions.where(vehicle_id: vehicle.id).each do |t|
+          tr
+            td = t.fecha.strftime("%d/%m/%Y")
+            td = t.orden_Trabajo
+            td = t.tarea
+            td = t.origen
+            td = t.destino
+            td = t.orden_Trabajo
+            td = t.expediente
+            - @total += t.priced.blank? ? 0 : t.priced
+            td = number_to_currency((t.priced.blank? ? 0 : t.priced), locale: :es)
 
-      tr
-        td.text-sm-right colspan="8"
-          strong Pago total:
-        td = number_to_currency(@total,locale: :es)
+        tr
+          td.text-sm-right colspan="8"
+            strong Pago total:
+          td = number_to_currency(@total,locale: :es)
